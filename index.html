@@ -211,7 +211,9 @@
 
         <div class="data-box">
           <div class="data-title">WAVE</div>
-          <div class="data-value">1.2 m</div>
+          
+          <div class="data-value" id="waveHeight">取得中...</div>
+    
         </div>
 
         <div class="data-box">
@@ -287,6 +289,34 @@
     }
 
   </script>
+async function getWaveData() {
 
+  const latitude = 35.315;
+  const longitude = 139.433;
+
+  const url =
+    `https://marine-api.open-meteo.com/v1/marine?latitude=${latitude}&longitude=${longitude}&current=wave_height&timezone=Asia%2FTokyo`;
+
+  try {
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const waveHeight = data.current.wave_height;
+
+    document.getElementById("waveHeight").textContent =
+      waveHeight.toFixed(2) + " m";
+
+  } catch (error) {
+
+    document.getElementById("waveHeight").textContent =
+      "取得エラー";
+
+    console.error(error);
+
+  }
+}
+
+getWaveData();
 </body>
 </html>
