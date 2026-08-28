@@ -1,2 +1,163 @@
-<h1>SURF AI</h1>
-<p>Your personal surfing AI.</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SURF AI</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f4f7f8;
+      color: #172126;
+    }
+
+    .header {
+      padding: 28px 20px 18px;
+      background: white;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .location {
+      margin-top: 6px;
+      color: #68777d;
+      font-size: 15px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .label {
+      font-size: 13px;
+      color: #718087;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .condition {
+      font-size: 38px;
+      font-weight: 800;
+      margin: 8px 0 4px;
+    }
+
+    .score {
+      font-size: 52px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .score span {
+      font-size: 20px;
+      color: #7b898f;
+    }
+
+    .data {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .data-box {
+      background: #f4f7f8;
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .data-title {
+      font-size: 12px;
+      color: #718087;
+    }
+
+    .data-value {
+      font-size: 19px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .ai {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .bottom {
+      text-align: center;
+      color: #89969b;
+      font-size: 12px;
+      padding: 10px 0 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="logo">🏄 SURF AI</div>
+    <div class="location">📍 湘南</div>
+  </div>
+
+  <div class="content">
+
+    <div class="card">
+      <div class="label">TODAY'S CONDITION</div>
+      <div class="condition">GOOD</div>
+
+      <div class="data">
+        <div class="data-box">
+          <div class="data-title">WAVE</div>
+          <div class="data-value">1.2 m</div>
+        </div>
+
+        <div class="data-box">
+          <div class="data-title">WIND</div>
+          <div class="data-value">OFF 3 m/s</div>
+        </div>
+
+        <div class="data-box">
+          <div class="data-title">TIDE</div>
+          <div class="data-value">RISING</div>
+        </div>
+
+        <div class="data-box">
+          <div class="data-title">PERIOD</div>
+          <div class="data-value">10 sec</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">🤖 AI SURF SCORE</div>
+      <div class="score">87 <span>/ 100</span></div>
+    </div>
+
+    <div class="card">
+      <div class="label">AI RECOMMENDATION</div>
+      <p class="ai">
+        🌊 今日はコンディション良好。<br>
+        午前中は風が弱く、波のまとまりも期待できます。<br><br>
+        🏄 おすすめ時間：7:00〜10:00
+      </p>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    SURF AI — Your personal surfing AI.
+  </div>
+
+</body>
+</html>
