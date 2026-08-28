@@ -1,322 +1,845 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>SURF AI</title>
 
+
   <style>
+
     * {
       box-sizing: border-box;
     }
 
     body {
+
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        sans-serif;
+
       background: #f5f7f8;
+
       color: #172126;
+
     }
+
 
     .header {
+
       padding: 28px 20px 18px;
+
       background: white;
+
     }
+
 
     .logo {
+
       font-size: 28px;
+
       font-weight: 800;
+
       letter-spacing: -1px;
+
     }
+
 
     .content {
+
       padding: 20px;
+
     }
 
-    /* ポイント選択 */
 
     .spot-label {
+
       font-size: 12px;
+
       font-weight: 700;
+
       color: #7a878c;
+
       letter-spacing: 1px;
+
       margin-bottom: 8px;
+
     }
+
 
     .spot-button {
+
       width: 100%;
+
       border: none;
+
       background: white;
+
       border-radius: 18px;
+
       padding: 18px;
+
       text-align: left;
+
       font-size: 18px;
+
       font-weight: 700;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+
+      box-shadow:
+        0 4px 16px rgba(0,0,0,0.06);
+
       cursor: pointer;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
     }
+
 
     .arrow {
+
       font-size: 18px;
+
       color: #8b989d;
+
     }
 
-    /* ポイント一覧 */
 
     .spot-menu {
+
       display: none;
+
       margin-top: 10px;
+
       background: white;
+
       border-radius: 18px;
+
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+      box-shadow:
+        0 8px 24px rgba(0,0,0,0.08);
+
     }
+
 
     .spot-item {
+
       padding: 17px 18px;
-      border-bottom: 1px solid #edf0f1;
+
+      border-bottom:
+        1px solid #edf0f1;
+
       font-size: 16px;
+
       cursor: pointer;
+
     }
+
 
     .spot-item:last-child {
+
       border-bottom: none;
+
     }
+
 
     .spot-item:active {
+
       background: #f1f4f5;
+
     }
 
-    /* カード */
 
     .card {
+
       background: white;
+
       border-radius: 20px;
+
       padding: 22px;
+
       margin-top: 16px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+
+      box-shadow:
+        0 4px 16px rgba(0,0,0,0.06);
+
     }
+
 
     .label {
+
       font-size: 12px;
+
       color: #718087;
+
       font-weight: 700;
+
       letter-spacing: 0.8px;
+
     }
+
 
     .condition {
+
       font-size: 38px;
+
       font-weight: 800;
+
       margin: 8px 0;
+
     }
+
 
     .score {
+
       font-size: 52px;
+
       font-weight: 800;
+
       margin-top: 8px;
+
     }
+
 
     .score span {
+
       font-size: 20px;
+
       color: #7b898f;
+
     }
+
 
     .data {
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 12px;
+
       margin-top: 18px;
+
     }
+
 
     .data-box {
+
       background: #f4f7f8;
+
       border-radius: 14px;
+
       padding: 14px;
+
     }
+
 
     .data-title {
+
       font-size: 12px;
+
       color: #718087;
+
     }
+
 
     .data-value {
+
       font-size: 19px;
+
       font-weight: 700;
+
       margin-top: 4px;
+
     }
+
 
     .ai {
+
       font-size: 16px;
+
       line-height: 1.6;
+
     }
 
-    .bottom {
-      text-align: center;
-      color: #89969b;
+
+    .status {
+
+      margin-top: 10px;
+
       font-size: 12px;
-      padding: 25px 0 35px;
+
+      color: #718087;
+
     }
+
+
+    .bottom {
+
+      text-align: center;
+
+      color: #89969b;
+
+      font-size: 12px;
+
+      padding: 25px 0 35px;
+
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <div class="header">
-    <div class="logo">🏄 SURF AI</div>
+
+    <div class="logo">
+      🏄 SURF AI
+    </div>
+
   </div>
+
 
   <div class="content">
 
-    <div class="spot-label">SURF SPOT</div>
 
-    <button class="spot-button" onclick="toggleSpots()">
-      <span id="selectedSpot">📍 辻堂</span>
-      <span class="arrow">⌄</span>
+    <!-- SURF SPOT -->
+
+    <div class="spot-label">
+      SURF SPOT
+    </div>
+
+
+    <button
+      class="spot-button"
+      onclick="toggleSpots()"
+    >
+
+      <span id="selectedSpot">
+        📍 辻堂
+      </span>
+
+      <span class="arrow">
+        ⌄
+      </span>
+
     </button>
 
-    <div class="spot-menu" id="spotMenu">
 
-      <div class="spot-item" onclick="selectSpot('📍 辻堂')">
+    <div
+      class="spot-menu"
+      id="spotMenu"
+    >
+
+      <div
+        class="spot-item"
+        onclick="selectSpot('辻堂')"
+      >
         📍 辻堂
       </div>
 
-      <div class="spot-item" onclick="selectSpot('🌊 鵠沼')">
+
+      <div
+        class="spot-item"
+        onclick="selectSpot('鵠沼')"
+      >
         🌊 鵠沼
       </div>
 
-      <div class="spot-item" onclick="selectSpot('🌊 茅ヶ崎')">
+
+      <div
+        class="spot-item"
+        onclick="selectSpot('茅ヶ崎')"
+      >
         🌊 茅ヶ崎
       </div>
 
-      <div class="spot-item" onclick="selectSpot('🌊 鎌倉')">
+
+      <div
+        class="spot-item"
+        onclick="selectSpot('鎌倉')"
+      >
         🌊 鎌倉
       </div>
 
-      <div class="spot-item" onclick="selectSpot('🌊 千葉')">
+
+      <div
+        class="spot-item"
+        onclick="selectSpot('千葉')"
+      >
         🌊 千葉
       </div>
 
     </div>
 
+
+
+    <!-- CONDITION -->
+
     <div class="card">
 
-      <div class="label">TODAY'S CONDITION</div>
+      <div class="label">
+        CURRENT CONDITION
+      </div>
 
-      <div class="condition">GOOD</div>
+
+      <div
+        class="condition"
+        id="condition"
+      >
+        CHECKING...
+      </div>
+
 
       <div class="data">
 
-        <div class="data-box">
-          <div class="data-title">WAVE</div>
-          
-          <div class="data-value" id="waveHeight">取得中...</div>
-    
-        </div>
 
         <div class="data-box">
-          <div class="data-title">WIND</div>
-          <div class="data-value">OFF 3 m/s</div>
+
+          <div class="data-title">
+            WAVE
+          </div>
+
+          <div
+            class="data-value"
+            id="waveHeight"
+          >
+            取得中...
+          </div>
+
         </div>
+
 
         <div class="data-box">
-          <div class="data-title">TIDE</div>
-          <div class="data-value">RISING</div>
+
+          <div class="data-title">
+            WAVE PERIOD
+          </div>
+
+          <div
+            class="data-value"
+            id="wavePeriod"
+          >
+            取得中...
+          </div>
+
         </div>
+
 
         <div class="data-box">
-          <div class="data-title">PERIOD</div>
-          <div class="data-value">10 sec</div>
+
+          <div class="data-title">
+            WAVE DIRECTION
+          </div>
+
+          <div
+            class="data-value"
+            id="waveDirection"
+          >
+            取得中...
+          </div>
+
         </div>
 
+
+        <div class="data-box">
+
+          <div class="data-title">
+            DATA SOURCE
+          </div>
+
+          <div
+            class="data-value"
+            id="dataSource"
+          >
+            Open-Meteo
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div
+        class="status"
+        id="status"
+      >
+        海況データを取得しています...
       </div>
 
     </div>
 
+
+
+    <!-- SCORE -->
+
     <div class="card">
 
-      <div class="label">🤖 AI SURF SCORE</div>
+      <div class="label">
+        🤖 AI SURF SCORE
+      </div>
 
       <div class="score">
-        87 <span>/ 100</span>
+
+        --
+
+        <span>
+          / 100
+        </span>
+
+      </div>
+
+      <div class="status">
+        実データ接続後にAIスコアを計算します
       </div>
 
     </div>
 
+
+
+    <!-- AI -->
+
     <div class="card">
 
-      <div class="label">AI RECOMMENDATION</div>
+      <div class="label">
+        AI RECOMMENDATION
+      </div>
 
       <p class="ai">
-        🌊 今日はコンディション良好。<br>
-        午前中は風が弱く、波のまとまりも期待できます。
+
+        🌊 現在は海況データを
+        取得しています。
+
         <br><br>
-        🏄 おすすめ時間：7:00〜10:00
+
+        実データが取得できたら、
+        SURF AIがコンディションを
+        分析します。
+
       </p>
 
     </div>
 
+
   </div>
 
+
+
   <div class="bottom">
+
     SURF AI — Your personal surfing AI.
+
   </div>
+
 
 
   <script>
 
+
+    /*
+      サーフポイントの座標
+    */
+
+    const spots = {
+
+      "辻堂": {
+        latitude: 35.315,
+        longitude: 139.433
+      },
+
+      "鵠沼": {
+        latitude: 35.323,
+        longitude: 139.471
+      },
+
+      "茅ヶ崎": {
+        latitude: 35.316,
+        longitude: 139.404
+      },
+
+      "鎌倉": {
+        latitude: 35.308,
+        longitude: 139.549
+      },
+
+      "千葉": {
+        latitude: 35.538,
+        longitude: 140.066
+      }
+
+    };
+
+
+
+    /*
+      ポイントメニュー
+    */
+
     function toggleSpots() {
 
-      const menu = document.getElementById("spotMenu");
+      const menu =
+        document.getElementById(
+          "spotMenu"
+        );
 
-      if (menu.style.display === "block") {
+
+      if (
+        menu.style.display === "block"
+      ) {
+
         menu.style.display = "none";
+
       } else {
+
         menu.style.display = "block";
+
       }
 
     }
 
 
+
+    /*
+      ポイント選択
+    */
+
     function selectSpot(spot) {
 
-      document.getElementById("selectedSpot").textContent = spot;
+      document.getElementById(
+        "selectedSpot"
+      ).textContent =
+        "📍 " + spot;
 
-      document.getElementById("spotMenu").style.display = "none";
+
+      document.getElementById(
+        "spotMenu"
+      ).style.display =
+        "none";
+
+
+      loadMarineData(spot);
 
     }
 
+
+
+    /*
+      海況データ取得
+    */
+
+    async function loadMarineData(spot) {
+
+
+      const location =
+        spots[spot];
+
+
+      if (!location) {
+
+        return;
+
+      }
+
+
+      document.getElementById(
+        "status"
+      ).textContent =
+        "海況データを取得しています...";
+
+
+      document.getElementById(
+        "waveHeight"
+      ).textContent =
+        "取得中...";
+
+
+      document.getElementById(
+        "wavePeriod"
+      ).textContent =
+        "取得中...";
+
+
+      document.getElementById(
+        "waveDirection"
+      ).textContent =
+        "取得中...";
+
+
+
+      const url =
+        "https://marine-api.open-meteo.com/v1/marine" +
+        "?latitude=" + location.latitude +
+        "&longitude=" + location.longitude +
+        "&current=wave_height,wave_direction,wave_period" +
+        "&timezone=Asia%2FTokyo";
+
+
+
+      try {
+
+
+        const response =
+          await fetch(url);
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "API request failed"
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+
+        /*
+          波高
+        */
+
+        const waveHeight =
+          data.current.wave_height;
+
+
+        /*
+          波周期
+        */
+
+        const wavePeriod =
+          data.current.wave_period;
+
+
+        /*
+          波向
+        */
+
+        const waveDirection =
+          data.current.wave_direction;
+
+
+
+        document.getElementById(
+          "waveHeight"
+        ).textContent =
+
+          waveHeight !== null
+            ? waveHeight.toFixed(2) + " m"
+            : "--";
+
+
+
+        document.getElementById(
+          "wavePeriod"
+        ).textContent =
+
+          wavePeriod !== null
+            ? wavePeriod.toFixed(1) + " sec"
+            : "--";
+
+
+
+        document.getElementById(
+          "waveDirection"
+        ).textContent =
+
+          waveDirection !== null
+            ? waveDirection.toFixed(0) + "°"
+            : "--";
+
+
+
+        document.getElementById(
+          "condition"
+        ).textContent =
+          "DATA LIVE";
+
+
+        document.getElementById(
+          "status"
+        ).textContent =
+          "最新の海況データを取得しました";
+
+
+      }
+
+
+      catch (error) {
+
+
+        console.error(
+          error
+        );
+
+
+        document.getElementById(
+          "condition"
+        ).textContent =
+          "ERROR";
+
+
+        document.getElementById(
+          "status"
+        ).textContent =
+          "データ取得に失敗しました";
+
+
+        document.getElementById(
+          "waveHeight"
+        ).textContent =
+          "--";
+
+
+        document.getElementById(
+          "wavePeriod"
+        ).textContent =
+          "--";
+
+
+        document.getElementById(
+          "waveDirection"
+        ).textContent =
+          "--";
+
+      }
+
+    }
+
+
+
+    /*
+      ページを開いた時に
+      辻堂のデータを取得
+    */
+
+    loadMarineData("辻堂");
+
+
   </script>
-async function getWaveData() {
 
-  const latitude = 35.315;
-  const longitude = 139.433;
 
-  const url =
-    `https://marine-api.open-meteo.com/v1/marine?latitude=${latitude}&longitude=${longitude}&current=wave_height&timezone=Asia%2FTokyo`;
-
-  try {
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const waveHeight = data.current.wave_height;
-
-    document.getElementById("waveHeight").textContent =
-      waveHeight.toFixed(2) + " m";
-
-  } catch (error) {
-
-    document.getElementById("waveHeight").textContent =
-      "取得エラー";
-
-    console.error(error);
-
-  }
-}
-
-getWaveData();
 </body>
+
 </html>
