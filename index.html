@@ -19,7 +19,7 @@ body {
     "Helvetica Neue",
     Arial,
     sans-serif;
-  background: #f5f7f8;
+  background: #f4f7f8;
   color: #172126;
 }
 
@@ -29,8 +29,8 @@ body {
 }
 
 .logo {
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 29px;
+  font-weight: 850;
   letter-spacing: -1px;
 }
 
@@ -38,32 +38,31 @@ body {
   padding: 20px;
 }
 
-.spot-label {
+.spot-label,
+.label {
   font-size: 12px;
-  font-weight: 700;
-  color: #7a878c;
-  letter-spacing: 1px;
+  color: #718087;
+  font-weight: 750;
+  letter-spacing: .8px;
+}
+
+.spot-label {
   margin-bottom: 8px;
 }
 
 .spot-button {
   width: 100%;
-  border: none;
+  border: 0;
   background: white;
   border-radius: 18px;
   padding: 18px;
   text-align: left;
   font-size: 18px;
-  font-weight: 700;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  font-weight: 750;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.arrow {
-  color: #8b989d;
 }
 
 .spot-menu {
@@ -72,7 +71,7 @@ body {
   background: white;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
 }
 
 .spot-item {
@@ -82,28 +81,17 @@ body {
   cursor: pointer;
 }
 
-.spot-item:last-child {
-  border-bottom: none;
-}
-
 .card {
   background: white;
   border-radius: 20px;
   padding: 22px;
   margin-top: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-
-.label {
-  font-size: 12px;
-  color: #718087;
-  font-weight: 700;
-  letter-spacing: 0.8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.055);
 }
 
 .condition {
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 28px;
+  font-weight: 850;
   margin: 8px 0;
 }
 
@@ -127,7 +115,7 @@ body {
 
 .data-value {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 750;
   margin-top: 4px;
 }
 
@@ -141,60 +129,197 @@ body {
 .highlight-title {
   font-size: 12px;
   color: #718087;
-  font-weight: 700;
+  font-weight: 750;
 }
 
 .highlight-value {
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 25px;
+  font-weight: 850;
   margin-top: 5px;
 }
 
-.subtext {
-  margin-top: 6px;
-  font-size: 13px;
+.subtext,
+.best-reason,
+.board-reason {
+  margin-top: 7px;
   color: #718087;
-  line-height: 1.5;
+  line-height: 1.55;
+  font-size: 13px;
 }
 
-/* タイド */
+/* =========================
+   オンショア / オフショア
+========================= */
+
+.wind-condition {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.wind-offshore {
+  background: #e8f7ef;
+  color: #147a4b;
+}
+
+.wind-sideoff {
+  background: #edf7ee;
+  color: #367a45;
+}
+
+.wind-sideon {
+  background: #fff4df;
+  color: #a66b00;
+}
+
+.wind-onshore {
+  background: #ffe9e8;
+  color: #b93832;
+}
+
+/* =========================
+   ベストタイム
+========================= */
+
+.best-time {
+  font-size: 30px;
+  font-weight: 850;
+  margin-top: 8px;
+}
+
+/* =========================
+   ボード
+========================= */
+
+.board-wrap {
+  margin-top: 15px;
+  background: #f4f7f8;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+}
+
+.board-svg {
+  width: 100%;
+  max-width: 300px;
+  height: 120px;
+}
+
+.board-name {
+  font-size: 24px;
+  font-weight: 850;
+  margin-top: 3px;
+}
+
+/* =========================
+   タイドグラフ
+========================= */
+
+.tide-wrapper {
+  margin-top: 16px;
+}
 
 .tide-chart {
   position: relative;
   width: 100%;
-  height: 180px;
-  margin-top: 18px;
-  background: #f4f7f8;
-  border-radius: 16px;
+  height: 230px;
+  background:
+    linear-gradient(
+      to bottom,
+      #eef9ff 0%,
+      #f7fcff 100%
+    );
+  border-radius: 18px;
   overflow: hidden;
+  border: 1px solid #e0edf3;
+}
+
+.tide-grid {
+  position: absolute;
+  inset: 20px 12px 34px 12px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(50,130,170,.08) 0,
+      rgba(50,130,170,.08) 1px,
+      transparent 1px,
+      transparent 25%
+    );
 }
 
 .tide-svg {
-  width: 100%;
-  height: 150px;
-  display: block;
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 20px;
+  width: calc(100% - 24px);
+  height: 160px;
+  overflow: visible;
+}
+
+.tide-area {
+  fill: rgba(54,163,218,.16);
 }
 
 .tide-line {
   fill: none;
-  stroke: #172126;
-  stroke-width: 3;
+  stroke: #2498d0;
+  stroke-width: 4;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
+.tide-now {
+  stroke: #172126;
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+
+.tide-now-dot {
+  fill: #172126;
+}
+
 .tide-axis {
   position: absolute;
-  bottom: 8px;
+  bottom: 9px;
   left: 12px;
   right: 12px;
   display: flex;
   justify-content: space-between;
   font-size: 10px;
-  color: #89969b;
+  color: #718087;
 }
 
-/* 日の出 */
+.tide-current {
+  margin-top: 14px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #eef8fc;
+}
+
+.tide-current-title {
+  font-size: 12px;
+  color: #718087;
+}
+
+.tide-current-value {
+  font-size: 24px;
+  font-weight: 850;
+  margin-top: 3px;
+}
+
+.tide-note {
+  margin-top: 7px;
+  font-size: 11px;
+  color: #7c898e;
+  line-height: 1.5;
+}
+
+/* =========================
+   太陽
+========================= */
 
 .sun-times {
   display: grid;
@@ -216,38 +341,8 @@ body {
 
 .sun-value {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 850;
   margin-top: 5px;
-}
-
-/* ベストタイム */
-
-.best-time {
-  font-size: 30px;
-  font-weight: 800;
-  margin-top: 8px;
-}
-
-.best-reason {
-  margin-top: 8px;
-  color: #718087;
-  line-height: 1.6;
-  font-size: 14px;
-}
-
-/* ボード */
-
-.board {
-  font-size: 26px;
-  font-weight: 800;
-  margin-top: 8px;
-}
-
-.board-reason {
-  margin-top: 8px;
-  color: #718087;
-  line-height: 1.6;
-  font-size: 14px;
 }
 
 .status {
@@ -273,13 +368,15 @@ body {
 
 <div class="content">
 
-<!-- ポイント -->
+<!-- =========================
+     ポイント
+========================= -->
 
 <div class="spot-label">サーフポイント</div>
 
 <button class="spot-button" onclick="toggleSpots()">
   <span id="selectedSpot">📍 辻堂</span>
-  <span class="arrow">⌄</span>
+  <span>⌄</span>
 </button>
 
 <div class="spot-menu" id="spotMenu">
@@ -323,7 +420,9 @@ body {
 </div>
 
 
-<!-- コンディション -->
+<!-- =========================
+     コンディション
+========================= -->
 
 <div class="card">
 
@@ -360,12 +459,8 @@ body {
       <div class="data-value" id="windDirection">--</div>
     </div>
 
-    <div class="data-box">
-      <div class="data-title">更新時刻</div>
-      <div class="data-value" id="dataUpdated">--</div>
-    </div>
-
   </div>
+
 
   <!-- 人間語サイズ -->
 
@@ -380,10 +475,19 @@ body {
     </div>
 
     <div class="subtext" id="humanWaveReason">
-      波高データを確認しています
+      波データを取得しています
     </div>
 
   </div>
+
+
+  <!-- オンショア等 -->
+
+  <div id="windCondition"
+       class="wind-condition">
+    風向きを分析しています...
+  </div>
+
 
   <div class="status" id="status">
     海況データを取得しています...
@@ -392,7 +496,9 @@ body {
 </div>
 
 
-<!-- ベストタイム -->
+<!-- =========================
+     ベストタイム
+========================= -->
 
 <div class="card">
 
@@ -411,7 +517,9 @@ body {
 </div>
 
 
-<!-- おすすめボード -->
+<!-- =========================
+     おすすめボード
+========================= -->
 
 <div class="card">
 
@@ -419,18 +527,53 @@ body {
     🏄 今日のおすすめボード
   </div>
 
-  <div class="board" id="recommendedBoard">
-    --
+  <div class="board-wrap">
+
+    <svg
+      class="board-svg"
+      id="boardSvg"
+      viewBox="0 0 300 120"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path
+        id="boardShape"
+        d=""
+        fill="none"
+        stroke="#172126"
+        stroke-width="5"
+        stroke-linecap="round"
+      />
+
+      <line
+        x1="150"
+        y1="18"
+        x2="150"
+        y2="102"
+        stroke="#9aa7ac"
+        stroke-width="2"
+      />
+
+    </svg>
+
+    <div class="board-name"
+         id="recommendedBoard">
+      --
+    </div>
+
   </div>
 
-  <div class="board-reason" id="boardReason">
+  <div class="board-reason"
+       id="boardReason">
     波のコンディションを分析しています。
   </div>
 
 </div>
 
 
-<!-- タイド -->
+<!-- =========================
+     タイド
+========================= -->
 
 <div class="card">
 
@@ -438,50 +581,87 @@ body {
     🌙 タイドグラフ
   </div>
 
-  <div class="tide-chart">
+  <div class="tide-wrapper">
 
-    <svg
-      class="tide-svg"
-      id="tideSvg"
-      viewBox="0 0 400 150"
-      preserveAspectRatio="none"
-    >
+    <div class="tide-chart">
 
-      <polyline
-        class="tide-line"
-        id="tideLine"
-        points=""
-      />
+      <div class="tide-grid"></div>
 
-    </svg>
+      <svg
+        class="tide-svg"
+        id="tideSvg"
+        viewBox="0 0 400 160"
+        preserveAspectRatio="none"
+      >
 
-    <div class="tide-axis">
+        <polygon
+          id="tideArea"
+          class="tide-area"
+          points=""
+        />
 
-      <span id="tideTime0">--</span>
-      <span id="tideTime1">--</span>
-      <span id="tideTime2">--</span>
-      <span id="tideTime3">--</span>
-      <span id="tideTime4">--</span>
+        <polyline
+          id="tideLine"
+          class="tide-line"
+          points=""
+        />
+
+        <line
+          id="tideNow"
+          class="tide-now"
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="160"
+        />
+
+        <circle
+          id="tideNowDot"
+          class="tide-now-dot"
+          cx="0"
+          cy="0"
+          r="5"
+        />
+
+      </svg>
+
+      <div class="tide-axis">
+        <span id="tideTime0">--</span>
+        <span id="tideTime1">--</span>
+        <span id="tideTime2">--</span>
+        <span id="tideTime3">--</span>
+        <span id="tideTime4">--</span>
+      </div>
+
+    </div>
+
+
+    <div class="tide-current">
+
+      <div class="tide-current-title">
+        現在のモデル潮位
+      </div>
+
+      <div class="tide-current-value"
+           id="tideCurrent">
+        --
+      </div>
+
+      <div class="tide-note">
+        ※潮汐を含む海面高度のモデル値です。
+        サーフポイントの実測潮位表とは異なる場合があります。
+      </div>
 
     </div>
 
   </div>
 
-  <div
-    class="highlight-value"
-    id="tideCurrent"
-  >
-    現在の潮位：--
-  </div>
-
-  <div class="status">
-    ※潮位はモデル推算値です
-  </div>
-
 </div>
 
 
-<!-- 太陽 -->
+<!-- =========================
+     太陽
+========================= -->
 
 <div class="card">
 
@@ -497,7 +677,8 @@ body {
         🌅 日の出
       </div>
 
-      <div class="sun-value" id="sunrise">
+      <div class="sun-value"
+           id="sunrise">
         --
       </div>
 
@@ -509,7 +690,8 @@ body {
         🌇 日の入り
       </div>
 
-      <div class="sun-value" id="sunset">
+      <div class="sun-value"
+           id="sunset">
         --
       </div>
 
@@ -520,7 +702,9 @@ body {
 </div>
 
 
-<!-- AI -->
+<!-- =========================
+     AI
+========================= -->
 
 <div class="card">
 
@@ -539,7 +723,6 @@ body {
 
 </div>
 
-
 </div>
 
 <div class="bottom">
@@ -549,63 +732,84 @@ body {
 
 <script>
 
-/* =========================
+/* =========================================
    サーフポイント
-========================= */
+========================================= */
+
+/*
+  offshoreFrom =
+  「このポイントでオフショアになりやすい
+   風向」の中心方向
+
+  angle =
+  海岸線のおおまかな向き。
+
+  今回はプロトタイプ用の設定。
+  実運用前には各ポイントを精査する。
+*/
 
 const spots = {
 
   "辻堂": {
     latitude: 35.315,
-    longitude: 139.433
+    longitude: 139.433,
+    offshoreFrom: 315
   },
 
   "鵠沼": {
     latitude: 35.323,
-    longitude: 139.471
+    longitude: 139.471,
+    offshoreFrom: 315
   },
 
   "茅ヶ崎": {
     latitude: 35.316,
-    longitude: 139.404
+    longitude: 139.404,
+    offshoreFrom: 315
   },
 
   "鎌倉": {
     latitude: 35.308,
-    longitude: 139.549
+    longitude: 139.549,
+    offshoreFrom: 315
   },
 
   "七里ヶ浜": {
     latitude: 35.305,
-    longitude: 139.516
+    longitude: 139.516,
+    offshoreFrom: 315
   },
 
   "稲村ヶ崎": {
     latitude: 35.299,
-    longitude: 139.530
+    longitude: 139.530,
+    offshoreFrom: 315
   },
 
   "由比ヶ浜": {
     latitude: 35.315,
-    longitude: 139.546
+    longitude: 139.546,
+    offshoreFrom: 315
   },
 
   "腰越": {
     latitude: 35.310,
-    longitude: 139.499
+    longitude: 139.499,
+    offshoreFrom: 315
   },
 
   "千葉": {
     latitude: 35.538,
-    longitude: 140.066
+    longitude: 140.066,
+    offshoreFrom: 270
   }
 
 };
 
 
-/* =========================
+/* =========================================
    方角
-========================= */
+========================================= */
 
 function getDirection(degrees) {
 
@@ -628,35 +832,129 @@ function getDirection(degrees) {
 }
 
 
-/* =========================
-   波サイズを人間語へ
-========================= */
+/* =========================================
+   角度差
+========================================= */
 
-function getHumanWaveSize(height, period) {
+function angleDifference(a, b) {
 
-  if (height === null || height === undefined) {
+  let diff =
+    Math.abs(a - b) % 360;
+
+  if (diff > 180) {
+    diff = 360 - diff;
+  }
+
+  return diff;
+
+}
+
+
+/* =========================================
+   オンショア / オフショア
+========================================= */
+
+function getWindCondition(
+  windDirection,
+  offshoreFrom
+) {
+
+  const diff =
+    angleDifference(
+      windDirection,
+      offshoreFrom
+    );
+
+  /*
+    0〜30°
+    → オフショア
+
+    30〜65°
+    → サイドオフ
+
+    65〜115°
+    → サイドオン
+
+    115〜180°
+    → オンショア
+  */
+
+  if (diff <= 30) {
+
+    return {
+      label: "🟢 オフショア",
+      className: "wind-offshore",
+      reason:
+        "面が整いやすい風向です。"
+    };
+
+  }
+
+  if (diff <= 65) {
+
+    return {
+      label: "🟢 サイドオフ",
+      className: "wind-sideoff",
+      reason:
+        "比較的面が整いやすい風向です。"
+    };
+
+  }
+
+  if (diff <= 115) {
+
+    return {
+      label: "🟡 サイドオン",
+      className: "wind-sideon",
+      reason:
+        "横からの風が入りやすいコンディションです。"
+    };
+
+  }
+
+  return {
+    label: "🔴 オンショア",
+    className: "wind-onshore",
+    reason:
+      "海から岸方向へ風が入り、面が乱れやすい風向です。"
+  };
+
+}
+
+
+/* =========================================
+   波サイズ
+========================================= */
+
+function getHumanWaveSize(
+  height,
+  period
+) {
+
+  if (
+    height === null ||
+    height === undefined
+  ) {
+
     return {
       size: "--",
       reason: "波高データがありません"
     };
+
   }
 
-  /*
-    波高＋周期を考慮した
-    サーファー向けの目安
-  */
-
-  let effectiveHeight = height;
+  let effective =
+    height;
 
   if (period >= 10) {
-    effectiveHeight *= 1.05;
+    effective *= 1.05;
   }
 
   if (period >= 13) {
-    effectiveHeight *= 1.10;
+    effective *= 1.10;
   }
 
-  if (effectiveHeight < 0.25) {
+  if (effective < .25) {
 
     return {
       size: "スネ〜ヒザ",
@@ -665,7 +963,7 @@ function getHumanWaveSize(height, period) {
 
   }
 
-  if (effectiveHeight < 0.45) {
+  if (effective < .45) {
 
     return {
       size: "ヒザ〜モモ",
@@ -674,7 +972,7 @@ function getHumanWaveSize(height, period) {
 
   }
 
-  if (effectiveHeight < 0.70) {
+  if (effective < .70) {
 
     return {
       size: "モモ〜腰",
@@ -683,7 +981,7 @@ function getHumanWaveSize(height, period) {
 
   }
 
-  if (effectiveHeight < 1.00) {
+  if (effective < 1.00) {
 
     return {
       size: "腰〜腹",
@@ -692,7 +990,7 @@ function getHumanWaveSize(height, period) {
 
   }
 
-  if (effectiveHeight < 1.30) {
+  if (effective < 1.30) {
 
     return {
       size: "腹〜胸",
@@ -701,7 +999,7 @@ function getHumanWaveSize(height, period) {
 
   }
 
-  if (effectiveHeight < 1.70) {
+  if (effective < 1.70) {
 
     return {
       size: "胸〜肩",
@@ -710,7 +1008,7 @@ function getHumanWaveSize(height, period) {
 
   }
 
-  if (effectiveHeight < 2.20) {
+  if (effective < 2.20) {
 
     return {
       size: "頭前後",
@@ -719,11 +1017,11 @@ function getHumanWaveSize(height, period) {
 
   }
 
-  if (effectiveHeight < 2.80) {
+  if (effective < 2.80) {
 
     return {
       size: "頭〜頭オーバー",
-      reason: "サイズの大きなコンディションです"
+      reason: "大きなコンディションです"
     };
 
   }
@@ -736,11 +1034,14 @@ function getHumanWaveSize(height, period) {
 }
 
 
-/* =========================
+/* =========================================
    ボード判定
-========================= */
+========================================= */
 
-function getBoardRecommendation(height, period) {
+function getBoardRecommendation(
+  height,
+  period
+) {
 
   if (
     height === null ||
@@ -749,33 +1050,33 @@ function getBoardRecommendation(height, period) {
 
     return {
       board: "--",
+      type: "short",
       reason: "波データを取得中です"
     };
 
   }
 
-
-  if (height < 0.45) {
+  if (height < .45) {
 
     return {
       board: "小波用ボード",
+      type: "fun",
       reason:
-        "波が小さいため、浮力とテイクオフの速さを重視した板がおすすめです。"
+        "波が小さいため、浮力とテイクオフ性能を重視。"
     };
 
   }
 
-
-  if (height < 0.75) {
+  if (height < .75) {
 
     return {
       board: "小波用ショート",
+      type: "fish",
       reason:
-        "小〜中サイズなので、動かしやすく少し浮力のあるショートがおすすめです。"
+        "小〜中サイズなので、少し浮力のある板がおすすめ。"
     };
 
   }
-
 
   if (height < 1.20) {
 
@@ -783,34 +1084,36 @@ function getBoardRecommendation(height, period) {
 
       return {
         board: "オールラウンド・ショート",
+        type: "short",
         reason:
-          "サイズと周期のバランスが良く、通常のショートボードが使いやすいコンディションです。"
+          "サイズと周期のバランスが良く、通常のショートが使いやすいです。"
       };
 
     }
 
     return {
-      board: "少し浮力のあるショート",
+      board: "浮力のあるショート",
+      type: "fish",
       reason:
-        "サイズはありますがパワーが弱めなので、少し浮力のある板がおすすめです。"
+        "サイズに対してパワーが弱めなので、浮力を確保。"
     };
 
   }
-
 
   if (height < 1.70) {
 
     return {
       board: "オールラウンド・ショート",
+      type: "short",
       reason:
-        "十分なサイズがあるため、反応の良いオールラウンドショートが向いています。"
+        "十分なサイズがあり、反応の良いショートが向いています。"
     };
 
   }
 
-
   return {
     board: "パフォーマンス・ショート",
+    type: "performance",
     reason:
       "サイズがあるため、コントロール性を重視した板がおすすめです。"
   };
@@ -818,14 +1121,462 @@ function getBoardRecommendation(height, period) {
 }
 
 
-/* =========================
+/* =========================================
+   ボードイラスト
+========================================= */
+
+function drawBoard(type) {
+
+  const path =
+    document.getElementById(
+      "boardShape"
+    );
+
+  let d = "";
+
+  if (type === "fish") {
+
+    d =
+      "M150 8 " +
+      "C137 12 124 24 118 40 " +
+      "C112 55 116 73 130 88 " +
+      "L150 108 " +
+      "L170 88 " +
+      "C184 73 188 55 182 40 " +
+      "C176 24 163 12 150 8 " +
+      "M116 70 L130 78";
+
+  } else if (type === "fun") {
+
+    d =
+      "M150 7 " +
+      "C130 14 119 32 116 55 " +
+      "C114 77 127 96 150 109 " +
+      "C173 96 186 77 184 55 " +
+      "C181 32 170 14 150 7";
+
+  } else if (type === "performance") {
+
+    d =
+      "M150 5 " +
+      "C139 18 132 34 131 55 " +
+      "C130 77 137 96 150 114 " +
+      "C163 96 170 77 169 55 " +
+      "C168 34 161 18 150 5";
+
+  } else {
+
+    d =
+      "M150 5 " +
+      "C135 16 126 34 124 57 " +
+      "C122 80 132 99 150 114 " +
+      "C168 99 178 80 176 57 " +
+      "C174 34 165 16 150 5";
+
+  }
+
+  path.setAttribute(
+    "d",
+    d
+  );
+
+}
+
+
+/* =========================================
+   ベストタイム
+========================================= */
+
+function estimateBestTime(
+  height,
+  period,
+  windSpeed
+) {
+
+  let start = 7;
+  let end = 10;
+
+  if (
+    height !== null &&
+    height >= 1.0
+  ) {
+
+    start = 6;
+    end = 9;
+
+  }
+
+  if (
+    windSpeed !== null &&
+    windSpeed < 5
+  ) {
+
+    start = 7;
+    end = 10;
+
+  }
+
+  return {
+
+    time:
+      String(start).padStart(2,"0") +
+      ":00〜" +
+      String(end).padStart(2,"0") +
+      ":00",
+
+    reason:
+      "現在の波・周期・風をもとにしたプロトタイプ判定です。今後は時間別データから自動判定します。"
+
+  };
+
+}
+
+
+/* =========================================
+   タイドグラフ
+========================================= */
+
+function drawTideGraph(
+  times,
+  levels
+) {
+
+  const line =
+    document.getElementById(
+      "tideLine"
+    );
+
+  const area =
+    document.getElementById(
+      "tideArea"
+    );
+
+  if (
+    !times ||
+    !levels ||
+    times.length === 0
+  ) {
+
+    return;
+
+  }
+
+  const width = 400;
+  const height = 160;
+  const padding = 8;
+
+  const valid =
+    levels.filter(
+      v =>
+        v !== null &&
+        v !== undefined &&
+        Number.isFinite(v)
+    );
+
+  if (!valid.length) {
+    return;
+  }
+
+  const min =
+    Math.min(...valid);
+
+  const max =
+    Math.max(...valid);
+
+  const range =
+    max - min || 1;
+
+  const points = [];
+
+  levels.forEach(
+    (value, index) => {
+
+      if (
+        value === null ||
+        value === undefined ||
+        !Number.isFinite(value)
+      ) {
+        return;
+      }
+
+      const x =
+        padding +
+        (
+          index /
+          Math.max(
+            levels.length - 1,
+            1
+          )
+        ) *
+        (width - padding * 2);
+
+      const y =
+        height -
+        padding -
+        (
+          (value - min) /
+          range
+        ) *
+        (height - padding * 2);
+
+      points.push(
+        x.toFixed(1) +
+        "," +
+        y.toFixed(1)
+      );
+
+    }
+  );
+
+  const pointString =
+    points.join(" ");
+
+  line.setAttribute(
+    "points",
+    pointString
+  );
+
+
+  /*
+    グラフ下部まで閉じて
+    塗りつぶしエリアを作る
+  */
+
+  const areaPoints =
+    pointString +
+    " " +
+    width +
+    "," +
+    height +
+    " 0," +
+    height;
+
+  area.setAttribute(
+    "points",
+    areaPoints
+  );
+
+
+  /*
+    時刻表示
+  */
+
+  const indexes = [
+    0,
+    Math.floor(
+      (times.length - 1) * .25
+    ),
+    Math.floor(
+      (times.length - 1) * .50
+    ),
+    Math.floor(
+      (times.length - 1) * .75
+    ),
+    times.length - 1
+  ];
+
+  indexes.forEach(
+    (index, i) => {
+
+      const el =
+        document.getElementById(
+          "tideTime" + i
+        );
+
+      if (times[index]) {
+
+        el.textContent =
+          times[index]
+            .split("T")[1]
+            .slice(0,5);
+
+      }
+
+    }
+  );
+
+
+  /*
+    現在時刻の位置
+  */
+
+  const now =
+    new Date();
+
+  const nowTime =
+    now.getTime();
+
+  let closestIndex = 0;
+  let closestDiff = Infinity;
+
+  times.forEach(
+    (time, index) => {
+
+      const diff =
+        Math.abs(
+          new Date(time).getTime() -
+          nowTime
+        );
+
+      if (diff < closestDiff) {
+
+        closestDiff = diff;
+        closestIndex = index;
+
+      }
+
+    }
+  );
+
+
+  const nowX =
+    padding +
+    (
+      closestIndex /
+      Math.max(
+        levels.length - 1,
+        1
+      )
+    ) *
+    (width - padding * 2);
+
+
+  const nowValue =
+    levels[closestIndex];
+
+  let nowY =
+    height / 2;
+
+  if (
+    nowValue !== null &&
+    nowValue !== undefined
+  ) {
+
+    nowY =
+      height -
+      padding -
+      (
+        (nowValue - min) /
+        range
+      ) *
+      (height - padding * 2);
+
+  }
+
+
+  const nowLine =
+    document.getElementById(
+      "tideNow"
+    );
+
+  const nowDot =
+    document.getElementById(
+      "tideNowDot"
+    );
+
+  nowLine.setAttribute(
+    "x1",
+    nowX
+  );
+
+  nowLine.setAttribute(
+    "x2",
+    nowX
+  );
+
+  nowLine.setAttribute(
+    "y1",
+    0
+  );
+
+  nowLine.setAttribute(
+    "y2",
+    height
+  );
+
+  nowDot.setAttribute(
+    "cx",
+    nowX
+  );
+
+  nowDot.setAttribute(
+    "cy",
+    nowY
+  );
+
+}
+
+
+/* =========================================
+   現在のモデル潮位
+========================================= */
+
+function getCurrentTide(
+  times,
+  levels
+) {
+
+  if (
+    !times ||
+    !levels ||
+    times.length === 0
+  ) {
+
+    return null;
+
+  }
+
+  const now =
+    new Date().getTime();
+
+  let closestIndex = 0;
+  let closestDiff = Infinity;
+
+  times.forEach(
+    (time, index) => {
+
+      const value =
+        levels[index];
+
+      if (
+        value === null ||
+        value === undefined ||
+        !Number.isFinite(value)
+      ) {
+        return;
+      }
+
+      const diff =
+        Math.abs(
+          new Date(time).getTime() -
+          now
+        );
+
+      if (diff < closestDiff) {
+
+        closestDiff = diff;
+        closestIndex = index;
+
+      }
+
+    }
+  );
+
+  return levels[closestIndex];
+
+}
+
+
+/* =========================================
    メニュー
-========================= */
+========================================= */
 
 function toggleSpots() {
 
   const menu =
-    document.getElementById("spotMenu");
+    document.getElementById(
+      "spotMenu"
+    );
 
   menu.style.display =
     menu.style.display === "block"
@@ -852,215 +1603,9 @@ function selectSpot(spot) {
 }
 
 
-/* =========================
-   タイドグラフ
-========================= */
-
-function drawTideGraph(times, levels) {
-
-  const line =
-    document.getElementById("tideLine");
-
-  if (
-    !levels ||
-    levels.length === 0
-  ) {
-
-    line.setAttribute("points", "");
-
-    return;
-
-  }
-
-  const width = 400;
-  const height = 150;
-  const padding = 10;
-
-  const validLevels =
-    levels.filter(
-      value =>
-        value !== null &&
-        value !== undefined
-    );
-
-  if (!validLevels.length) {
-    return;
-  }
-
-  const min =
-    Math.min(...validLevels);
-
-  const max =
-    Math.max(...validLevels);
-
-  const range =
-    max - min || 1;
-
-  const points =
-    levels
-      .map((value, index) => {
-
-        if (
-          value === null ||
-          value === undefined
-        ) {
-
-          return "";
-
-        }
-
-        const x =
-          padding +
-          (
-            index /
-            Math.max(levels.length - 1, 1)
-          ) *
-          (width - padding * 2);
-
-        const y =
-          height -
-          padding -
-          (
-            (value - min) /
-            range
-          ) *
-          (height - padding * 2);
-
-        return (
-          x.toFixed(1) +
-          "," +
-          y.toFixed(1)
-        );
-
-      })
-      .filter(Boolean)
-      .join(" ");
-
-  line.setAttribute(
-    "points",
-    points
-  );
-
-
-  const labelIndexes = [
-
-    0,
-
-    Math.floor(
-      (times.length - 1) * 0.25
-    ),
-
-    Math.floor(
-      (times.length - 1) * 0.50
-    ),
-
-    Math.floor(
-      (times.length - 1) * 0.75
-    ),
-
-    times.length - 1
-
-  ];
-
-
-  labelIndexes.forEach(
-    (index, i) => {
-
-      const element =
-        document.getElementById(
-          "tideTime" + i
-        );
-
-      if (times[index]) {
-
-        element.textContent =
-          times[index]
-            .split("T")[1]
-            .slice(0, 5);
-
-      }
-
-    }
-  );
-
-}
-
-
-/* =========================
-   ベストタイム
-========================= */
-
-function estimateBestTime(
-  height,
-  period,
-  windSpeed
-) {
-
-  /*
-    現段階ではプロトタイプ用。
-
-    今後、
-    1時間ごとの波・風・潮を
-    実際に分析するバージョンへ進化させる。
-  */
-
-  const hour =
-    new Date().getHours();
-
-  let start = 6;
-  let end = 9;
-
-  if (
-    windSpeed !== null &&
-    windSpeed < 5
-  ) {
-
-    start = 7;
-    end = 10;
-
-  }
-
-  if (
-    height !== null &&
-    height >= 1.0
-  ) {
-
-    start = 6;
-    end = 9;
-
-  }
-
-  /*
-    夜間なら翌朝を表示
-  */
-
-  if (
-    hour >= 18 ||
-    hour < 5
-  ) {
-
-    start = 6;
-    end = 9;
-
-  }
-
-  return {
-    time:
-      String(start).padStart(2, "0") +
-      ":00〜" +
-      String(end).padStart(2, "0") +
-      ":00",
-
-    reason:
-      "現在取得できる波・周期・風のデータをもとにしたプロトタイプ判定です。"
-  };
-
-}
-
-
-/* =========================
+/* =========================================
    データ取得
-========================= */
+========================================= */
 
 async function loadData(spot) {
 
@@ -1077,11 +1622,25 @@ async function loadData(spot) {
   ).textContent =
     "読み込み中...";
 
+
   document.getElementById(
     "status"
   ).textContent =
     "海況データを取得しています...";
 
+
+  /*
+    Marine API
+
+    hourly:
+    波高
+    波向
+    周期
+    海面高度
+
+    forecast_days=2
+    → 今日＋翌日のデータを取得
+  */
 
   const marineUrl =
 
@@ -1096,16 +1655,22 @@ async function loadData(spot) {
     "&current=" +
     "wave_height," +
     "wave_direction," +
+    "wave_period" +
+
+    "&hourly=" +
+    "wave_height," +
+    "wave_direction," +
     "wave_period," +
     "sea_level_height_msl" +
 
-    "&hourly=" +
-    "sea_level_height_msl" +
-
-    "&forecast_days=1" +
+    "&forecast_days=2" +
 
     "&timezone=Asia%2FTokyo";
 
+
+  /*
+    Weather API
+  */
 
   const weatherUrl =
 
@@ -1124,7 +1689,7 @@ async function loadData(spot) {
     "&daily=" +
     "sunrise,sunset" +
 
-    "&forecast_days=1" +
+    "&forecast_days=2" +
 
     "&wind_speed_unit=ms" +
 
@@ -1139,7 +1704,6 @@ async function loadData(spot) {
     ] = await Promise.all([
 
       fetch(marineUrl),
-
       fetch(weatherUrl)
 
     ]);
@@ -1164,7 +1728,9 @@ async function loadData(spot) {
       await weatherResponse.json();
 
 
-    /* 波 */
+    /* =========================
+       波
+    ========================= */
 
     const waveHeight =
       marine.current.wave_height;
@@ -1203,7 +1769,9 @@ async function loadData(spot) {
         : "--";
 
 
-    /* 人間語 */
+    /* =========================
+       人間語
+    ========================= */
 
     const human =
       getHumanWaveSize(
@@ -1224,7 +1792,9 @@ async function loadData(spot) {
       human.reason;
 
 
-    /* 風 */
+    /* =========================
+       風
+    ========================= */
 
     const windSpeed =
       weather.current.wind_speed_10m;
@@ -1238,7 +1808,8 @@ async function loadData(spot) {
     ).textContent =
 
       windSpeed !== null
-        ? windSpeed.toFixed(1) + " m/s"
+        ? windSpeed.toFixed(1) +
+          " m/s"
         : "--";
 
 
@@ -1247,11 +1818,51 @@ async function loadData(spot) {
     ).textContent =
 
       windDirection !== null
-        ? getDirection(windDirection)
+        ? getDirection(
+            windDirection
+          )
         : "--";
 
 
-    /* ボード */
+    /* =========================
+       オンショア判定
+    ========================= */
+
+    if (
+      windDirection !== null
+    ) {
+
+      const windCondition =
+        getWindCondition(
+          windDirection,
+          location.offshoreFrom
+        );
+
+
+      const windElement =
+        document.getElementById(
+          "windCondition"
+        );
+
+
+      windElement.textContent =
+        windCondition.label;
+
+
+      windElement.className =
+        "wind-condition " +
+        windCondition.className;
+
+
+      windElement.title =
+        windCondition.reason;
+
+    }
+
+
+    /* =========================
+       ボード
+    ========================= */
 
     const board =
       getBoardRecommendation(
@@ -1272,7 +1883,14 @@ async function loadData(spot) {
       board.reason;
 
 
-    /* ベストタイム */
+    drawBoard(
+      board.type
+    );
+
+
+    /* =========================
+       ベストタイム
+    ========================= */
 
     const best =
       estimateBestTime(
@@ -1294,11 +1912,29 @@ async function loadData(spot) {
       best.reason;
 
 
-    /* 潮 */
+    /* =========================
+       タイド
+    ========================= */
+
+    const tideTimes =
+      marine.hourly.time;
+
+    const tideLevels =
+      marine.hourly
+        .sea_level_height_msl;
+
+
+    drawTideGraph(
+      tideTimes,
+      tideLevels
+    );
+
 
     const currentTide =
-      marine.current
-        .sea_level_height_msl;
+      getCurrentTide(
+        tideTimes,
+        tideLevels
+      );
 
 
     document.getElementById(
@@ -1306,23 +1942,14 @@ async function loadData(spot) {
     ).textContent =
 
       currentTide !== null
-        ? "現在の潮位：約 " +
-          currentTide.toFixed(2) +
+        ? currentTide.toFixed(2) +
           " m"
-        : "現在の潮位：--";
+        : "--";
 
 
-    drawTideGraph(
-
-      marine.hourly.time,
-
-      marine.hourly
-        .sea_level_height_msl
-
-    );
-
-
-    /* 日の出 */
+    /* =========================
+       日の出
+    ========================= */
 
     if (
       weather.daily &&
@@ -1338,12 +1965,14 @@ async function loadData(spot) {
 
         sunrise
           .split("T")[1]
-          .slice(0, 5);
+          .slice(0,5);
 
     }
 
 
-    /* 日の入り */
+    /* =========================
+       日の入り
+    ========================= */
 
     if (
       weather.daily &&
@@ -1359,27 +1988,9 @@ async function loadData(spot) {
 
         sunset
           .split("T")[1]
-          .slice(0, 5);
+          .slice(0,5);
 
     }
-
-
-    /* 更新時刻 */
-
-    const now =
-      new Date();
-
-    document.getElementById(
-      "dataUpdated"
-    ).textContent =
-
-      now.toLocaleTimeString(
-        "ja-JP",
-        {
-          hour: "2-digit",
-          minute: "2-digit"
-        }
-      );
 
 
     document.getElementById(
@@ -1395,7 +2006,6 @@ async function loadData(spot) {
 
 
   }
-
   catch (error) {
 
     console.error(error);
@@ -1404,6 +2014,7 @@ async function loadData(spot) {
       "condition"
     ).textContent =
       "取得エラー";
+
 
     document.getElementById(
       "status"
@@ -1415,24 +2026,31 @@ async function loadData(spot) {
 }
 
 
-/* =========================
+/* =========================================
    30分ごとに更新
-========================= */
+========================================= */
 
-setInterval(() => {
+setInterval(
+  () => {
 
-  const currentSpot =
-    document.getElementById(
-      "selectedSpot"
-    ).textContent
-    .replace("📍 ", "");
+    const currentSpot =
+      document.getElementById(
+        "selectedSpot"
+      ).textContent
+      .replace("📍 ", "");
 
-  loadData(currentSpot);
+    loadData(
+      currentSpot
+    );
 
-}, 30 * 60 * 1000);
+  },
+  30 * 60 * 1000
+);
 
 
-/* 初期表示 */
+/* =========================================
+   初期表示
+========================================= */
 
 loadData("辻堂");
 
