@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>SURF AI</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f4f7f8;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: #f5f7f8;
       color: #172126;
     }
 
@@ -21,37 +26,91 @@
     .logo {
       font-size: 28px;
       font-weight: 800;
-    }
-
-    .location {
-      margin-top: 6px;
-      color: #68777d;
-      font-size: 15px;
+      letter-spacing: -1px;
     }
 
     .content {
       padding: 20px;
     }
 
+    /* ポイント選択 */
+
+    .spot-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #7a878c;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .spot-button {
+      width: 100%;
+      border: none;
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .arrow {
+      font-size: 18px;
+      color: #8b989d;
+    }
+
+    /* ポイント一覧 */
+
+    .spot-menu {
+      display: none;
+      margin-top: 10px;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .spot-item {
+      padding: 17px 18px;
+      border-bottom: 1px solid #edf0f1;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .spot-item:last-child {
+      border-bottom: none;
+    }
+
+    .spot-item:active {
+      background: #f1f4f5;
+    }
+
+    /* カード */
+
     .card {
       background: white;
       border-radius: 20px;
       padding: 22px;
-      margin-bottom: 16px;
+      margin-top: 16px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
 
     .label {
-      font-size: 13px;
+      font-size: 12px;
       color: #718087;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
     }
 
     .condition {
       font-size: 38px;
       font-weight: 800;
-      margin: 8px 0 4px;
+      margin: 8px 0;
     }
 
     .score {
@@ -98,7 +157,7 @@
       text-align: center;
       color: #89969b;
       font-size: 12px;
-      padding: 10px 0 30px;
+      padding: 25px 0 35px;
     }
   </style>
 </head>
@@ -107,25 +166,49 @@
 
   <div class="header">
     <div class="logo">🏄 SURF AI</div>
-    <div class="location">📍 <div class="location">
-  📍
-  <select id="spotSelect">
-    <option>辻堂</option>
-    <option>鵠沼</option>
-    <option>茅ヶ崎</option>
-    <option>鎌倉</option>
-    <option>千葉</option>
-  </select>
-</div></div>
   </div>
 
   <div class="content">
 
+    <div class="spot-label">SURF SPOT</div>
+
+    <button class="spot-button" onclick="toggleSpots()">
+      <span id="selectedSpot">📍 辻堂</span>
+      <span class="arrow">⌄</span>
+    </button>
+
+    <div class="spot-menu" id="spotMenu">
+
+      <div class="spot-item" onclick="selectSpot('📍 辻堂')">
+        📍 辻堂
+      </div>
+
+      <div class="spot-item" onclick="selectSpot('🌊 鵠沼')">
+        🌊 鵠沼
+      </div>
+
+      <div class="spot-item" onclick="selectSpot('🌊 茅ヶ崎')">
+        🌊 茅ヶ崎
+      </div>
+
+      <div class="spot-item" onclick="selectSpot('🌊 鎌倉')">
+        🌊 鎌倉
+      </div>
+
+      <div class="spot-item" onclick="selectSpot('🌊 千葉')">
+        🌊 千葉
+      </div>
+
+    </div>
+
     <div class="card">
+
       <div class="label">TODAY'S CONDITION</div>
+
       <div class="condition">GOOD</div>
 
       <div class="data">
+
         <div class="data-box">
           <div class="data-title">WAVE</div>
           <div class="data-value">1.2 m</div>
@@ -145,21 +228,32 @@
           <div class="data-title">PERIOD</div>
           <div class="data-value">10 sec</div>
         </div>
+
       </div>
+
     </div>
 
     <div class="card">
+
       <div class="label">🤖 AI SURF SCORE</div>
-      <div class="score">87 <span>/ 100</span></div>
+
+      <div class="score">
+        87 <span>/ 100</span>
+      </div>
+
     </div>
 
     <div class="card">
+
       <div class="label">AI RECOMMENDATION</div>
+
       <p class="ai">
         🌊 今日はコンディション良好。<br>
-        午前中は風が弱く、波のまとまりも期待できます。<br><br>
+        午前中は風が弱く、波のまとまりも期待できます。
+        <br><br>
         🏄 おすすめ時間：7:00〜10:00
       </p>
+
     </div>
 
   </div>
@@ -167,12 +261,32 @@
   <div class="bottom">
     SURF AI — Your personal surfing AI.
   </div>
-<script>
-  const spotSelect = document.getElementById("spotSelect");
 
-  spotSelect.addEventListener("change", function() {
-    console.log("選択したポイント:", this.value);
-  });
-</script>
+
+  <script>
+
+    function toggleSpots() {
+
+      const menu = document.getElementById("spotMenu");
+
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "block";
+      }
+
+    }
+
+
+    function selectSpot(spot) {
+
+      document.getElementById("selectedSpot").textContent = spot;
+
+      document.getElementById("spotMenu").style.display = "none";
+
+    }
+
+  </script>
+
 </body>
 </html>
