@@ -91,14 +91,8 @@ body {
 
 
 /* =========================
-   CURRENT CONDITION
+   CURRENT DATA
 ========================= */
-
-.condition {
-  font-size: 27px;
-  font-weight: 900;
-  margin: 4px 0 15px;
-}
 
 .data {
   display: grid;
@@ -123,7 +117,12 @@ body {
   font-weight: 800;
 }
 
-.sun-wind-row {
+
+/* =========================
+   SUN
+========================= */
+
+.sun-row {
   margin-top: 14px;
   padding-top: 14px;
   border-top: 1px solid #edf0f1;
@@ -135,10 +134,15 @@ body {
   color: #59676d;
 }
 
-.sun-wind-row strong {
+.sun-row strong {
   color: #172126;
   font-size: 13px;
 }
+
+
+/* =========================
+   WIND CONDITION
+========================= */
 
 .wind-condition {
   margin-top: 14px;
@@ -261,18 +265,6 @@ body {
   color: #718087;
 }
 
-.recommend-badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #2498d0;
-  color: white;
-  border-radius: 20px;
-  padding: 4px 8px;
-  font-size: 9px;
-  font-weight: 850;
-}
-
 
 /* =========================
    TIDE
@@ -349,7 +341,7 @@ body {
 
 
 /* =========================
-   TIDE INFO
+   CURRENT TIDE
 ========================= */
 
 .tide-current {
@@ -368,9 +360,23 @@ body {
 }
 
 .tide-current-value {
-  font-size: 27px;
+  font-size: 30px;
   font-weight: 900;
+  line-height: 1;
 }
+
+.tide-current-unit {
+  margin-top: 5px;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: #718087;
+  font-weight: 800;
+}
+
+
+/* =========================
+   HIGH / LOW
+========================= */
 
 .tide-info {
   display: grid;
@@ -467,215 +473,76 @@ body {
   id="spotMenu"
 >
 
-  <div
-    class="spot-item"
-    onclick="selectSpot('辻堂')"
-  >
-    辻堂
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('鵠沼')"
-  >
-    鵠沼
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('茅ヶ崎')"
-  >
-    茅ヶ崎
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('鎌倉')"
-  >
-    鎌倉
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('七里ヶ浜')"
-  >
-    七里ヶ浜
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('稲村ヶ崎')"
-  >
-    稲村ヶ崎
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('由比ヶ浜')"
-  >
-    由比ヶ浜
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('腰越')"
-  >
-    腰越
-  </div>
-
-  <div
-    class="spot-item"
-    onclick="selectSpot('千葉')"
-  >
-    千葉
-  </div>
+  <div class="spot-item" onclick="selectSpot('辻堂')">辻堂</div>
+  <div class="spot-item" onclick="selectSpot('鵠沼')">鵠沼</div>
+  <div class="spot-item" onclick="selectSpot('茅ヶ崎')">茅ヶ崎</div>
+  <div class="spot-item" onclick="selectSpot('鎌倉')">鎌倉</div>
+  <div class="spot-item" onclick="selectSpot('七里ヶ浜')">七里ヶ浜</div>
+  <div class="spot-item" onclick="selectSpot('稲村ヶ崎')">稲村ヶ崎</div>
+  <div class="spot-item" onclick="selectSpot('由比ヶ浜')">由比ヶ浜</div>
+  <div class="spot-item" onclick="selectSpot('腰越')">腰越</div>
+  <div class="spot-item" onclick="selectSpot('千葉')">千葉</div>
 
 </div>
 
 
 <!-- =========================
-     CURRENT CONDITION
+     CURRENT DATA
 ========================= -->
 
 <div class="card">
 
   <div class="label">
-    現在のコンディション
+    現在の海況
   </div>
-
-
-  <div
-    class="condition"
-    id="condition"
-  >
-    読み込み中...
-  </div>
-
 
   <div class="data">
 
-
     <div class="data-box">
-
-      <div class="data-title">
-        波高
-      </div>
-
-      <div
-        class="data-value"
-        id="waveHeight"
-      >
-        --
-      </div>
-
+      <div class="data-title">波高</div>
+      <div class="data-value" id="waveHeight">--</div>
     </div>
 
-
     <div class="data-box">
-
-      <div class="data-title">
-        波周期
-      </div>
-
-      <div
-        class="data-value"
-        id="wavePeriod"
-      >
-        --
-      </div>
-
+      <div class="data-title">波周期</div>
+      <div class="data-value" id="wavePeriod">--</div>
     </div>
 
-
     <div class="data-box">
-
-      <div class="data-title">
-        波向
-      </div>
-
-      <div
-        class="data-value"
-        id="waveDirection"
-      >
-        --
-      </div>
-
+      <div class="data-title">波向</div>
+      <div class="data-value" id="waveDirection">--</div>
     </div>
 
-
     <div class="data-box">
-
-      <div class="data-title">
-        風速
-      </div>
-
-      <div
-        class="data-value"
-        id="windSpeed"
-      >
-        --
-      </div>
-
+      <div class="data-title">風速</div>
+      <div class="data-value" id="windSpeed">--</div>
     </div>
 
-
     <div class="data-box">
-
-      <div class="data-title">
-        風向
-      </div>
-
-      <div
-        class="data-value"
-        id="windDirection"
-      >
-        --
-      </div>
-
+      <div class="data-title">風向</div>
+      <div class="data-value" id="windDirection">--</div>
     </div>
 
-
     <div class="data-box">
-
-      <div class="data-title">
-        水温
-      </div>
-
-      <div
-        class="data-value"
-        id="waterTemp"
-      >
-        --
-      </div>
-
+      <div class="data-title">水温</div>
+      <div class="data-value" id="waterTemp">--</div>
     </div>
 
   </div>
 
 
-  <!-- sunrise / sunset を風向の横に配置 -->
+  <!-- 風向の重複表示を削除 -->
 
-  <div class="sun-wind-row">
-
-    <span>
-      風向
-      <strong id="windDirectionSmall">
-        --
-      </strong>
-    </span>
+  <div class="sun-row">
 
     <span>
       sunrise
-      <strong id="sunrise">
-        --:--
-      </strong>
+      <strong id="sunrise">--:--</strong>
     </span>
 
     <span>
       sunset
-      <strong id="sunset">
-        --:--
-      </strong>
+      <strong id="sunset">--:--</strong>
     </span>
 
   </div>
@@ -750,13 +617,13 @@ body {
 
 
 <!-- =========================
-     BOARDS
+     BOARD SELECT
 ========================= -->
 
 <div class="card">
 
   <div class="label">
-    ボードチョイス
+    BOARD SELECT
   </div>
 
   <div
@@ -782,7 +649,6 @@ body {
   <div class="tide-chart">
 
     <div class="tide-grid"></div>
-
 
     <svg
       class="tide-svg"
@@ -824,32 +690,20 @@ body {
 
     <div class="tide-axis">
 
-      <span id="tideTime0">
-        --
-      </span>
-
-      <span id="tideTime1">
-        --
-      </span>
-
-      <span id="tideTime2">
-        --
-      </span>
-
-      <span id="tideTime3">
-        --
-      </span>
-
-      <span id="tideTime4">
-        --
-      </span>
+      <span id="tideTime0">--</span>
+      <span id="tideTime1">--</span>
+      <span id="tideTime2">--</span>
+      <span id="tideTime3">--</span>
+      <span id="tideTime4">--</span>
 
     </div>
 
   </div>
 
 
-  <!-- 現在潮位 -->
+  <!-- =========================
+       CURRENT TIDE
+  ========================= -->
 
   <div class="tide-current">
 
@@ -866,19 +720,20 @@ body {
         --
       </div>
 
-    </div>
+      <div class="tide-current-unit">
+        CM
+      </div>
 
-    <div>
-      cm
     </div>
 
   </div>
 
 
-  <!-- 満潮・干潮 -->
+  <!-- =========================
+       HIGH / LOW
+  ========================= -->
 
   <div class="tide-info">
-
 
     <div class="tide-box">
 
@@ -1061,12 +916,10 @@ const boards = [
    BOARD DISPLAY
 ========================= */
 
-function renderBoards(recommended) {
+function renderBoards(selectedBoard) {
 
   const list =
-    document.getElementById(
-      "boardList"
-    );
+    document.getElementById("boardList");
 
   list.innerHTML = "";
 
@@ -1080,27 +933,13 @@ function renderBoards(recommended) {
     card.className =
       "board-card" +
       (
-        board.id === recommended
+        board.id === selectedBoard
         ? " recommended"
         : ""
       );
 
 
-    if (
-      board.id === recommended
-    ) {
-
-      card.innerHTML =
-        `
-        <div class="recommend-badge">
-          おすすめ
-        </div>
-        `;
-
-    }
-
-
-    card.innerHTML +=
+    card.innerHTML =
       `
       <div class="board-name">
         ${board.name}
@@ -1120,7 +959,7 @@ function renderBoards(recommended) {
 
 
 /* =========================
-   BOARD RECOMMENDATION
+   BOARD SELECTION
 ========================= */
 
 function getRecommendedBoard(
@@ -1261,58 +1100,34 @@ function getWindCondition(
 function humanWave(height) {
 
   if (height < .25) {
-    return [
-      "スネ〜ヒザ",
-      "かなり小さめの波"
-    ];
+    return ["スネ〜ヒザ", "かなり小さめの波"];
   }
 
   if (height < .45) {
-    return [
-      "ヒザ〜モモ",
-      "小波コンディション"
-    ];
+    return ["ヒザ〜モモ", "小波コンディション"];
   }
 
   if (height < .70) {
-    return [
-      "モモ〜腰",
-      "小〜中サイズ"
-    ];
+    return ["モモ〜腰", "小〜中サイズ"];
   }
 
   if (height < 1.00) {
-    return [
-      "腰〜腹",
-      "十分なサイズ"
-    ];
+    return ["腰〜腹", "十分なサイズ"];
   }
 
   if (height < 1.30) {
-    return [
-      "腹〜胸",
-      "しっかりしたサイズ"
-    ];
+    return ["腹〜胸", "しっかりしたサイズ"];
   }
 
   if (height < 1.70) {
-    return [
-      "胸〜肩",
-      "サイズのある波"
-    ];
+    return ["胸〜肩", "サイズのある波"];
   }
 
   if (height < 2.20) {
-    return [
-      "頭前後",
-      "かなりサイズあり"
-    ];
+    return ["頭前後", "かなりサイズあり"];
   }
 
-  return [
-    "頭オーバー",
-    "大きなコンディション"
-  ];
+  return ["頭オーバー", "大きなコンディション"];
 
 }
 
@@ -1367,7 +1182,12 @@ function drawTideGraph(
   levels
 ) {
 
-  if (!times || !levels) {
+  if (
+    !Array.isArray(times) ||
+    !Array.isArray(levels) ||
+    !times.length ||
+    !levels.length
+  ) {
     return;
   }
 
@@ -1467,15 +1287,9 @@ function drawTideGraph(
 
   const indexes = [
     0,
-    Math.floor(
-      (times.length-1)*.25
-    ),
-    Math.floor(
-      (times.length-1)*.5
-    ),
-    Math.floor(
-      (times.length-1)*.75
-    ),
+    Math.floor((times.length-1)*.25),
+    Math.floor((times.length-1)*.5),
+    Math.floor((times.length-1)*.75),
     times.length-1
   ];
 
@@ -1489,9 +1303,7 @@ function drawTideGraph(
 
 
       document
-        .getElementById(
-          "tideTime"+i
-        )
+        .getElementById("tideTime"+i)
         .textContent =
           times[index]
             .split("T")[1]
@@ -1501,22 +1313,27 @@ function drawTideGraph(
   );
 
 
-  const now =
-    new Date();
+  /*
+    現在潮位
 
+    今回は「最も近い時刻」のデータを使用。
+  */
+
+  const now = new Date();
 
   let closest = 0;
-  let closestDiff =
-    Infinity;
+  let closestDiff = Infinity;
 
 
   times.forEach(
     (time,index) => {
 
+      const timeValue =
+        new Date(time).getTime();
+
       const diff =
         Math.abs(
-          new Date(time).getTime()
-          -
+          timeValue -
           now.getTime()
         );
 
@@ -1532,56 +1349,61 @@ function drawTideGraph(
   );
 
 
-  const x =
-    padding +
-    closest /
-    Math.max(
-      times.length-1,
-      1
-    ) *
-    (width-padding*2);
-
-
   const value =
     levels[closest];
 
 
-  const y =
-    height -
-    padding -
-    (
-      (value-min) /
-      range
-    ) *
-    (height-padding*2);
+  if (
+    value !== null &&
+    Number.isFinite(value)
+  ) {
+
+    const x =
+      padding +
+      closest /
+      Math.max(
+        times.length-1,
+        1
+      ) *
+      (width-padding*2);
 
 
-  document
-    .getElementById("tideNow")
-    .setAttribute("x1",x);
-
-  document
-    .getElementById("tideNow")
-    .setAttribute("x2",x);
-
-
-  document
-    .getElementById("tideNowDot")
-    .setAttribute("cx",x);
-
-  document
-    .getElementById("tideNowDot")
-    .setAttribute("cy",y);
+    const y =
+      height -
+      padding -
+      (
+        (value-min) /
+        range
+      ) *
+      (height-padding*2);
 
 
-  /* 現在潮位 */
+    document
+      .getElementById("tideNow")
+      .setAttribute("x1",x);
 
-  document
-    .getElementById("currentTide")
-    .textContent =
-      Math.round(
-        value * 100
-      );
+    document
+      .getElementById("tideNow")
+      .setAttribute("x2",x);
+
+
+    document
+      .getElementById("tideNowDot")
+      .setAttribute("cx",x);
+
+    document
+      .getElementById("tideNowDot")
+      .setAttribute("cy",y);
+
+
+    document
+      .getElementById("currentTide")
+      .textContent =
+        Math.round(
+          value * 100
+        );
+
+  }
 
 }
 
@@ -1605,6 +1427,11 @@ function getTideType(levels) {
     );
 
 
+  if (valid.length < 2) {
+    return "潮回り判定不可";
+  }
+
+
   const range =
     Math.max(...valid)
     -
@@ -1624,6 +1451,182 @@ function getTideType(levels) {
   }
 
   return "長潮・若潮";
+
+}
+
+
+/* =========================
+   HIGH / LOW DETECTION
+========================= */
+
+function findNextTide(
+  times,
+  levels,
+  type
+) {
+
+  if (
+    !Array.isArray(times) ||
+    !Array.isArray(levels) ||
+    times.length !== levels.length
+  ) {
+    return null;
+  }
+
+
+  const now =
+    new Date();
+
+
+  /*
+    現在時刻以降のデータから
+    局所的な最大値・最小値を探す。
+
+    nullデータは除外。
+  */
+
+  for (
+    let i = 1;
+    i < levels.length - 1;
+    i++
+  ) {
+
+    const currentLevel =
+      levels[i];
+
+    const previousLevel =
+      levels[i - 1];
+
+    const nextLevel =
+      levels[i + 1];
+
+
+    if (
+      currentLevel === null ||
+      previousLevel === null ||
+      nextLevel === null
+    ) {
+      continue;
+    }
+
+
+    if (
+      !Number.isFinite(currentLevel) ||
+      !Number.isFinite(previousLevel) ||
+      !Number.isFinite(nextLevel)
+    ) {
+      continue;
+    }
+
+
+    const time =
+      new Date(times[i]);
+
+
+    if (
+      !Number.isFinite(
+        time.getTime()
+      )
+    ) {
+      continue;
+    }
+
+
+    if (time <= now) {
+      continue;
+    }
+
+
+    if (
+      type === "high" &&
+      currentLevel > previousLevel &&
+      currentLevel >= nextLevel
+    ) {
+
+      return {
+        index: i,
+        time: times[i],
+        level: currentLevel
+      };
+
+    }
+
+
+    if (
+      type === "low" &&
+      currentLevel < previousLevel &&
+      currentLevel <= nextLevel
+    ) {
+
+      return {
+        index: i,
+        time: times[i],
+        level: currentLevel
+      };
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =========================
+   TIDE DISPLAY
+========================= */
+
+function displayTideEvent(
+  elementId,
+  heightId,
+  event
+) {
+
+  if (!event) {
+
+    document.getElementById(
+      elementId
+    ).textContent =
+      "--";
+
+
+    document.getElementById(
+      heightId
+    ).textContent =
+      "-- cm";
+
+
+    return;
+
+  }
+
+
+  const time =
+    new Date(event.time);
+
+
+  document.getElementById(
+    elementId
+  ).textContent =
+    time.toLocaleTimeString(
+      "ja-JP",
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }
+    );
+
+
+  document.getElementById(
+    heightId
+  ).textContent =
+    Math.round(
+      event.level * 100
+    ) +
+    " cm";
 
 }
 
@@ -1677,13 +1680,12 @@ async function loadData(spot) {
     spots[spot];
 
 
-  document.getElementById(
-    "condition"
-  ).textContent =
-    "読み込み中...";
-
-
   try {
+
+    document.getElementById(
+      "status"
+    ).textContent =
+      "海況データを取得しています...";
 
 
     const marineUrl =
@@ -1751,6 +1753,18 @@ async function loadData(spot) {
       ]);
 
 
+    if (
+      !marineResponse.ok ||
+      !weatherResponse.ok
+    ) {
+
+      throw new Error(
+        "API request failed"
+      );
+
+    }
+
+
     const marine =
       await marineResponse.json();
 
@@ -1766,10 +1780,8 @@ async function loadData(spot) {
     const waveHeight =
       marine.current.wave_height;
 
-
     const wavePeriod =
       marine.current.wave_period;
-
 
     const waveDirection =
       marine.current.wave_direction;
@@ -1844,7 +1856,6 @@ async function loadData(spot) {
       weather.current
         .wind_speed_10m;
 
-
     const windDirection =
       weather.current
         .wind_direction_10m;
@@ -1868,12 +1879,6 @@ async function loadData(spot) {
 
     document.getElementById(
       "windDirection"
-    ).textContent =
-      windDirText;
-
-
-    document.getElementById(
-      "windDirectionSmall"
     ).textContent =
       windDirText;
 
@@ -1910,29 +1915,37 @@ async function loadData(spot) {
        SUN
     ========================= */
 
-    document.getElementById(
-      "sunrise"
-    ).textContent =
-      weather.daily
-        .sunrise[0]
-        .split("T")[1]
-        .slice(0,5);
+    if (
+      weather.daily &&
+      weather.daily.sunrise &&
+      weather.daily.sunset
+    ) {
+
+      document.getElementById(
+        "sunrise"
+      ).textContent =
+        weather.daily
+          .sunrise[0]
+          .split("T")[1]
+          .slice(0,5);
 
 
-    document.getElementById(
-      "sunset"
-    ).textContent =
-      weather.daily
-        .sunset[0]
-        .split("T")[1]
-        .slice(0,5);
+      document.getElementById(
+        "sunset"
+      ).textContent =
+        weather.daily
+          .sunset[0]
+          .split("T")[1]
+          .slice(0,5);
+
+    }
 
 
     /* =========================
-       BOARD
+       BOARD SELECT
     ========================= */
 
-    const recommended =
+    const selectedBoard =
       getRecommendedBoard(
         waveHeight,
         wavePeriod
@@ -1940,7 +1953,7 @@ async function loadData(spot) {
 
 
     renderBoards(
-      recommended
+      selectedBoard
     );
 
 
@@ -1973,149 +1986,85 @@ async function loadData(spot) {
     ========================= */
 
     const tideTimes =
+      marine.hourly &&
       marine.hourly.time;
 
 
     const tideLevels =
+      marine.hourly &&
       marine.hourly
         .sea_level_height_msl;
 
 
-    drawTideGraph(
-      tideTimes,
-      tideLevels
-    );
+    if (
+      Array.isArray(tideTimes) &&
+      Array.isArray(tideLevels)
+    ) {
 
-
-    document.getElementById(
-      "tideType"
-    ).textContent =
-      getTideType(
+      drawTideGraph(
+        tideTimes,
         tideLevels
       );
 
 
-    /* =========================
-       HIGH / LOW
-    ========================= */
-
-    const now =
-      new Date();
-
-
-    let nextHighIndex = -1;
-    let nextLowIndex = -1;
-
-
-    for (
-      let i = 1;
-      i < tideLevels.length - 1;
-      i++
-    ) {
-
-      const time =
-        new Date(
-          tideTimes[i]
+      document.getElementById(
+        "tideType"
+      ).textContent =
+        getTideType(
+          tideLevels
         );
 
 
-      if (
-        time <= now
-      ) {
-        continue;
-      }
+      /* =========================
+         NEXT HIGH / LOW
+      ========================= */
+
+      const nextHigh =
+        findNextTide(
+          tideTimes,
+          tideLevels,
+          "high"
+        );
 
 
-      const previous =
-        tideLevels[i-1];
+      const nextLow =
+        findNextTide(
+          tideTimes,
+          tideLevels,
+          "low"
+        );
 
 
-      const current =
-        tideLevels[i];
+      displayTideEvent(
+        "nextHigh",
+        "nextHighHeight",
+        nextHigh
+      );
 
 
-      const next =
-        tideLevels[i+1];
-
-
-      if (
-        current > previous &&
-        current > next &&
-        nextHighIndex === -1
-      ) {
-
-        nextHighIndex = i;
-
-      }
-
-
-      if (
-        current < previous &&
-        current < next &&
-        nextLowIndex === -1
-      ) {
-
-        nextLowIndex = i;
-
-      }
+      displayTideEvent(
+        "nextLow",
+        "nextLowHeight",
+        nextLow
+      );
 
     }
+    else {
+
+      displayTideEvent(
+        "nextHigh",
+        "nextHighHeight",
+        null
+      );
 
 
-    if (
-      nextHighIndex >= 0
-    ) {
-
-      document.getElementById(
-        "nextHigh"
-      ).textContent =
-        tideTimes[nextHighIndex]
-          .split("T")[1]
-          .slice(0,5);
-
-
-      document.getElementById(
-        "nextHighHeight"
-      ).textContent =
-        Math.round(
-          tideLevels[
-            nextHighIndex
-          ] * 100
-        ) +
-        " cm";
+      displayTideEvent(
+        "nextLow",
+        "nextLowHeight",
+        null
+      );
 
     }
-
-
-    if (
-      nextLowIndex >= 0
-    ) {
-
-      document.getElementById(
-        "nextLow"
-      ).textContent =
-        tideTimes[nextLowIndex]
-          .split("T")[1]
-          .slice(0,5);
-
-
-      document.getElementById(
-        "nextLowHeight"
-      ).textContent =
-        Math.round(
-          tideLevels[
-            nextLowIndex
-          ] * 100
-        ) +
-        " cm";
-
-    }
-
-
-    document.getElementById(
-      "condition"
-    ).textContent =
-      "コンディション良好";
 
 
     document.getElementById(
@@ -2129,12 +2078,6 @@ async function loadData(spot) {
   catch(error) {
 
     console.error(error);
-
-
-    document.getElementById(
-      "condition"
-    ).textContent =
-      "取得エラー";
 
 
     document.getElementById(
