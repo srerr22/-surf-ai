@@ -14,8 +14,8 @@
 
 body {
   margin: 0;
-  background: #f3f8f7;
-  color: #172b2b;
+  background: #eef7f7;
+  color: #17343a;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -24,46 +24,18 @@ body {
     sans-serif;
 }
 
-/* =========================
-   COLOR
-========================= */
-
-:root {
-  --brand: #176f6b;
-  --brand-light: #e8f4f2;
-  --brand-mid: #3d918b;
-
-  --tide: #16a6c7;
-  --tide-light: #e9f9fc;
-
-  --offshore: #21845b;
-  --sideoff: #5969a8;
-  --sideon: #b47719;
-  --onshore: #b94b45;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
 .header {
-  background: white;
+  background: #ffffff;
   padding: 28px 20px 20px;
-  border-bottom: 1px solid #dce9e7;
+  border-bottom: 1px solid #dcebea;
 }
 
 .logo {
   font-size: 30px;
   font-weight: 900;
   letter-spacing: -1.5px;
-  color: var(--brand);
+  color: #176b70;
 }
-
-
-/* =========================
-   CONTENT
-========================= */
 
 .content {
   padding: 18px 20px 35px;
@@ -71,18 +43,18 @@ body {
 
 .label {
   font-size: 11px;
-  color: #718382;
+  color: #648086;
   font-weight: 800;
   letter-spacing: .8px;
   margin-bottom: 9px;
 }
 
 .card {
-  background: white;
+  background: #ffffff;
   border-radius: 20px;
   padding: 20px;
   margin-top: 16px;
-  box-shadow: 0 4px 16px rgba(23,111,107,.07);
+  box-shadow: 0 4px 16px rgba(23,52,58,.055);
 }
 
 
@@ -92,15 +64,15 @@ body {
 
 .spot-button {
   width: 100%;
-  border: 1px solid #d7e7e4;
-  background: white;
+  border: none;
+  background: #ffffff;
+  color: #17343a;
   border-radius: 18px;
   padding: 18px;
   text-align: left;
   font-size: 18px;
   font-weight: 750;
-  color: #172b2b;
-
+  box-shadow: 0 4px 16px rgba(23,52,58,.06);
   display: flex;
   justify-content: space-between;
 }
@@ -108,15 +80,15 @@ body {
 .spot-menu {
   display: none;
   margin-top: 9px;
-  background: white;
+  background: #ffffff;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+  box-shadow: 0 8px 25px rgba(23,52,58,.08);
 }
 
 .spot-item {
   padding: 16px 18px;
-  border-bottom: 1px solid #edf0f1;
+  border-bottom: 1px solid #e1eceb;
 }
 
 
@@ -127,61 +99,32 @@ body {
 .condition {
   font-size: 27px;
   font-weight: 900;
-  color: var(--brand);
-  margin: 4px 0 18px;
-}
-
-
-/* =========================
-   WAVE / SUN / WIND
-========================= */
-
-.section-title {
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: var(--brand);
-  margin-bottom: 9px;
-}
-
-.info-section {
-  margin-top: 18px;
-}
-
-.info-section:first-of-type {
-  margin-top: 0;
+  margin: 4px 0 15px;
+  color: #176b70;
 }
 
 .data {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 9px;
+  gap: 10px;
 }
 
 .data-box {
-  background: var(--brand-light);
+  background: #f0f8f7;
   border-radius: 14px;
-  padding: 13px;
+  padding: 14px;
 }
 
 .data-title {
-  color: #718382;
-  font-size: 10px;
+  color: #648086;
+  font-size: 11px;
 }
 
 .data-value {
   margin-top: 5px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
-}
-
-.wave-human {
-  grid-column: 1 / -1;
-}
-
-.wave-human .data-value {
-  font-size: 21px;
-  color: var(--brand);
+  color: #17343a;
 }
 
 
@@ -189,27 +132,19 @@ body {
    SUN
 ========================= */
 
-.sun-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9px;
+.sun-row {
+  margin-top: 14px;
+  padding: 14px 2px 2px;
+  border-top: 1px solid #e1eceb;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #648086;
 }
 
-.sun-item {
-  background: #f3f8f7;
-  border-radius: 14px;
-  padding: 14px;
-}
-
-.sun-title {
-  font-size: 10px;
-  color: #718382;
-}
-
-.sun-value {
-  margin-top: 5px;
-  font-size: 20px;
-  font-weight: 850;
+.sun-row strong {
+  color: #17343a;
+  font-size: 13px;
 }
 
 
@@ -218,54 +153,94 @@ body {
 ========================= */
 
 .wind-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9px;
-}
-
-.wind-item {
-  background: #f3f8f7;
-  border-radius: 14px;
-  padding: 14px;
+  margin-top: 14px;
+  background: #f0f8f7;
+  border-radius: 15px;
+  padding: 15px;
 }
 
 .wind-title {
-  font-size: 10px;
-  color: #718382;
+  font-size: 11px;
+  color: #648086;
+  font-weight: 800;
 }
 
-.wind-value {
+.wind-main {
   margin-top: 5px;
-  font-size: 17px;
-  font-weight: 850;
+  font-size: 21px;
+  font-weight: 900;
 }
+
+.wind-detail {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #648086;
+}
+
+
+/* 風質は風向きとは別カラー */
 
 .wind-condition {
-  grid-column: 1 / -1;
-  padding: 14px;
-  border-radius: 14px;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 13px;
   font-weight: 850;
-  text-align: center;
 }
 
 .wind-offshore {
-  background: #e7f7ee;
-  color: var(--offshore);
+  background: #dff3ec;
+  color: #14705b;
 }
 
 .wind-sideoff {
-  background: #eef0fb;
-  color: var(--sideoff);
+  background: #e8f0df;
+  color: #567238;
 }
 
 .wind-sideon {
-  background: #fff4df;
-  color: var(--sideon);
+  background: #fff0d7;
+  color: #9a6500;
 }
 
 .wind-onshore {
-  background: #ffe8e7;
-  color: var(--onshore);
+  background: #f8dddd;
+  color: #a93c3c;
+}
+
+
+/* =========================
+   WAVE SIZE
+========================= */
+
+.wave-human {
+  margin-top: 14px;
+  background: #e6f3f3;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.wave-human-title {
+  font-size: 11px;
+  color: #648086;
+}
+
+.wave-human-value {
+  margin-top: 4px;
+  font-size: 25px;
+  font-weight: 900;
+  color: #176b70;
+}
+
+.wave-human-reason {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #648086;
+}
+
+.status {
+  margin-top: 12px;
+  color: #829296;
+  font-size: 11px;
 }
 
 
@@ -276,20 +251,20 @@ body {
 .best-time {
   font-size: 30px;
   font-weight: 900;
-  color: var(--brand);
   margin-top: 5px;
+  color: #176b70;
 }
 
 .best-reason {
   margin-top: 7px;
-  color: #718087;
+  color: #648086;
   font-size: 13px;
   line-height: 1.5;
 }
 
 
 /* =========================
-   BOARDS
+   BOARD SELECT
 ========================= */
 
 .board-list {
@@ -299,22 +274,14 @@ body {
 }
 
 .board-card {
-  background: #f3f8f7;
-  border: 1px solid #dce9e7;
+  background: #f0f8f7;
   border-radius: 17px;
   padding: 20px 12px;
   text-align: center;
-  min-height: 90px;
-
+  min-height: 82px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-}
-
-.board-card.recommended {
-  background: var(--brand-light);
-  border: 2px solid var(--brand);
-  box-shadow: 0 5px 18px rgba(23,111,107,.12);
 }
 
 .board-card:last-child {
@@ -326,12 +293,6 @@ body {
   font-weight: 850;
 }
 
-.board-desc {
-  margin-top: 5px;
-  font-size: 11px;
-  color: #718087;
-}
-
 
 /* =========================
    TIDE
@@ -340,122 +301,99 @@ body {
 .tide-chart {
   position: relative;
   width: 100%;
-  height: 280px;
-
-  background: var(--tide-light);
-
+  height: 275px;
+  background: #effcff;
   border-radius: 18px;
   overflow: hidden;
-
-  border: 1px solid #c9edf3;
+  border: 1px solid #bceaf0;
 }
 
 .tide-grid {
   position: absolute;
-  inset: 20px 12px 35px;
+  inset: 20px 42px 38px 48px;
 
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(22,166,199,.12),
-      rgba(22,166,199,.12) 1px,
+      rgba(0,174,190,.13),
+      rgba(0,174,190,.13) 1px,
       transparent 1px,
       transparent 25%
     );
 }
 
+
+/* 潮位目盛り */
+
+.tide-scale {
+  position: absolute;
+  left: 8px;
+  top: 20px;
+  bottom: 38px;
+  width: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #4d858b;
+  font-size: 9px;
+  text-align: right;
+}
+
 .tide-svg {
   position: absolute;
   top: 20px;
-  left: 12px;
-
-  width: calc(100% - 24px);
-  height: 190px;
+  left: 48px;
+  width: calc(100% - 90px);
+  height: 205px;
 }
 
 .tide-area {
-  fill: rgba(22,166,199,.13);
+  fill: rgba(0,174,190,.14);
 }
 
 .tide-line {
   fill: none;
-  stroke: var(--tide);
+  stroke: #00aebe;
   stroke-width: 4;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .tide-now {
-  stroke: #173b40;
+  stroke: #17343a;
   stroke-width: 2;
   stroke-dasharray: 5 5;
 }
 
 .tide-now-dot {
-  fill: #173b40;
+  fill: #17343a;
 }
 
 
-/* =========================
-   TIDE MARKERS
-========================= */
+/* 満潮・干潮ポイント */
 
-.tide-marker {
-  position: absolute;
-
-  transform:
-    translate(-50%, -50%);
-
-  text-align: center;
-
-  font-size: 10px;
-  font-weight: 850;
-
-  color: #126e82;
-
-  background: rgba(255,255,255,.92);
-
-  border: 1px solid #b8e4ec;
-
-  border-radius: 9px;
-
-  padding: 5px 6px;
-
-  white-space: nowrap;
-
-  box-shadow: 0 2px 7px rgba(0,0,0,.06);
+.tide-point-high {
+  fill: #176b70;
 }
 
-.tide-marker.low {
-  color: #176f6b;
+.tide-point-low {
+  fill: #00aebe;
 }
 
-.tide-marker strong {
-  display: block;
-  font-size: 11px;
-}
-
-.tide-marker span {
-  display: block;
-  margin-top: 1px;
+.tide-point-label {
   font-size: 9px;
+  font-weight: 800;
+  fill: #17343a;
 }
-
-
-/* =========================
-   TIDE AXIS
-========================= */
 
 .tide-axis {
   position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 9px;
-
+  left: 48px;
+  right: 42px;
+  bottom: 10px;
   display: flex;
   justify-content: space-between;
-
-  color: #718087;
+  color: #648086;
   font-size: 10px;
 }
 
@@ -466,12 +404,9 @@ body {
 
 .tide-current {
   margin-top: 12px;
-
-  background: var(--tide-light);
-
+  background: #e6f7f9;
   border-radius: 15px;
   padding: 15px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -479,37 +414,66 @@ body {
 
 .tide-current-title {
   font-size: 12px;
-  color: #718087;
+  color: #648086;
 }
 
 .tide-current-value {
-  font-size: 28px;
+  font-size: 27px;
   font-weight: 900;
-  color: #126e82;
+  color: #176b70;
 }
 
-.tide-current-unit {
+.tide-unit {
   font-size: 13px;
   font-weight: 800;
-  color: #126e82;
+  color: #4d858b;
 }
 
 
 /* =========================
-   TIDE TYPE
+   HIGH / LOW INFO
 ========================= */
+
+.tide-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tide-box {
+  background: #f0f8f7;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.tide-title {
+  color: #648086;
+  font-size: 11px;
+}
+
+.tide-value {
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 5px;
+  color: #17343a;
+}
+
+.tide-height {
+  font-size: 13px;
+  color: #176b70;
+  margin-top: 3px;
+  font-weight: 800;
+}
 
 .tide-type {
   margin-top: 12px;
-
-  background: #f3f8f7;
-
+  background: #e6f7f9;
   border-radius: 14px;
   padding: 14px;
-
   font-size: 18px;
   font-weight: 850;
-  color: var(--brand);
+  color: #176b70;
 }
 
 .tide-note {
@@ -519,21 +483,10 @@ body {
   line-height: 1.5;
 }
 
-
-/* =========================
-   STATUS
-========================= */
-
-.status {
-  margin-top: 12px;
-  color: #8a979c;
-  font-size: 11px;
-}
-
 .bottom {
   text-align: center;
   padding: 5px 0 30px;
-  color: #8b979c;
+  color: #829296;
   font-size: 11px;
 }
 
@@ -543,11 +496,9 @@ body {
 
 <body>
 
-
 <div class="header">
   <div class="logo">Re'SURF</div>
 </div>
-
 
 <div class="content">
 
@@ -564,54 +515,24 @@ body {
   class="spot-button"
   onclick="toggleSpots()"
 >
-  <span id="selectedSpot">
-    辻堂
-  </span>
-
+  <span id="selectedSpot">辻堂</span>
   <span>⌄</span>
 </button>
-
 
 <div
   class="spot-menu"
   id="spotMenu"
 >
 
-  <div class="spot-item" onclick="selectSpot('辻堂')">
-    辻堂
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('鵠沼')">
-    鵠沼
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('茅ヶ崎')">
-    茅ヶ崎
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('鎌倉')">
-    鎌倉
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('七里ヶ浜')">
-    七里ヶ浜
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('稲村ヶ崎')">
-    稲村ヶ崎
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('由比ヶ浜')">
-    由比ヶ浜
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('腰越')">
-    腰越
-  </div>
-
-  <div class="spot-item" onclick="selectSpot('千葉')">
-    千葉
-  </div>
+  <div class="spot-item" onclick="selectSpot('辻堂')">辻堂</div>
+  <div class="spot-item" onclick="selectSpot('鵠沼')">鵠沼</div>
+  <div class="spot-item" onclick="selectSpot('茅ヶ崎')">茅ヶ崎</div>
+  <div class="spot-item" onclick="selectSpot('鎌倉')">鎌倉</div>
+  <div class="spot-item" onclick="selectSpot('七里ヶ浜')">七里ヶ浜</div>
+  <div class="spot-item" onclick="selectSpot('稲村ヶ崎')">稲村ヶ崎</div>
+  <div class="spot-item" onclick="selectSpot('由比ヶ浜')">由比ヶ浜</div>
+  <div class="spot-item" onclick="selectSpot('腰越')">腰越</div>
+  <div class="spot-item" onclick="selectSpot('千葉')">千葉</div>
 
 </div>
 
@@ -636,77 +557,53 @@ body {
 
   <!-- WAVE -->
 
-  <div class="info-section">
+  <div class="label" style="margin-top:18px;">
+    WAVE
+  </div>
 
-    <div class="section-title">
-      WAVE
+  <div class="data">
+
+    <div class="data-box">
+      <div class="data-title">波高</div>
+      <div class="data-value" id="waveHeight">--</div>
     </div>
 
-    <div class="data">
+    <div class="data-box">
+      <div class="data-title">波周期</div>
+      <div class="data-value" id="wavePeriod">--</div>
+    </div>
 
-      <div class="data-box">
+    <div class="data-box">
+      <div class="data-title">波向</div>
+      <div class="data-value" id="waveDirection">--</div>
+    </div>
 
-        <div class="data-title">
-          波高
-        </div>
+    <div class="data-box">
+      <div class="data-title">水温</div>
+      <div class="data-value" id="waterTemp">--</div>
+    </div>
 
-        <div
-          class="data-value"
-          id="waveHeight"
-        >
-          --
-        </div>
-
-      </div>
-
-
-      <div class="data-box">
-
-        <div class="data-title">
-          波周期
-        </div>
-
-        <div
-          class="data-value"
-          id="wavePeriod"
-        >
-          --
-        </div>
-
-      </div>
+  </div>
 
 
-      <div class="data-box">
+  <div class="wave-human">
 
-        <div class="data-title">
-          波向
-        </div>
+    <div class="wave-human-title">
+      サーファー目線の波サイズ
+    </div>
 
-        <div
-          class="data-value"
-          id="waveDirection"
-        >
-          --
-        </div>
+    <div
+      class="wave-human-value"
+      id="humanWave"
+    >
+      --
+    </div>
 
-      </div>
-
-
-      <div class="data-box wave-human">
-
-        <div class="data-title">
-          SURFER SIZE
-        </div>
-
-        <div
-          class="data-value"
-          id="humanWave"
-        >
-          --
-        </div>
-
-      </div>
-
+    <div
+      class="wave-human-reason"
+      id="humanWaveReason"
+    >
+      --
     </div>
 
   </div>
@@ -714,99 +611,56 @@ body {
 
   <!-- SUN -->
 
-  <div class="info-section">
+  <div class="label" style="margin-top:22px;">
+    SUN
+  </div>
 
-    <div class="section-title">
-      SUN
-    </div>
+  <div class="sun-row">
 
-    <div class="sun-box">
+    <span>
+      sunrise
+      <strong id="sunrise">--:--</strong>
+    </span>
 
-      <div class="sun-item">
-
-        <div class="sun-title">
-          SUNRISE
-        </div>
-
-        <div
-          class="sun-value"
-          id="sunrise"
-        >
-          --:--
-        </div>
-
-      </div>
-
-
-      <div class="sun-item">
-
-        <div class="sun-title">
-          SUNSET
-        </div>
-
-        <div
-          class="sun-value"
-          id="sunset"
-        >
-          --:--
-        </div>
-
-      </div>
-
-    </div>
+    <span>
+      sunset
+      <strong id="sunset">--:--</strong>
+    </span>
 
   </div>
 
 
   <!-- WIND -->
 
-  <div class="info-section">
+  <div class="label" style="margin-top:22px;">
+    WIND
+  </div>
 
-    <div class="section-title">
-      WIND
+  <div class="wind-box">
+
+    <div class="wind-title">
+      現在の風
     </div>
 
-    <div class="wind-box">
+    <div
+      class="wind-main"
+      id="windDirection"
+    >
+      --
+    </div>
 
-      <div class="wind-item">
+    <div
+      class="wind-detail"
+      id="windSpeed"
+    >
+      --
+    </div>
 
-        <div class="wind-title">
-          風速
-        </div>
-
-        <div
-          class="wind-value"
-          id="windSpeed"
-        >
-          --
-        </div>
-
-      </div>
-
-
-      <div class="wind-item">
-
-        <div class="wind-title">
-          風向
-        </div>
-
-        <div
-          class="wind-value"
-          id="windDirection"
-        >
-          --
-        </div>
-
-      </div>
-
-
-      <div
-        class="wind-condition"
-        id="windCondition"
-      >
-        風向を分析中...
-      </div>
-
+    <div
+      class="wind-condition"
+      id="windCondition"
+    >
+      風向を分析中...
     </div>
 
   </div>
@@ -816,7 +670,7 @@ body {
     class="status"
     id="status"
   >
-    海況データを取得しています...
+    現在のコンディションを取得しています...
   </div>
 
 </div>
@@ -850,7 +704,7 @@ body {
 
 
 <!-- =========================
-     BOARDS
+     BOARD SELECT
 ========================= -->
 
 <div class="card">
@@ -862,8 +716,7 @@ body {
   <div
     class="board-list"
     id="boardList"
-  >
-  </div>
+  ></div>
 
 </div>
 
@@ -879,17 +732,27 @@ body {
   </div>
 
 
-  <div
-    class="tide-chart"
-    id="tideChart"
-  >
+  <div class="tide-chart">
 
     <div class="tide-grid"></div>
 
 
+    <!-- cm目盛り -->
+
+    <div class="tide-scale">
+
+      <span id="scaleTop">-- cm</span>
+      <span id="scale75">-- cm</span>
+      <span id="scale50">-- cm</span>
+      <span id="scale25">-- cm</span>
+      <span id="scaleBottom">-- cm</span>
+
+    </div>
+
+
     <svg
       class="tide-svg"
-      viewBox="0 0 400 190"
+      viewBox="0 0 400 205"
       preserveAspectRatio="none"
     >
 
@@ -911,7 +774,7 @@ body {
         x1="0"
         y1="0"
         x2="0"
-        y2="190"
+        y2="205"
       />
 
       <circle
@@ -922,10 +785,9 @@ body {
         r="5"
       />
 
+      <g id="tideExtremePoints"></g>
+
     </svg>
-
-
-    <div id="tideMarkers"></div>
 
 
     <div class="tide-axis">
@@ -941,7 +803,7 @@ body {
   </div>
 
 
-  <!-- CURRENT TIDE -->
+  <!-- 現在潮位 -->
 
   <div class="tide-current">
 
@@ -960,8 +822,60 @@ body {
 
     </div>
 
-    <div class="tide-current-unit">
+    <div class="tide-unit">
       cm
+    </div>
+
+  </div>
+
+
+  <!-- 満潮・干潮 -->
+
+  <div class="tide-info">
+
+    <div class="tide-box">
+
+      <div class="tide-title">
+        次の満潮
+      </div>
+
+      <div
+        class="tide-value"
+        id="nextHigh"
+      >
+        --
+      </div>
+
+      <div
+        class="tide-height"
+        id="nextHighHeight"
+      >
+        -- cm
+      </div>
+
+    </div>
+
+
+    <div class="tide-box">
+
+      <div class="tide-title">
+        次の干潮
+      </div>
+
+      <div
+        class="tide-value"
+        id="nextLow"
+      >
+        --
+      </div>
+
+      <div
+        class="tide-height"
+        id="nextLowHeight"
+      >
+        -- cm
+      </div>
+
     </div>
 
   </div>
@@ -1058,39 +972,34 @@ const spots = {
 
 
 /* =========================
-   BOARDS
+   BOARD TYPES
 ========================= */
 
 const boards = [
 
   {
     id: "long",
-    name: "ロング",
-    desc: "小波・ゆったり"
+    name: "ロング"
   },
 
   {
     id: "mid",
-    name: "ミッド",
-    desc: "小〜中波・安定"
+    name: "ミッド"
   },
 
   {
     id: "fish",
-    name: "フィッシュ",
-    desc: "小波・スピード"
+    name: "フィッシュ"
   },
 
   {
     id: "allround",
-    name: "オールラウンド",
-    desc: "幅広いコンディション"
+    name: "オールラウンド"
   },
 
   {
     id: "performance",
-    name: "パフォーマンス",
-    desc: "サイズ・パワー"
+    name: "パフォーマンス"
   }
 
 ];
@@ -1100,7 +1009,7 @@ const boards = [
    BOARD DISPLAY
 ========================= */
 
-function renderBoards(recommended) {
+function renderBoards(selected) {
 
   const list =
     document.getElementById("boardList");
@@ -1112,24 +1021,13 @@ function renderBoards(recommended) {
     const card =
       document.createElement("div");
 
-    card.className =
-      "board-card" +
-      (
-        board.id === recommended
-        ? " recommended"
-        : ""
-      );
+    card.className = "board-card";
 
-    card.innerHTML =
-      `
+    card.innerHTML = `
       <div class="board-name">
         ${board.name}
       </div>
-
-      <div class="board-desc">
-        ${board.desc}
-      </div>
-      `;
+    `;
 
     list.appendChild(card);
 
@@ -1139,25 +1037,16 @@ function renderBoards(recommended) {
 
 
 /* =========================
-   BOARD RECOMMENDATION
+   BOARD SELECT
 ========================= */
 
-function getRecommendedBoard(
-  height,
-  period
-) {
+function getRecommendedBoard(height, period) {
 
-  if (height < 0.35) {
-    return "long";
-  }
+  if (height < 0.35) return "long";
 
-  if (height < 0.50) {
-    return "mid";
-  }
+  if (height < 0.50) return "mid";
 
-  if (height < 0.75) {
-    return "fish";
-  }
+  if (height < 0.75) return "fish";
 
   if (height < 1.20) {
 
@@ -1169,9 +1058,7 @@ function getRecommendedBoard(
 
   }
 
-  if (height < 1.70) {
-    return "allround";
-  }
+  if (height < 1.70) return "allround";
 
   return "performance";
 
@@ -1203,7 +1090,7 @@ function getDirection(degrees) {
 
 
 /* =========================
-   WIND
+   WIND CONDITION
 ========================= */
 
 function angleDifference(a,b) {
@@ -1273,34 +1160,58 @@ function getWindCondition(
 function humanWave(height) {
 
   if (height < .25) {
-    return ["スネ〜ヒザ","かなり小さめ"];
+    return [
+      "スネ〜ヒザ",
+      "かなり小さめの波"
+    ];
   }
 
   if (height < .45) {
-    return ["ヒザ〜モモ","小波"];
+    return [
+      "ヒザ〜モモ",
+      "小波コンディション"
+    ];
   }
 
   if (height < .70) {
-    return ["モモ〜腰","小〜中サイズ"];
+    return [
+      "モモ〜腰",
+      "小〜中サイズ"
+    ];
   }
 
   if (height < 1.00) {
-    return ["腰〜腹","十分なサイズ"];
+    return [
+      "腰〜腹",
+      "十分なサイズ"
+    ];
   }
 
   if (height < 1.30) {
-    return ["腹〜胸","しっかりしたサイズ"];
+    return [
+      "腹〜胸",
+      "しっかりしたサイズ"
+    ];
   }
 
   if (height < 1.70) {
-    return ["胸〜肩","サイズあり"];
+    return [
+      "胸〜肩",
+      "サイズのある波"
+    ];
   }
 
   if (height < 2.20) {
-    return ["頭前後","かなりサイズあり"];
+    return [
+      "頭前後",
+      "かなりサイズあり"
+    ];
   }
 
-  return ["頭オーバー","大きな波"];
+  return [
+    "頭オーバー",
+    "大きなコンディション"
+  ];
 
 }
 
@@ -1345,15 +1256,48 @@ function getBestTime(
 
 
 /* =========================
+   TIME FORMAT
+========================= */
+
+function formatTime(time) {
+
+  if (!time) return "--";
+
+  const date =
+    new Date(time);
+
+  if (Number.isNaN(date.getTime())) {
+    return "--";
+  }
+
+  return date.toLocaleTimeString(
+    "ja-JP",
+    {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "Asia/Tokyo"
+    }
+  );
+
+}
+
+
+/* =========================
    TIDE EXTREMES
 ========================= */
 
-function findTideExtremes(
-  times,
-  levels
-) {
+function findTideExtremes(times, levels) {
 
   const result = [];
+
+  if (
+    !times ||
+    !levels ||
+    times.length < 3
+  ) {
+    return result;
+  }
 
   for (
     let i = 1;
@@ -1361,21 +1305,21 @@ function findTideExtremes(
     i++
   ) {
 
-    const prev = levels[i - 1];
     const current = levels[i];
+    const previous = levels[i - 1];
     const next = levels[i + 1];
 
     if (
-      !Number.isFinite(prev) ||
       !Number.isFinite(current) ||
+      !Number.isFinite(previous) ||
       !Number.isFinite(next)
     ) {
       continue;
     }
 
     if (
-      current > prev &&
-      current > next
+      current > previous &&
+      current >= next
     ) {
 
       result.push({
@@ -1388,8 +1332,8 @@ function findTideExtremes(
     }
 
     if (
-      current < prev &&
-      current < next
+      current < previous &&
+      current <= next
     ) {
 
       result.push({
@@ -1419,35 +1363,65 @@ function drawTideGraph(
 
   if (
     !Array.isArray(times) ||
-    !Array.isArray(levels) ||
-    times.length === 0 ||
-    levels.length === 0
+    !Array.isArray(levels)
   ) {
-    return;
+    return null;
+  }
+
+  const validPairs = [];
+
+  for (
+    let i = 0;
+    i < Math.min(times.length, levels.length);
+    i++
+  ) {
+
+    if (
+      times[i] &&
+      Number.isFinite(levels[i])
+    ) {
+
+      validPairs.push({
+        time: times[i],
+        level: levels[i]
+      });
+
+    }
+
+  }
+
+  if (!validPairs.length) {
+    return null;
   }
 
 
   const width = 400;
-  const height = 190;
+  const height = 205;
   const padding = 8;
 
 
-  const valid = levels.filter(
-    value =>
-      Number.isFinite(value)
-  );
+  const validLevels =
+    validPairs.map(
+      item => item.level
+    );
 
 
-  if (!valid.length) {
-    return;
-  }
+  let min =
+    Math.min(...validLevels);
+
+  let max =
+    Math.max(...validLevels);
 
 
-  const min =
-    Math.min(...valid);
+  const margin =
+    Math.max(
+      (max - min) * .12,
+      .10
+    );
 
-  const max =
-    Math.max(...valid);
+  min -= margin;
+  max += margin;
+
 
   const range =
     max - min || 1;
@@ -1456,20 +1430,14 @@ function drawTideGraph(
   const points = [];
 
 
-  levels.forEach(
-    (value,index) => {
-
-      if (
-        !Number.isFinite(value)
-      ) {
-        return;
-      }
+  validPairs.forEach(
+    (item,index) => {
 
       const x =
         padding +
         index /
         Math.max(
-          levels.length - 1,
+          validPairs.length - 1,
           1
         ) *
         (width - padding * 2);
@@ -1479,7 +1447,7 @@ function drawTideGraph(
         height -
         padding -
         (
-          (value-min) /
+          (item.level - min) /
           range
         ) *
         (height-padding*2);
@@ -1522,73 +1490,91 @@ function drawTideGraph(
 
   const indexes = [
     0,
-    Math.floor(
-      (times.length - 1) * .25
-    ),
-    Math.floor(
-      (times.length - 1) * .5
-    ),
-    Math.floor(
-      (times.length - 1) * .75
-    ),
-    times.length - 1
+    Math.floor((validPairs.length-1)*.25),
+    Math.floor((validPairs.length-1)*.5),
+    Math.floor((validPairs.length-1)*.75),
+    validPairs.length-1
   ];
 
 
   indexes.forEach(
     (index,i) => {
 
-      if (!times[index]) {
-        return;
-      }
-
-      const date =
-        new Date(times[index]);
-
-      document
-        .getElementById(
+      const element =
+        document.getElementById(
           "tideTime"+i
-        )
-        .textContent =
-          date
-            .toLocaleTimeString(
-              "ja-JP",
-              {
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false
-              }
-            );
+        );
+
+      if (element) {
+
+        element.textContent =
+          formatTime(
+            validPairs[index].time
+          );
+
+      }
 
     }
   );
 
 
   /* =========================
-     CURRENT
+     CM SCALE
   ========================= */
 
-  const now = new Date();
+  const scaleValues = [
+    max,
+    max - range*.25,
+    max - range*.50,
+    max - range*.75,
+    min
+  ];
+
+
+  [
+    "scaleTop",
+    "scale75",
+    "scale50",
+    "scale25",
+    "scaleBottom"
+  ].forEach(
+    (id,index) => {
+
+      document.getElementById(id)
+        .textContent =
+        Math.round(
+          scaleValues[index] * 100
+        ) + " cm";
+
+    }
+  );
+
+
+  /* =========================
+     CURRENT POSITION
+  ========================= */
+
+  const now =
+    new Date();
+
 
   let closest = 0;
-  let closestDiff = Infinity;
+  let closestDiff =
+    Infinity;
 
 
-  times.forEach(
-    (time,index) => {
+  validPairs.forEach(
+    (item,index) => {
 
       const diff =
         Math.abs(
-          new Date(time).getTime()
+          new Date(item.time).getTime()
           -
           now.getTime()
         );
 
 
-      if (
-        diff < closestDiff &&
-        Number.isFinite(levels[index])
-      ) {
+      if (diff < closestDiff) {
 
         closestDiff = diff;
         closest = index;
@@ -1599,15 +1585,15 @@ function drawTideGraph(
   );
 
 
-  const currentValue =
-    levels[closest];
+  const currentItem =
+    validPairs[closest];
 
 
   const currentX =
     padding +
     closest /
     Math.max(
-      levels.length - 1,
+      validPairs.length - 1,
       1
     ) *
     (width-padding*2);
@@ -1617,76 +1603,79 @@ function drawTideGraph(
     height -
     padding -
     (
-      (currentValue-min) /
+      (currentItem.level-min) /
       range
     ) *
     (height-padding*2);
 
 
-  document
-    .getElementById("tideNow")
-    .setAttribute(
-      "x1",
-      currentX
+  const nowLine =
+    document.getElementById(
+      "tideNow"
     );
 
-  document
-    .getElementById("tideNow")
-    .setAttribute(
-      "x2",
-      currentX
+  nowLine.setAttribute(
+    "x1",
+    currentX
+  );
+
+  nowLine.setAttribute(
+    "x2",
+    currentX
+  );
+
+
+  const nowDot =
+    document.getElementById(
+      "tideNowDot"
     );
 
-  document
-    .getElementById("tideNowDot")
-    .setAttribute(
-      "cx",
-      currentX
+  nowDot.setAttribute(
+    "cx",
+    currentX
+  );
+
+  nowDot.setAttribute(
+    "cy",
+    currentY
+  );
+
+
+  document.getElementById(
+    "currentTide"
+  ).textContent =
+    Math.round(
+      currentItem.level * 100
     );
-
-  document
-    .getElementById("tideNowDot")
-    .setAttribute(
-      "cy",
-      currentY
-    );
-
-
-  document
-    .getElementById("currentTide")
-    .textContent =
-      Math.round(
-        currentValue * 100
-      );
 
 
   /* =========================
-     HIGH / LOW MARKERS
+     HIGH / LOW POINTS
   ========================= */
-
-  const markers =
-    document.getElementById(
-      "tideMarkers"
-    );
-
-  markers.innerHTML = "";
-
 
   const extremes =
     findTideExtremes(
-      times,
-      levels
+      validPairs.map(x => x.time),
+      validPairs.map(x => x.level)
     );
 
 
+  const pointGroup =
+    document.getElementById(
+      "tideExtremePoints"
+    );
+
+  pointGroup.innerHTML = "";
+
+
   extremes.forEach(
-    point => {
+    extreme => {
 
       const x =
         padding +
-        point.index /
+        extreme.index /
         Math.max(
-          levels.length - 1,
+          validPairs.length - 1,
           1
         ) *
         (width-padding*2);
@@ -1696,84 +1685,86 @@ function drawTideGraph(
         height -
         padding -
         (
-          (point.level-min) /
+          (extreme.level-min) /
           range
         ) *
         (height-padding*2);
 
 
-      const marker =
-        document.createElement(
-          "div"
+      const circle =
+        document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "circle"
         );
 
 
-      marker.className =
-        "tide-marker " +
-        (
-          point.type === "low"
-            ? "low"
-            : ""
-        );
-
-
-      const date =
-        new Date(point.time);
-
-
-      const time =
-        date.toLocaleTimeString(
-          "ja-JP",
-          {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false
-          }
-        );
-
-
-      const label =
-        point.type === "high"
-          ? "満潮"
-          : "干潮";
-
-
-      const cm =
-        Math.round(
-          point.level * 100
-        );
-
-
-      marker.innerHTML =
-        `
-        <strong>
-          ${label}
-        </strong>
-
-        <span>
-          ${time} / ${cm}cm
-        </span>
-        `;
-
-
-      marker.style.left =
-        (
-          x / width * 100
-        ) + "%";
-
-
-      marker.style.top =
-        (
-          y / height * 100
-        ) + "%";
-
-
-      markers.appendChild(
-        marker
+      circle.setAttribute(
+        "cx",
+        x
       );
+
+      circle.setAttribute(
+        "cy",
+        y
+      );
+
+      circle.setAttribute(
+        "r",
+        4
+      );
+
+      circle.setAttribute(
+        "class",
+        extreme.type === "high"
+          ? "tide-point-high"
+          : "tide-point-low"
+      );
+
+
+      const text =
+        document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "text"
+        );
+
+
+      text.setAttribute(
+        "x",
+        x
+      );
+
+      text.setAttribute(
+        "y",
+        extreme.type === "high"
+          ? y - 8
+          : y + 16
+      );
+
+      text.setAttribute(
+        "text-anchor",
+        "middle"
+      );
+
+      text.setAttribute(
+        "class",
+        "tide-point-label"
+      );
+
+
+      text.textContent =
+        Math.round(
+          extreme.level * 100
+        ) + "cm";
+
+
+      pointGroup.appendChild(circle);
+      pointGroup.appendChild(text);
 
     }
   );
+
+
+  return extremes;
 
 }
 
@@ -1784,17 +1775,19 @@ function drawTideGraph(
 
 function getTideType(levels) {
 
+  if (!levels || !levels.length) {
+    return "潮回り判定不可";
+  }
+
   const valid =
     levels.filter(
       v =>
         Number.isFinite(v)
     );
 
-
-  if (valid.length < 2) {
+  if (!valid.length) {
     return "潮回り判定不可";
   }
-
 
   const range =
     Math.max(...valid)
@@ -1815,6 +1808,110 @@ function getTideType(levels) {
   }
 
   return "長潮・若潮";
+
+}
+
+
+/* =========================
+   NEXT HIGH / LOW
+========================= */
+
+function setNextTide(
+  extremes
+) {
+
+  const now =
+    new Date();
+
+
+  const futureHighs =
+    extremes.filter(
+      item =>
+        item.type === "high" &&
+        new Date(item.time) > now
+    );
+
+
+  const futureLows =
+    extremes.filter(
+      item =>
+        item.type === "low" &&
+        new Date(item.time) > now
+    );
+
+
+  const nextHigh =
+    futureHighs[0];
+
+
+  const nextLow =
+    futureLows[0];
+
+
+  if (nextHigh) {
+
+    document.getElementById(
+      "nextHigh"
+    ).textContent =
+      formatTime(
+        nextHigh.time
+      );
+
+
+    document.getElementById(
+      "nextHighHeight"
+    ).textContent =
+      Math.round(
+        nextHigh.level * 100
+      ) + " cm";
+
+  } else {
+
+    document.getElementById(
+      "nextHigh"
+    ).textContent =
+      "--";
+
+
+    document.getElementById(
+      "nextHighHeight"
+    ).textContent =
+      "-- cm";
+
+  }
+
+
+  if (nextLow) {
+
+    document.getElementById(
+      "nextLow"
+    ).textContent =
+      formatTime(
+        nextLow.time
+      );
+
+
+    document.getElementById(
+      "nextLowHeight"
+    ).textContent =
+      Math.round(
+        nextLow.level * 100
+      ) + " cm";
+
+  } else {
+
+    document.getElementById(
+      "nextLow"
+    ).textContent =
+      "--";
+
+
+    document.getElementById(
+      "nextLowHeight"
+    ).textContent =
+      "-- cm";
+
+  }
 
 }
 
@@ -1952,6 +2049,7 @@ async function loadData(spot) {
     const marine =
       await marineResponse.json();
 
+
     const weather =
       await weatherResponse.json();
 
@@ -1990,22 +2088,34 @@ async function loadData(spot) {
       "waveDirection"
     ).textContent =
       Number.isFinite(waveDirection)
-        ? getDirection(
-            waveDirection
-          )
+        ? getDirection(waveDirection)
         : "--";
 
 
-    const human =
-      humanWave(
-        waveHeight
-      );
+    /* =========================
+       HUMAN WAVE
+    ========================= */
+
+    if (
+      Number.isFinite(waveHeight)
+    ) {
+
+      const human =
+        humanWave(waveHeight);
 
 
-    document.getElementById(
-      "humanWave"
-    ).textContent =
-      human[0];
+      document.getElementById(
+        "humanWave"
+      ).textContent =
+        human[0];
+
+
+      document.getElementById(
+        "humanWaveReason"
+      ).textContent =
+        human[1];
+
+    }
 
 
     /* =========================
@@ -2015,6 +2125,14 @@ async function loadData(spot) {
     const waterTemp =
       marine.current
         .sea_surface_temperature;
+
+
+    document.getElementById(
+      "waterTemp"
+    ).textContent =
+      Number.isFinite(waterTemp)
+        ? waterTemp.toFixed(1) + " °C"
+        : "--";
 
 
     /* =========================
@@ -2041,9 +2159,7 @@ async function loadData(spot) {
 
     const windDirText =
       Number.isFinite(windDirection)
-        ? getDirection(
-            windDirection
-          )
+        ? getDirection(windDirection)
         : "--";
 
 
@@ -2085,45 +2201,31 @@ async function loadData(spot) {
        SUN
     ========================= */
 
-    if (
-      weather.daily &&
-      weather.daily.sunrise &&
-      weather.daily.sunset
-    ) {
-
-      document.getElementById(
-        "sunrise"
-      ).textContent =
-        weather.daily
-          .sunrise[0]
-          .split("T")[1]
-          .slice(0,5);
+    document.getElementById(
+      "sunrise"
+    ).textContent =
+      formatTime(
+        weather.daily.sunrise[0]
+      );
 
 
-      document.getElementById(
-        "sunset"
-      ).textContent =
-        weather.daily
-          .sunset[0]
-          .split("T")[1]
-          .slice(0,5);
-
-    }
+    document.getElementById(
+      "sunset"
+    ).textContent =
+      formatTime(
+        weather.daily.sunset[0]
+      );
 
 
     /* =========================
        BOARD
     ========================= */
 
-    const recommended =
+    renderBoards(
       getRecommendedBoard(
         waveHeight,
         wavePeriod
-      );
-
-
-    renderBoards(
-      recommended
+      )
     );
 
 
@@ -2163,10 +2265,20 @@ async function loadData(spot) {
         .sea_level_height_msl;
 
 
-    drawTideGraph(
-      tideTimes,
-      tideLevels
-    );
+    const extremes =
+      drawTideGraph(
+        tideTimes,
+        tideLevels
+      );
+
+
+    if (extremes) {
+
+      setNextTide(
+        extremes
+      );
+
+    }
 
 
     document.getElementById(
@@ -2178,7 +2290,7 @@ async function loadData(spot) {
 
 
     /* =========================
-       FINAL STATUS
+       CONDITION
     ========================= */
 
     document.getElementById(
@@ -2190,7 +2302,7 @@ async function loadData(spot) {
     document.getElementById(
       "status"
     ).textContent =
-      "現在の海況データを表示しています";
+      "現在のコンディションを表示しています";
 
   }
 
@@ -2203,7 +2315,7 @@ async function loadData(spot) {
     document.getElementById(
       "condition"
     ).textContent =
-      "データ取得エラー";
+      "取得エラー";
 
 
     document.getElementById(
@@ -2234,6 +2346,7 @@ loadData(
 ========================= */
 
 setInterval(
+
   () => {
 
     const spot =
@@ -2241,11 +2354,12 @@ setInterval(
         "selectedSpot"
       ).textContent;
 
-
     loadData(spot);
 
   },
+
   30 * 60 * 1000
+
 );
 
 </script>
