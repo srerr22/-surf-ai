@@ -107,7 +107,16 @@
 
   <div class="header">
     <div class="logo">🏄 SURF AI</div>
-    <div class="location">📍 湘南</div>
+    <div class="location">📍 <div class="location">
+  📍
+  <select id="spotSelect">
+    <option>辻堂</option>
+    <option>鵠沼</option>
+    <option>茅ヶ崎</option>
+    <option>鎌倉</option>
+    <option>千葉</option>
+  </select>
+</div></div>
   </div>
 
   <div class="content">
@@ -158,6 +167,12 @@
   <div class="bottom">
     SURF AI — Your personal surfing AI.
   </div>
+<script>
+  const spotSelect = document.getElementById("spotSelect");
 
+  spotSelect.addEventListener("change", function() {
+    console.log("選択したポイント:", this.value);
+  });
+</script>
 </body>
 </html>
