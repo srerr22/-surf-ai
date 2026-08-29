@@ -6,353 +6,537 @@
 <title>Re'SURF</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="header">
   <div class="logo">Re'SURF</div>
 </div>
+
 <div class="content">
+
   <!-- =========================
        SURF POINT
   ========================= -->
+
   <div class="label">
     サーフポイント
   </div>
 
-<button
-class=“spot-button”
-onclick=“toggleSpots()”
-
-<span id="selectedSpot">辻堂</span>
-<span>⌄</span>
+  <button
+    class="spot-button"
+    onclick="toggleSpots()"
+  >
+    <span id="selectedSpot">辻堂</span>
+    <span>⌄</span>
   </button>
+
   <div
     class="spot-menu"
     id="spotMenu"
   >
-<div class="spot-item" onclick="selectSpot('辻堂')">辻堂</div>
-<div class="spot-item" onclick="selectSpot('鵠沼')">鵠沼</div>
-<div class="spot-item" onclick="selectSpot('由比ヶ浜')">由比ヶ浜</div>
-<div class="spot-item" onclick="selectSpot('鴨川')">鴨川</div>
-<div class="spot-item" onclick="selectSpot('平砂浦')">平砂浦</div>
+
+    <div class="spot-item" onclick="selectSpot('辻堂')">辻堂</div>
+    <div class="spot-item" onclick="selectSpot('鵠沼')">鵠沼</div>
+    <div class="spot-item" onclick="selectSpot('由比ヶ浜')">由比ヶ浜</div>
+    <div class="spot-item" onclick="selectSpot('鴨川')">鴨川</div>
+    <div class="spot-item" onclick="selectSpot('平砂浦')">平砂浦</div>
+
   </div>
+
+
   <!-- =========================
        CURRENT CONDITION
   ========================= -->
+
   <div class="card">
-<div class="label">
-  現在のコンディション
-</div>
-<div
-  class="condition"
-  id="condition"
->
-  読み込み中...
-</div>
-<div class="label" style="margin-top:18px;">
-  WAVE
-</div>
-<div class="data">
-  <div class="data-box">
-    <div class="data-title">波高</div>
-    <div class="data-value" id="waveHeight">--</div>
+
+    <div class="label">
+      現在のコンディション
+    </div>
+
+    <div
+      class="condition"
+      id="condition"
+    >
+      読み込み中...
+    </div>
+
+
+    <div
+      class="label"
+      style="margin-top:18px;"
+    >
+      WAVE
+    </div>
+
+
+    <div class="data">
+
+      <div class="data-box">
+        <div class="data-title">波高</div>
+        <div
+          class="data-value"
+          id="waveHeight"
+        >
+          --
+        </div>
+      </div>
+
+
+      <div class="data-box">
+        <div class="data-title">波周期</div>
+        <div
+          class="data-value"
+          id="wavePeriod"
+        >
+          --
+        </div>
+      </div>
+
+
+      <div class="data-box">
+        <div class="data-title">波向</div>
+        <div
+          class="data-value"
+          id="waveDirection"
+        >
+          --
+        </div>
+      </div>
+
+
+      <div class="data-box">
+        <div class="data-title">水温</div>
+        <div
+          class="data-value"
+          id="waterTemp"
+        >
+          --
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="wave-human">
+
+      <div class="wave-human-title">
+        サーファー目線の波サイズ
+      </div>
+
+      <div
+        class="wave-human-value"
+        id="humanWave"
+      >
+        --
+      </div>
+
+      <div
+        class="wave-human-reason"
+        id="humanWaveReason"
+      >
+        --
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         SUN
+    ========================= -->
+
+    <div
+      class="label"
+      style="margin-top:22px;"
+    >
+      SUN
+    </div>
+
+
+    <div class="sun-row">
+
+      <span>
+        sunrise
+        <strong id="sunrise">--:--</strong>
+      </span>
+
+      <span>
+        sunset
+        <strong id="sunset">--:--</strong>
+      </span>
+
+    </div>
+
+
+    <!-- =========================
+         TODAY WEATHER
+    ========================= -->
+
+    <div
+      class="label"
+      style="margin-top:16px;"
+    >
+      TODAY WEATHER
+    </div>
+
+
+    <div
+      class="hourly-scroll"
+      id="weatherHourly"
+    ></div>
+
+
+    <!-- =========================
+         WIND
+    ========================= -->
+
+    <div
+      class="label"
+      style="margin-top:22px;"
+    >
+      WIND
+    </div>
+
+
+    <div class="wind-box">
+
+      <div class="wind-title">
+        現在の風
+      </div>
+
+      <div
+        class="wind-main"
+        id="windDirection"
+      >
+        --
+      </div>
+
+      <div
+        class="wind-detail"
+        id="windSpeed"
+      >
+        --
+      </div>
+
+      <div
+        class="wind-condition"
+        id="windCondition"
+      >
+        風向を分析中...
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         HOURLY WIND
+    ========================= -->
+
+    <div
+      class="label"
+      style="margin-top:16px;"
+    >
+      HOURLY WIND
+    </div>
+
+
+    <div
+      class="hourly-scroll"
+      id="windHourly"
+    ></div>
+
+
+    <div
+      class="status"
+      id="status"
+    >
+      現在のコンディションを取得しています...
+    </div>
+
   </div>
-  <div class="data-box">
-    <div class="data-title">波周期</div>
-    <div class="data-value" id="wavePeriod">--</div>
-  </div>
-  <div class="data-box">
-    <div class="data-title">波向</div>
-    <div class="data-value" id="waveDirection">--</div>
-  </div>
-  <div class="data-box">
-    <div class="data-title">水温</div>
-    <div class="data-value" id="waterTemp">--</div>
-  </div>
-</div>
-<div class="wave-human">
-  <div class="wave-human-title">
-    サーファー目線の波サイズ
-  </div>
-  <div
-    class="wave-human-value"
-    id="humanWave"
-  >
-    --
-  </div>
-  <div
-    class="wave-human-reason"
-    id="humanWaveReason"
-  >
-    --
-  </div>
-</div>
-<!-- SUN -->
-<div class="label" style="margin-top:22px;">
-  SUN
-</div>
-<div class="sun-row">
-  <span>
-    sunrise
-    <strong id="sunrise">--:--</strong>
-  </span>
-  <span>
-    sunset
-    <strong id="sunset">--:--</strong>
-  </span>
-</div>
-<!-- TODAY WEATHER -->
-<div
-  class="label"
-  style="margin-top:16px;"
->
-  TODAY WEATHER
-</div>
-<div
-  class="hourly-scroll"
-  id="weatherHourly"
-></div>
-<!-- WIND -->
-<div class="label" style="margin-top:22px;">
-  WIND
-</div>
-<div class="wind-box">
-  <div class="wind-title">
-    現在の風
-  </div>
-  <div
-    class="wind-main"
-    id="windDirection"
-  >
-    --
-  </div>
-  <div
-    class="wind-detail"
-    id="windSpeed"
-  >
-    --
-  </div>
-  <div
-    class="wind-condition"
-    id="windCondition"
-  >
-    風向を分析中...
-  </div>
-</div>
-<!-- HOURLY WIND -->
-<div
-  class="label"
-  style="margin-top:16px;"
->
-  HOURLY WIND
-</div>
-<div
-  class="hourly-scroll"
-  id="windHourly"
-></div>
-<div
-  class="status"
-  id="status"
->
-  現在のコンディションを取得しています...
-</div>
-  </div>
+
+
   <!-- =========================
        BEST TIME
   ========================= -->
+
   <div class="card">
-<div class="label">
-  今日のベストサーフィンタイム
-</div>
-<div
-  class="best-time"
-  id="bestTime"
->
-  --
-</div>
-<div
-  class="best-reason"
-  id="bestReason"
->
-  --
-</div>
+
+    <div class="label">
+      今日のベストサーフィンタイム
+    </div>
+
+    <div
+      class="best-time"
+      id="bestTime"
+    >
+      --
+    </div>
+
+    <div
+      class="best-reason"
+      id="bestReason"
+    >
+      --
+    </div>
+
   </div>
+
+
   <!-- =========================
        BOARD SELECT
   ========================= -->
+
   <div class="card">
-<div class="label">
-  ボードセレクト
-</div>
-<div
-  class="board-list"
-  id="boardList"
-></div>
+
+    <div class="label">
+      ボードセレクト
+    </div>
+
+    <div
+      class="board-list"
+      id="boardList"
+    ></div>
+
   </div>
+
+
   <!-- =========================
        TIDE
   ========================= -->
+
   <div class="card">
-<div class="label">
-  今日のタイド
-</div>
-<div class="tide-chart">
-  <div class="tide-grid"></div>
-  <div class="tide-scale">
-    <span id="scaleTop">-- cm</span>
-    <span id="scale75">-- cm</span>
-    <span id="scale50">-- cm</span>
-    <span id="scale25">-- cm</span>
-    <span id="scaleBottom">-- cm</span>
-  </div>
-  <svg
-    class="tide-svg"
-    viewBox="0 0 400 205"
-    preserveAspectRatio="none"
-  >
-    <polygon
-      id="tideArea"
-      class="tide-area"
-      points=""
-    />
-    <polyline
-      id="tideLine"
-      class="tide-line"
-      points=""
-    />
-    <line
-      id="tideNow"
-      class="tide-now"
-      x1="0"
-      y1="0"
-      x2="0"
-      y2="205"
-    />
-    <circle
-      id="tideNowDot"
-      class="tide-now-dot"
-      cx="0"
-      cy="0"
-      r="5"
-    />
-    <g id="tideExtremePoints"></g>
-  </svg>
-  <div class="tide-axis">
-    <span id="tideTime0">--</span>
-    <span id="tideTime1">--</span>
-    <span id="tideTime2">--</span>
-    <span id="tideTime3">--</span>
-    <span id="tideTime4">--</span>
-  </div>
-</div>
-<div class="tide-current">
-  <div>
-    <div class="tide-current-title">
-      現在の潮位
+
+    <div class="label">
+      今日のタイド
     </div>
+
+
+    <div class="tide-chart">
+
+      <div class="tide-grid"></div>
+
+
+      <div class="tide-scale">
+
+        <span id="scaleTop">-- cm</span>
+        <span id="scale75">-- cm</span>
+        <span id="scale50">-- cm</span>
+        <span id="scale25">-- cm</span>
+        <span id="scaleBottom">-- cm</span>
+
+      </div>
+
+
+      <svg
+        class="tide-svg"
+        viewBox="0 0 400 205"
+        preserveAspectRatio="none"
+      >
+
+        <polygon
+          id="tideArea"
+          class="tide-area"
+          points=""
+        />
+
+        <polyline
+          id="tideLine"
+          class="tide-line"
+          points=""
+        />
+
+        <line
+          id="tideNow"
+          class="tide-now"
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="205"
+        />
+
+        <circle
+          id="tideNowDot"
+          class="tide-now-dot"
+          cx="0"
+          cy="0"
+          r="5"
+        />
+
+        <g id="tideExtremePoints"></g>
+
+      </svg>
+
+
+      <div class="tide-axis">
+
+        <span id="tideTime0">--</span>
+        <span id="tideTime1">--</span>
+        <span id="tideTime2">--</span>
+        <span id="tideTime3">--</span>
+        <span id="tideTime4">--</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="tide-current">
+
+      <div>
+
+        <div class="tide-current-title">
+          現在の潮位
+        </div>
+
+        <div
+          class="tide-current-value"
+          id="currentTide"
+        >
+          --
+        </div>
+
+      </div>
+
+      <div class="tide-unit">
+        cm
+      </div>
+
+    </div>
+
+
+    <div class="tide-info">
+
+      <div class="tide-box">
+
+        <div class="tide-title">
+          次の満潮
+        </div>
+
+        <div
+          class="tide-value"
+          id="nextHigh"
+        >
+          --
+        </div>
+
+        <div
+          class="tide-height"
+          id="nextHighHeight"
+        >
+          -- cm
+        </div>
+
+      </div>
+
+
+      <div class="tide-box">
+
+        <div class="tide-title">
+          次の干潮
+        </div>
+
+        <div
+          class="tide-value"
+          id="nextLow"
+        >
+          --
+        </div>
+
+        <div
+          class="tide-height"
+          id="nextLowHeight"
+        >
+          -- cm
+        </div>
+
+      </div>
+
+    </div>
+
+
     <div
-      class="tide-current-value"
-      id="currentTide"
+      class="tide-type"
+      id="tideType"
     >
-      --
+      潮回りを判定中...
     </div>
+
+
+    <div class="tide-note">
+      ※潮位は海洋モデルによる推定値です。
+      沿岸部では実際の潮汐表と差が出る場合があります。
+    </div>
+
   </div>
-  <div class="tide-unit">
-    cm
-  </div>
+
 </div>
-<div class="tide-info">
-  <div class="tide-box">
-    <div class="tide-title">
-      次の満潮
-    </div>
-    <div
-      class="tide-value"
-      id="nextHigh"
-    >
-      --
-    </div>
-    <div
-      class="tide-height"
-      id="nextHighHeight"
-    >
-      -- cm
-    </div>
-  </div>
-  <div class="tide-box">
-    <div class="tide-title">
-      次の干潮
-    </div>
-    <div
-      class="tide-value"
-      id="nextLow"
-    >
-      --
-    </div>
-    <div
-      class="tide-height"
-      id="nextLowHeight"
-    >
-      -- cm
-    </div>
-  </div>
-</div>
-<div
-  class="tide-type"
-  id="tideType"
->
-  潮回りを判定中...
-</div>
-<div class="tide-note">
-  ※潮位は海洋モデルによる推定値です。
-  沿岸部では実際の潮汐表と差が出る場合があります。
-</div>
-  </div>
-</div>
+
+
 <div class="bottom">
   Re'SURF
 </div>
+
+
 <!-- =========================
      BOARD MODAL
 ========================= -->
+
 <div
   class="modal-overlay"
   id="boardModal"
   onclick="closeBoardModal(event)"
 >
+
   <div
     class="board-modal"
     onclick="event.stopPropagation()"
   >
-<div class="modal-label">
-  BOARD ADVICE
-</div>
-<div
-  class="modal-board-name"
-  id="modalBoardName"
->
-  --
-</div>
-<div
-  class="modal-condition"
-  id="modalCondition"
->
-  --
-</div>
-<div
-  class="modal-advice"
-  id="modalAdvice"
->
-  --
-</div>
-<button
-  class="modal-close"
-  onclick="closeBoardModal()"
->
-  閉じる
-</button>
+
+    <div class="modal-label">
+      BOARD ADVICE
+    </div>
+
+    <div
+      class="modal-board-name"
+      id="modalBoardName"
+    >
+      --
+    </div>
+
+    <div
+      class="modal-condition"
+      id="modalCondition"
+    >
+      --
+    </div>
+
+    <div
+      class="modal-advice"
+      id="modalAdvice"
+    >
+      --
+    </div>
+
+    <button
+      class="modal-close"
+      onclick="closeBoardModal()"
+    >
+      閉じる
+    </button>
+
   </div>
+
 </div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script src="data.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
