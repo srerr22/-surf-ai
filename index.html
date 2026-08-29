@@ -3,15 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Re'SURF</title>
-
 <style>
-
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   background: #eef7f7;
@@ -23,24 +19,20 @@ body {
     Arial,
     sans-serif;
 }
-
 .header {
   background: #ffffff;
   padding: 28px 20px 20px;
   border-bottom: 1px solid #dcebea;
 }
-
 .logo {
   font-size: 30px;
   font-weight: 900;
   letter-spacing: -1.5px;
   color: #176b70;
 }
-
 .content {
   padding: 18px 20px 35px;
 }
-
 .label {
   font-size: 11px;
   color: #648086;
@@ -48,7 +40,6 @@ body {
   letter-spacing: .8px;
   margin-bottom: 9px;
 }
-
 .card {
   background: #ffffff;
   border-radius: 20px;
@@ -56,12 +47,9 @@ body {
   margin-top: 16px;
   box-shadow: 0 4px 16px rgba(23,52,58,.055);
 }
-
-
 /* =========================
    SPOT
 ========================= */
-
 .spot-button {
   width: 100%;
   border: none;
@@ -76,7 +64,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
 .spot-menu {
   display: none;
   margin-top: 9px;
@@ -85,78 +72,120 @@ body {
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(23,52,58,.08);
 }
-
 .spot-item {
   padding: 16px 18px;
   border-bottom: 1px solid #e1eceb;
 }
-
-
+/* =========================
+   CONDITION SWIPE
+========================= */
+.condition-swipe-wrap {
+  position: relative;
+  overflow: hidden;
+  margin-top: 16px;
+  border-radius: 20px;
+  touch-action: pan-y;
+}
+.condition-swipe-track {
+  display: flex;
+  width: 200%;
+  transition: transform .28s ease;
+  will-change: transform;
+}
+.condition-page {
+  width: 50%;
+  flex: 0 0 50%;
+}
+.condition-page .card {
+  margin-top: 0;
+  box-shadow: none;
+}
+/* SWIPE INDICATOR */
+.swipe-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin-top: 11px;
+}
+.swipe-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbdcdd;
+  transition: all .2s ease;
+}
+.swipe-dot.active {
+  width: 18px;
+  border-radius: 5px;
+  background: #176b70;
+}
+.swipe-hint {
+  text-align: center;
+  margin-top: 7px;
+  color: #8a9b9e;
+  font-size: 10px;
+}
 /* =========================
    CURRENT CONDITION
 ========================= */
-
 .condition {
   font-size: 27px;
   font-weight: 900;
   margin: 4px 0 15px;
   color: #176b70;
 }
-
+.forecast-time {
+  margin-top: -8px;
+  margin-bottom: 14px;
+  color: #829296;
+  font-size: 11px;
+  font-weight: 700;
+}
 .data {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-
 .data-box {
   background: #f0f8f7;
   border-radius: 14px;
   padding: 14px;
 }
-
 .data-title {
   color: #648086;
   font-size: 11px;
 }
-
 .data-value {
   margin-top: 5px;
   font-size: 18px;
   font-weight: 800;
   color: #17343a;
 }
-
 .wave-human {
   margin-top: 14px;
   background: #e6f3f3;
   border-radius: 15px;
   padding: 15px;
 }
-
 .wave-human-title {
   font-size: 11px;
   color: #648086;
 }
-
 .wave-human-value {
   margin-top: 4px;
   font-size: 25px;
   font-weight: 900;
   color: #176b70;
 }
-
 .wave-human-reason {
   margin-top: 4px;
   font-size: 12px;
   color: #648086;
 }
-
-
 /* =========================
    SUN
 ========================= */
-
 .sun-row {
   margin-top: 14px;
   padding: 14px 2px 2px;
@@ -166,17 +195,13 @@ body {
   font-size: 12px;
   color: #648086;
 }
-
 .sun-row strong {
   color: #17343a;
   font-size: 13px;
 }
-
-
 /* =========================
    HOURLY WEATHER
 ========================= */
-
 .hourly-scroll {
   display: flex;
   gap: 9px;
@@ -186,11 +211,9 @@ body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
-
 .hourly-scroll::-webkit-scrollbar {
   display: none;
 }
-
 .hour-card {
   flex: 0 0 82px;
   background: #f0f8f7;
@@ -198,104 +221,84 @@ body {
   padding: 12px 8px;
   text-align: center;
 }
-
 .hour-card.current {
   background: #e1f3f2;
   box-shadow: inset 0 0 0 1px #b9dfdc;
 }
-
 .hour-time {
   font-size: 11px;
   font-weight: 800;
   color: #648086;
 }
-
 .hour-icon {
   font-size: 23px;
   margin: 7px 0;
 }
-
 .hour-temp {
   font-size: 16px;
   font-weight: 900;
   color: #17343a;
 }
-
 .hour-rain {
   margin-top: 4px;
   font-size: 10px;
   color: #648086;
 }
-
 .hour-label {
   margin-top: 3px;
   font-size: 9px;
   color: #176b70;
   font-weight: 800;
 }
-
-
 /* =========================
    WIND
 ========================= */
-
 .wind-box {
   margin-top: 14px;
   background: #f0f8f7;
   border-radius: 15px;
   padding: 15px;
 }
-
 .wind-title {
   font-size: 11px;
   color: #648086;
   font-weight: 800;
 }
-
 .wind-main {
   margin-top: 5px;
   font-size: 21px;
   font-weight: 900;
 }
-
 .wind-detail {
   margin-top: 4px;
   font-size: 12px;
   color: #648086;
 }
-
 .wind-condition {
   margin-top: 10px;
   padding: 12px 14px;
   border-radius: 13px;
   font-weight: 850;
 }
-
 .wind-offshore {
   background: #dff3ec;
   color: #14705b;
 }
-
 .wind-sideoff {
   background: #e8f0df;
   color: #567238;
 }
-
 .wind-sideon {
   background: #fff0d7;
   color: #9a6500;
 }
-
 .wind-onshore {
   background: #f8dddd;
   color: #a93c3c;
 }
-
-
 /* =========================
    HOURLY WIND
 ========================= */
-
 .wind-hour-card {
   flex: 0 0 105px;
   background: #f0f8f7;
@@ -303,35 +306,29 @@ body {
   padding: 12px 9px;
   text-align: center;
 }
-
 .wind-hour-card.current {
   background: #e1f3f2;
   box-shadow: inset 0 0 0 1px #b9dfdc;
 }
-
 .wind-hour-time {
   font-size: 11px;
   color: #648086;
   font-weight: 800;
 }
-
 .wind-hour-arrow {
   margin: 5px 0;
   font-size: 24px;
   line-height: 1;
 }
-
 .wind-hour-dir {
   font-size: 12px;
   font-weight: 900;
 }
-
 .wind-hour-speed {
   margin-top: 3px;
   font-size: 12px;
   color: #648086;
 }
-
 .wind-hour-condition {
   margin-top: 7px;
   border-radius: 9px;
@@ -339,37 +336,29 @@ body {
   font-size: 9px;
   font-weight: 850;
 }
-
-
 /* =========================
    BEST TIME
 ========================= */
-
 .best-time {
   font-size: 30px;
   font-weight: 900;
   margin-top: 5px;
   color: #176b70;
 }
-
 .best-reason {
   margin-top: 7px;
   color: #648086;
   font-size: 13px;
   line-height: 1.5;
 }
-
-
 /* =========================
    BOARD SELECT
 ========================= */
-
 .board-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-
 .board-card {
   border: none;
   background: #f0f8f7;
@@ -384,25 +373,19 @@ body {
   color: #17343a;
   transition: transform .12s ease;
 }
-
 .board-card:active {
   transform: scale(.97);
 }
-
 .board-card:last-child {
   grid-column: 1 / -1;
 }
-
 .board-name {
   font-size: 16px;
   font-weight: 850;
 }
-
-
 /* =========================
    BOARD POPUP
 ========================= */
-
 .modal-overlay {
   display: none;
   position: fixed;
@@ -413,11 +396,9 @@ body {
   justify-content: center;
   padding: 20px;
 }
-
 .modal-overlay.show {
   display: flex;
 }
-
 .board-modal {
   width: 100%;
   max-width: 390px;
@@ -427,33 +408,28 @@ body {
   box-shadow: 0 20px 50px rgba(23,52,58,.22);
   animation: modalIn .18s ease-out;
 }
-
 @keyframes modalIn {
   from {
     opacity: 0;
     transform: translateY(12px) scale(.98);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
-
 .modal-label {
   font-size: 10px;
   color: #648086;
   font-weight: 800;
   letter-spacing: .8px;
 }
-
 .modal-board-name {
   margin-top: 4px;
   font-size: 25px;
   font-weight: 900;
   color: #176b70;
 }
-
 .modal-condition {
   margin-top: 12px;
   background: #f0f8f7;
@@ -463,14 +439,12 @@ body {
   color: #648086;
   line-height: 1.6;
 }
-
 .modal-advice {
   margin-top: 15px;
   font-size: 14px;
   line-height: 1.7;
   color: #17343a;
 }
-
 .modal-close {
   width: 100%;
   margin-top: 18px;
@@ -482,12 +456,9 @@ body {
   font-weight: 850;
   font-size: 14px;
 }
-
-
 /* =========================
    TIDE
 ========================= */
-
 .tide-chart {
   position: relative;
   width: 100%;
@@ -497,11 +468,9 @@ body {
   overflow: hidden;
   border: 1px solid #bceaf0;
 }
-
 .tide-grid {
   position: absolute;
   inset: 20px 42px 38px 48px;
-
   background:
     repeating-linear-gradient(
       to bottom,
@@ -511,7 +480,6 @@ body {
       transparent 25%
     );
 }
-
 .tide-scale {
   position: absolute;
   left: 8px;
@@ -525,7 +493,6 @@ body {
   font-size: 9px;
   text-align: right;
 }
-
 .tide-svg {
   position: absolute;
   top: 20px;
@@ -533,11 +500,9 @@ body {
   width: calc(100% - 90px);
   height: 205px;
 }
-
 .tide-area {
   fill: rgba(0,174,190,.14);
 }
-
 .tide-line {
   fill: none;
   stroke: #00aebe;
@@ -545,31 +510,25 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
 .tide-now {
   stroke: #17343a;
   stroke-width: 2;
   stroke-dasharray: 5 5;
 }
-
 .tide-now-dot {
   fill: #17343a;
 }
-
 .tide-point-high {
   fill: #176b70;
 }
-
 .tide-point-low {
   fill: #00aebe;
 }
-
 .tide-point-label {
   font-size: 9px;
   font-weight: 800;
   fill: #17343a;
 }
-
 .tide-axis {
   position: absolute;
   left: 48px;
@@ -580,12 +539,9 @@ body {
   color: #648086;
   font-size: 10px;
 }
-
-
 /* =========================
    CURRENT TIDE
 ========================= */
-
 .tide-current {
   margin-top: 12px;
   background: #e6f7f9;
@@ -595,56 +551,47 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
 .tide-current-title {
   font-size: 12px;
   color: #648086;
 }
-
 .tide-current-value {
   font-size: 27px;
   font-weight: 900;
   color: #176b70;
 }
-
 .tide-unit {
   font-size: 13px;
   font-weight: 800;
   color: #4d858b;
 }
-
 .tide-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 10px;
 }
-
 .tide-box {
   background: #f0f8f7;
   border-radius: 14px;
   padding: 14px;
 }
-
 .tide-title {
   color: #648086;
   font-size: 11px;
 }
-
 .tide-value {
   font-size: 20px;
   font-weight: 900;
   margin-top: 5px;
   color: #17343a;
 }
-
 .tide-height {
   font-size: 13px;
   color: #176b70;
   margin-top: 3px;
   font-weight: 800;
 }
-
 .tide-type {
   margin-top: 12px;
   background: #e6f7f9;
@@ -654,654 +601,601 @@ body {
   font-weight: 850;
   color: #176b70;
 }
-
 .tide-note {
   margin-top: 8px;
   color: #7c898e;
   font-size: 10px;
   line-height: 1.5;
 }
-
 .status {
   margin-top: 12px;
   color: #829296;
   font-size: 11px;
 }
-
 .bottom {
   text-align: center;
   padding: 5px 0 30px;
   color: #829296;
   font-size: 11px;
 }
-
 </style>
 </head>
-
-
 <body>
-
 <div class="header">
   <div class="logo">Re'SURF</div>
 </div>
-
 <div class="content">
-
-
 <!-- =========================
      SURF POINT
 ========================= -->
-
 <div class="label">
   サーフポイント
 </div>
 
 <button
-  class="spot-button"
-  onclick="toggleSpots()"
->
-  <span id="selectedSpot">辻堂</span>
-  <span>⌄</span>
-</button>
+class=“spot-button”
+onclick=“toggleSpots()”
 
+辻堂
+⌄
 <div
   class="spot-menu"
   id="spotMenu"
 >
-
   <div class="spot-item" onclick="selectSpot('辻堂')">辻堂</div>
   <div class="spot-item" onclick="selectSpot('鵠沼')">鵠沼</div>
   <div class="spot-item" onclick="selectSpot('由比ヶ浜')">由比ヶ浜</div>
   <div class="spot-item" onclick="selectSpot('鴨川')">鴨川</div>
   <div class="spot-item" onclick="selectSpot('平砂浦')">平砂浦</div>
-
 </div>
-
-
 <!-- =========================
-     CURRENT CONDITION
+     CONDITION SWIPE
 ========================= -->
-
-<div class="card">
-
-  <div class="label">
-    現在のコンディション
-  </div>
-
+<div class="condition-swipe-wrap" id="conditionSwipe">
   <div
-    class="condition"
-    id="condition"
+    class="condition-swipe-track"
+    id="conditionTrack"
   >
-    読み込み中...
-  </div>
-
-
-  <div class="label" style="margin-top:18px;">
-    WAVE
-  </div>
-
-  <div class="data">
-
-    <div class="data-box">
-      <div class="data-title">波高</div>
-      <div class="data-value" id="waveHeight">--</div>
+<!-- =========================
+     TODAY / CURRENT
+========================= -->
+<div class="condition-page">
+  <div class="card">
+    <div class="label">
+      現在のコンディション
     </div>
-
-    <div class="data-box">
-      <div class="data-title">波周期</div>
-      <div class="data-value" id="wavePeriod">--</div>
-    </div>
-
-    <div class="data-box">
-      <div class="data-title">波向</div>
-      <div class="data-value" id="waveDirection">--</div>
-    </div>
-
-    <div class="data-box">
-      <div class="data-title">水温</div>
-      <div class="data-value" id="waterTemp">--</div>
-    </div>
-
-  </div>
-
-
-  <div class="wave-human">
-
-    <div class="wave-human-title">
-      サーファー目線の波サイズ
-    </div>
-
     <div
-      class="wave-human-value"
-      id="humanWave"
+      class="condition"
+      id="condition"
     >
-      --
+      読み込み中...
     </div>
-
+    <div class="label" style="margin-top:18px;">
+      WAVE
+    </div>
+    <div class="data">
+      <div class="data-box">
+        <div class="data-title">波高</div>
+        <div class="data-value" id="waveHeight">--</div>
+      </div>
+      <div class="data-box">
+        <div class="data-title">波周期</div>
+        <div class="data-value" id="wavePeriod">--</div>
+      </div>
+      <div class="data-box">
+        <div class="data-title">波向</div>
+        <div class="data-value" id="waveDirection">--</div>
+      </div>
+      <div class="data-box">
+        <div class="data-title">水温</div>
+        <div class="data-value" id="waterTemp">--</div>
+      </div>
+    </div>
+    <div class="wave-human">
+      <div class="wave-human-title">
+        サーファー目線の波サイズ
+      </div>
+      <div
+        class="wave-human-value"
+        id="humanWave"
+      >
+        --
+      </div>
+      <div
+        class="wave-human-reason"
+        id="humanWaveReason"
+      >
+        --
+      </div>
+    </div>
+    <div class="label" style="margin-top:22px;">
+      SUN
+    </div>
+    <div class="sun-row">
+      <span>
+        sunrise
+        <strong id="sunrise">--:--</strong>
+      </span>
+      <span>
+        sunset
+        <strong id="sunset">--:--</strong>
+      </span>
+    </div>
     <div
-      class="wave-human-reason"
-      id="humanWaveReason"
+      class="label"
+      style="margin-top:16px;"
     >
-      --
+      TODAY WEATHER
     </div>
-
-  </div>
-
-
-  <!-- =========================
-       SUN
-  ========================= -->
-
-  <div class="label" style="margin-top:22px;">
-    SUN
-  </div>
-
-  <div class="sun-row">
-
-    <span>
-      sunrise
-      <strong id="sunrise">--:--</strong>
-    </span>
-
-    <span>
-      sunset
-      <strong id="sunset">--:--</strong>
-    </span>
-
-  </div>
-
-
-  <div
-    class="label"
-    style="margin-top:16px;"
-  >
-    TODAY WEATHER
-  </div>
-
-  <div
-    class="hourly-scroll"
-    id="weatherHourly"
-  ></div>
-
-
-  <!-- =========================
-       WIND
-  ========================= -->
-
-  <div class="label" style="margin-top:22px;">
-    WIND
-  </div>
-
-  <div class="wind-box">
-
-    <div class="wind-title">
-      現在の風
-    </div>
-
     <div
-      class="wind-main"
-      id="windDirection"
-    >
-      --
+      class="hourly-scroll"
+      id="weatherHourly"
+    ></div>
+    <div class="label" style="margin-top:22px;">
+      WIND
     </div>
-
+    <div class="wind-box">
+      <div class="wind-title">
+        現在の風
+      </div>
+      <div
+        class="wind-main"
+        id="windDirection"
+      >
+        --
+      </div>
+      <div
+        class="wind-detail"
+        id="windSpeed"
+      >
+        --
+      </div>
+      <div
+        class="wind-condition"
+        id="windCondition"
+      >
+        風向を分析中...
+      </div>
+    </div>
     <div
-      class="wind-detail"
-      id="windSpeed"
+      class="label"
+      style="margin-top:16px;"
     >
-      --
+      HOURLY WIND
     </div>
-
     <div
-      class="wind-condition"
-      id="windCondition"
+      class="hourly-scroll"
+      id="windHourly"
+    ></div>
+    <div
+      class="status"
+      id="status"
     >
-      風向を分析中...
+      現在のコンディションを取得しています...
     </div>
-
   </div>
-
-
-  <div
-    class="label"
-    style="margin-top:16px;"
-  >
-    HOURLY WIND
-  </div>
-
-  <div
-    class="hourly-scroll"
-    id="windHourly"
-  ></div>
-
-
-  <div
-    class="status"
-    id="status"
-  >
-    現在のコンディションを取得しています...
-  </div>
-
 </div>
-
-
+<!-- =========================
+     TOMORROW
+========================= -->
+<div class="condition-page">
+  <div class="card">
+    <div class="label">
+      明日の予想
+    </div>
+    <div
+      class="condition"
+      id="tomorrowCondition"
+    >
+      読み込み中...
+    </div>
+    <div
+      class="forecast-time"
+      id="tomorrowForecastTime"
+    >
+      --:--頃の予想
+    </div>
+    <div class="label" style="margin-top:18px;">
+      WAVE
+    </div>
+    <div class="data">
+      <div class="data-box">
+        <div class="data-title">波高</div>
+        <div class="data-value" id="tomorrowWaveHeight">--</div>
+      </div>
+      <div class="data-box">
+        <div class="data-title">波周期</div>
+        <div class="data-value" id="tomorrowWavePeriod">--</div>
+      </div>
+      <div class="data-box">
+        <div class="data-title">波向</div>
+        <div class="data-value" id="tomorrowWaveDirection">--</div>
+      </div>
+      <div class="data-box">
+        <div class="data-title">水温</div>
+        <div class="data-value" id="tomorrowWaterTemp">--</div>
+      </div>
+    </div>
+    <div class="wave-human">
+      <div class="wave-human-title">
+        サーファー目線の波サイズ
+      </div>
+      <div
+        class="wave-human-value"
+        id="tomorrowHumanWave"
+      >
+        --
+      </div>
+      <div
+        class="wave-human-reason"
+        id="tomorrowHumanWaveReason"
+      >
+        --
+      </div>
+    </div>
+    <div class="label" style="margin-top:22px;">
+      SUN
+    </div>
+    <div class="sun-row">
+      <span>
+        sunrise
+        <strong id="tomorrowSunrise">--:--</strong>
+      </span>
+      <span>
+        sunset
+        <strong id="tomorrowSunset">--:--</strong>
+      </span>
+    </div>
+    <div
+      class="label"
+      style="margin-top:16px;"
+    >
+      TOMORROW WEATHER
+    </div>
+    <div
+      class="hourly-scroll"
+      id="tomorrowWeatherHourly"
+    ></div>
+    <div class="label" style="margin-top:22px;">
+      WIND
+    </div>
+    <div class="wind-box">
+      <div class="wind-title">
+        明日の風
+      </div>
+      <div
+        class="wind-main"
+        id="tomorrowWindDirection"
+      >
+        --
+      </div>
+      <div
+        class="wind-detail"
+        id="tomorrowWindSpeed"
+      >
+        --
+      </div>
+      <div
+        class="wind-condition"
+        id="tomorrowWindCondition"
+      >
+        風向を分析中...
+      </div>
+    </div>
+    <div
+      class="label"
+      style="margin-top:16px;"
+    >
+      HOURLY WIND
+    </div>
+    <div
+      class="hourly-scroll"
+      id="tomorrowWindHourly"
+    ></div>
+  </div>
+</div>
+  </div>
+</div>
+<div class="swipe-indicator">
+  <div
+    class="swipe-dot active"
+    id="swipeDotToday"
+  ></div>
+  <div
+    class="swipe-dot"
+    id="swipeDotTomorrow"
+  ></div>
+</div>
+<div class="swipe-hint">
+  ← スワイプで明日の予想 →
+</div>
 <!-- =========================
      BEST TIME
 ========================= -->
-
 <div class="card">
-
   <div class="label">
     今日のベストサーフィンタイム
   </div>
-
   <div
     class="best-time"
     id="bestTime"
   >
     --
   </div>
-
   <div
     class="best-reason"
     id="bestReason"
   >
     --
   </div>
-
 </div>
-
-
 <!-- =========================
      BOARD SELECT
 ========================= -->
-
 <div class="card">
-
   <div class="label">
     ボードセレクト
   </div>
-
   <div
     class="board-list"
     id="boardList"
   ></div>
-
 </div>
-
-
 <!-- =========================
      TIDE
 ========================= -->
-
 <div class="card">
-
   <div class="label">
     今日のタイド
   </div>
-
-
   <div class="tide-chart">
-
-    <div class="tide-grid"></div>
-
-
-    <div class="tide-scale">
-
-      <span id="scaleTop">-- cm</span>
-      <span id="scale75">-- cm</span>
-      <span id="scale50">-- cm</span>
-      <span id="scale25">-- cm</span>
-      <span id="scaleBottom">-- cm</span>
-
-    </div>
-
-
-    <svg
-      class="tide-svg"
-      viewBox="0 0 400 205"
-      preserveAspectRatio="none"
-    >
-
-      <polygon
-        id="tideArea"
-        class="tide-area"
-        points=""
-      />
-
-      <polyline
-        id="tideLine"
-        class="tide-line"
-        points=""
-      />
-
-      <line
-        id="tideNow"
-        class="tide-now"
-        x1="0"
-        y1="0"
-        x2="0"
-        y2="205"
-      />
-
-      <circle
-        id="tideNowDot"
-        class="tide-now-dot"
-        cx="0"
-        cy="0"
-        r="5"
-      />
-
-      <g id="tideExtremePoints"></g>
-
-    </svg>
-
-
-    <div class="tide-axis">
-
-      <span id="tideTime0">--</span>
-      <span id="tideTime1">--</span>
-      <span id="tideTime2">--</span>
-      <span id="tideTime3">--</span>
-      <span id="tideTime4">--</span>
-
-    </div>
-
+<div class="tide-grid"></div>
+<div class="tide-scale">
+  <span id="scaleTop">-- cm</span>
+  <span id="scale75">-- cm</span>
+  <span id="scale50">-- cm</span>
+  <span id="scale25">-- cm</span>
+  <span id="scaleBottom">-- cm</span>
+</div>
+<svg
+  class="tide-svg"
+  viewBox="0 0 400 205"
+  preserveAspectRatio="none"
+>
+  <polygon
+    id="tideArea"
+    class="tide-area"
+    points=""
+  />
+  <polyline
+    id="tideLine"
+    class="tide-line"
+    points=""
+  />
+  <line
+    id="tideNow"
+    class="tide-now"
+    x1="0"
+    y1="0"
+    x2="0"
+    y2="205"
+  />
+  <circle
+    id="tideNowDot"
+    class="tide-now-dot"
+    cx="0"
+    cy="0"
+    r="5"
+  />
+  <g id="tideExtremePoints"></g>
+</svg>
+<div class="tide-axis">
+  <span id="tideTime0">--</span>
+  <span id="tideTime1">--</span>
+  <span id="tideTime2">--</span>
+  <span id="tideTime3">--</span>
+  <span id="tideTime4">--</span>
+</div>
   </div>
-
-
   <div class="tide-current">
-
-    <div>
-
-      <div class="tide-current-title">
-        現在の潮位
-      </div>
-
-      <div
-        class="tide-current-value"
-        id="currentTide"
-      >
-        --
-      </div>
-
-    </div>
-
-    <div class="tide-unit">
-      cm
-    </div>
-
+<div>
+  <div class="tide-current-title">
+    現在の潮位
   </div>
-
-
+  <div
+    class="tide-current-value"
+    id="currentTide"
+  >
+    --
+  </div>
+</div>
+<div class="tide-unit">
+  cm
+</div>
+  </div>
   <div class="tide-info">
-
-    <div class="tide-box">
-
-      <div class="tide-title">
-        次の満潮
-      </div>
-
-      <div
-        class="tide-value"
-        id="nextHigh"
-      >
-        --
-      </div>
-
-      <div
-        class="tide-height"
-        id="nextHighHeight"
-      >
-        -- cm
-      </div>
-
-    </div>
-
-
-    <div class="tide-box">
-
-      <div class="tide-title">
-        次の干潮
-      </div>
-
-      <div
-        class="tide-value"
-        id="nextLow"
-      >
-        --
-      </div>
-
-      <div
-        class="tide-height"
-        id="nextLowHeight"
-      >
-        -- cm
-      </div>
-
-    </div>
-
+<div class="tide-box">
+  <div class="tide-title">
+    次の満潮
   </div>
-
-
+  <div
+    class="tide-value"
+    id="nextHigh"
+  >
+    --
+  </div>
+  <div
+    class="tide-height"
+    id="nextHighHeight"
+  >
+    -- cm
+  </div>
+</div>
+<div class="tide-box">
+  <div class="tide-title">
+    次の干潮
+  </div>
+  <div
+    class="tide-value"
+    id="nextLow"
+  >
+    --
+  </div>
+  <div
+    class="tide-height"
+    id="nextLowHeight"
+  >
+    -- cm
+  </div>
+</div>
+  </div>
   <div
     class="tide-type"
     id="tideType"
   >
     潮回りを判定中...
   </div>
-
-
   <div class="tide-note">
     ※潮位は海洋モデルによる推定値です。
     沿岸部では実際の潮汐表と差が出る場合があります。
   </div>
-
 </div>
-
-
 </div>
-
-
 <div class="bottom">
   Re'SURF
 </div>
-
-
 <!-- =========================
      BOARD MODAL
 ========================= -->
-
 <div
   class="modal-overlay"
   id="boardModal"
   onclick="closeBoardModal(event)"
 >
-
   <div
     class="board-modal"
     onclick="event.stopPropagation()"
   >
-
-    <div class="modal-label">
-      BOARD ADVICE
-    </div>
-
-    <div
-      class="modal-board-name"
-      id="modalBoardName"
-    >
-      --
-    </div>
-
-    <div
-      class="modal-condition"
-      id="modalCondition"
-    >
-      --
-    </div>
-
-    <div
-      class="modal-advice"
-      id="modalAdvice"
-    >
-      --
-    </div>
-
-    <button
-      class="modal-close"
-      onclick="closeBoardModal()"
-    >
-      閉じる
-    </button>
-
-  </div>
-
+<div class="modal-label">
+  BOARD ADVICE
 </div>
-
-
+<div
+  class="modal-board-name"
+  id="modalBoardName"
+>
+  --
+</div>
+<div
+  class="modal-condition"
+  id="modalCondition"
+>
+  --
+</div>
+<div
+  class="modal-advice"
+  id="modalAdvice"
+>
+  --
+</div>
+<button
+  class="modal-close"
+  onclick="closeBoardModal()"
+>
+  閉じる
+</button>
+  </div>
+</div>
 <script>
-
-
 /* =========================
    SPOT DATA
 ========================= */
-
 const spots = {
-
   "辻堂": {
     latitude: 35.318333,
     longitude: 139.453056,
-
     beachDirection: 202,
-
-    // 北〜北東をオフショア基準
     offshoreFrom: 22.5,
     offshoreRange: 30
   },
-
   "鵠沼": {
     latitude: 35.314861,
     longitude: 139.470889,
-
     beachDirection: 195,
-
-    // 北〜北東をオフショア基準
     offshoreFrom: 22.5,
     offshoreRange: 30
   },
-
   "由比ヶ浜": {
     latitude: 35.309444,
     longitude: 139.537778,
-
     beachDirection: 157,
-
-    // 北〜北東をオフショア基準
     offshoreFrom: 22.5,
     offshoreRange: 30
   },
-
   "鴨川": {
-    // 鴨川＝マルキ
     latitude: 35.120797,
     longitude: 140.132091,
-
     beachDirection: 157,
-
-    // 北西〜北寄りをオフショア基準
     offshoreFrom: 337.5,
     offshoreRange: 30
   },
-
   "平砂浦": {
-    // 平砂浦ファミリーパーク下付近
     latitude: 34.943784,
     longitude: 139.810939,
-
     beachDirection: 202,
-
-    // 北東をオフショア基準
     offshoreFrom: 45,
     offshoreRange: 30
   }
-
 };
-
-
 /* =========================
    BOARD TYPES
 ========================= */
-
 const boards = [
-
   {
     id: "long",
     name: "ロング"
   },
-
   {
     id: "mid",
     name: "ミッド"
   },
-
   {
     id: "fish",
     name: "フィッシュ"
   },
-
   {
     id: "allround",
     name: "オールラウンド"
   },
-
   {
     id: "performance",
     name: "パフォーマンス"
   }
-
 ];
-
-
 /* =========================
    BOARD DISPLAY
 ========================= */
-
 function renderBoards() {
-
   const list =
     document.getElementById("boardList");
-
   list.innerHTML = "";
-
   boards.forEach(board => {
-
     const card =
       document.createElement("button");
-
     card.className = "board-card";
-
     card.innerHTML = `
       <div class="board-name">
         ${board.name}
       </div>
     `;
-
     card.onclick = () => {
       openBoardModal(board.id);
     };
-
     list.appendChild(card);
-
   });
-
 }
-
-
 /* =========================
    BOARD ADVICE
 ========================= */
-
 function getBoardAdvice(
   boardId,
   height,
@@ -1309,85 +1203,55 @@ function getBoardAdvice(
   windSpeed,
   windCondition
 ) {
-
   const waveText =
     Number.isFinite(height)
       ? `${height.toFixed(2)}m`
       : "--";
-
   const periodText =
     Number.isFinite(period)
       ? `${period.toFixed(1)}秒`
       : "--";
-
-
   const base =
     `現在の波は約${waveText}・周期${periodText}。`;
-
-
   const windText =
     windCondition
       ? `風は${windCondition}。`
       : "";
-
-
   const advice = {
-
     long:
       `${base}${windText} テイクオフの早さと安定感を活かして、まずは波のいいピークを選ぶ。小波なら無理にアクションを狙わず、早めに立ってスピードを維持するのがポイント。`,
-
     mid:
       `${base}${windText} 波をよく見て少し前からテイクオフし、板のスピードを落とさずラインを長く使う。厚いセクションでは焦ってターンを入れず、板を走らせることを優先。`,
-
     fish:
       `${base}${windText} フィッシュのスピードを活かして、テイクオフ後は早めに横へ。厚い波ではレールを入れすぎず、板を走らせながら波のポケットへ戻るイメージ。`,
-
     allround:
       `${base}${windText} 波のフェイスに合わせてテイクオフ位置を調整。まずはスピードを作ってから、波の力があるセクションでターンを入れる。`,
-
     performance:
       `${base}${windText} 波にパワーがあるなら、テイクオフ後すぐにラインを決めてポケットへ。小さめなら無理に縦へ行かず、スピードを失わないライン取りを優先。`
-
   };
-
-
   return advice[boardId] || "";
 }
-
-
 /* =========================
    BOARD MODAL
 ========================= */
-
 function openBoardModal(boardId) {
-
   const board =
     boards.find(
       item => item.id === boardId
     );
-
   if (!board) return;
-
-
   const height =
     window.currentWaveHeight;
-
   const period =
     window.currentWavePeriod;
-
   const windSpeed =
     window.currentWindSpeed;
-
   const windCondition =
     window.currentWindCondition;
-
-
   document.getElementById(
     "modalBoardName"
   ).textContent =
     board.name;
-
-
   document.getElementById(
     "modalCondition"
   ).textContent =
@@ -1398,8 +1262,6 @@ function openBoardModal(boardId) {
     ` / 風 ${Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--"}`
     +
     ` / ${windCondition || "--"}`;
-
-
   document.getElementById(
     "modalAdvice"
   ).textContent =
@@ -1410,17 +1272,11 @@ function openBoardModal(boardId) {
       windSpeed,
       windCondition
     );
-
-
   document.getElementById(
     "boardModal"
   ).classList.add("show");
-
 }
-
-
 function closeBoardModal(event) {
-
   if (
     event &&
     event.target !==
@@ -1428,56 +1284,36 @@ function closeBoardModal(event) {
   ) {
     return;
   }
-
   document.getElementById(
     "boardModal"
   ).classList.remove("show");
-
 }
-
-
 /* =========================
    BOARD RECOMMENDATION
 ========================= */
-
 function getRecommendedBoard(
   height,
   period
 ) {
-
   if (height < 0.35) return "long";
-
   if (height < 0.50) return "mid";
-
   if (height < 0.75) return "fish";
-
   if (height < 1.20) {
-
     if (period >= 9) {
       return "allround";
     }
-
     return "fish";
-
   }
-
   if (height < 1.70) return "allround";
-
   return "performance";
-
 }
-
-
 /* =========================
    DIRECTION
 ========================= */
-
 function getDirection(degrees) {
-
   if (!Number.isFinite(degrees)) {
     return "--";
   }
-
   const directions = [
     "北",
     "北北東",
@@ -1496,243 +1332,185 @@ function getDirection(degrees) {
     "北西",
     "北北西"
   ];
-
   return directions[
     Math.round(degrees / 22.5) % 16
   ];
-
 }
-
-
 /* =========================
    WIND CONDITION
 ========================= */
-
 function angleDifference(a,b) {
-
   let diff =
     Math.abs(a-b) % 360;
-
   if (diff > 180) {
     diff = 360 - diff;
   }
-
   return diff;
-
 }
-
-
 function getWindCondition(
   windDirection,
   spot
 ) {
-
   if (!Number.isFinite(windDirection)) {
     return {
       label: "--",
       className: ""
     };
   }
-
-
   const diff =
     angleDifference(
       windDirection,
       spot.offshoreFrom
     );
-
-
   const offshoreRange =
     spot.offshoreRange || 30;
-
-
   if (
     diff <= offshoreRange
   ) {
-
     return {
       label: "オフショア",
       className: "wind-offshore"
     };
-
   }
-
-
   if (
     diff <= 75
   ) {
-
     return {
       label: "サイドオフ",
       className: "wind-sideoff"
     };
-
   }
-
-
   if (
     diff <= 120
   ) {
-
     return {
       label: "サイドオン",
       className: "wind-sideon"
     };
-
   }
-
-
   return {
     label: "オンショア",
     className: "wind-onshore"
   };
-
 }
-
-
 /* =========================
    HUMAN WAVE
 ========================= */
-
 function humanWave(height) {
-
+  if (!Number.isFinite(height)) {
+    return [
+      "--",
+      "--"
+    ];
+  }
   if (height < .25) {
     return [
       "スネ〜ヒザ",
       "かなり小さめの波"
     ];
   }
-
   if (height < .45) {
     return [
       "ヒザ〜モモ",
       "小波コンディション"
     ];
   }
-
   if (height < .70) {
     return [
       "モモ〜腰",
       "小〜中サイズ"
     ];
   }
-
   if (height < 1.00) {
     return [
       "腰〜腹",
       "十分なサイズ"
     ];
   }
-
   if (height < 1.30) {
     return [
       "腹〜胸",
       "しっかりしたサイズ"
     ];
   }
-
   if (height < 1.70) {
     return [
       "胸〜肩",
       "サイズのある波"
     ];
   }
-
   if (height < 2.20) {
     return [
       "頭前後",
       "かなりサイズあり"
     ];
   }
-
   return [
     "頭オーバー",
     "大きなコンディション"
   ];
-
 }
-
-
 /* =========================
    WEATHER ICON
 ========================= */
-
 function weatherIcon(code) {
-
   if (!Number.isFinite(code)) {
     return "🌤️";
   }
-
   if (code === 0) return "☀️";
-
   if (
     code === 1 ||
     code === 2
   ) {
     return "🌤️";
   }
-
   if (code === 3) {
     return "☁️";
   }
-
   if (
     code === 45 ||
     code === 48
   ) {
     return "🌫️";
   }
-
   if (
     code >= 51 &&
     code <= 57
   ) {
     return "🌦️";
   }
-
   if (
     code >= 61 &&
     code <= 67
   ) {
     return "🌧️";
   }
-
   if (
     code >= 71 &&
     code <= 77
   ) {
     return "❄️";
   }
-
   if (
     code >= 80 &&
     code <= 82
   ) {
     return "🌧️";
   }
-
   if (
     code >= 95
   ) {
     return "⛈️";
   }
-
   return "🌤️";
-
 }
-
-
 /* =========================
    TIME FORMAT
 ========================= */
-
 function formatTime(time) {
-
   if (!time) return "--";
-
   const date =
     new Date(time);
-
   if (
     Number.isNaN(
       date.getTime()
@@ -1740,7 +1518,6 @@ function formatTime(time) {
   ) {
     return "--";
   }
-
   return date.toLocaleTimeString(
     "ja-JP",
     {
@@ -1750,16 +1527,11 @@ function formatTime(time) {
       timeZone: "Asia/Tokyo"
     }
   );
-
 }
-
-
 /* =========================
    DATE KEY
 ========================= */
-
 function todayKey() {
-
   return new Date()
     .toLocaleDateString(
       "en-CA",
@@ -1767,52 +1539,63 @@ function todayKey() {
         timeZone: "Asia/Tokyo"
       }
     );
-
 }
-
-
+function addDaysKey(
+  dateKey,
+  days
+) {
+  const date =
+    new Date(
+      dateKey + "T12:00:00+09:00"
+    );
+  date.setDate(
+    date.getDate() + days
+  );
+  return date
+    .toLocaleDateString(
+      "en-CA",
+      {
+        timeZone: "Asia/Tokyo"
+      }
+    );
+}
+/* =========================
+   TOMORROW DATE
+========================= */
+function tomorrowKey() {
+  return addDaysKey(
+    todayKey(),
+    1
+  );
+}
 /* =========================
    HOURLY WEATHER DISPLAY
 ========================= */
-
 function renderHourlyWeather(
   times,
   codes,
   temperatures,
   rainProbabilities
 ) {
-
   const container =
     document.getElementById(
       "weatherHourly"
     );
-
   container.innerHTML = "";
-
-
   if (!Array.isArray(times)) {
     return;
   }
-
-
   const today =
     todayKey();
-
-
   const now =
     Date.now();
-
-
   for (
     let i = 0;
     i < times.length;
     i++
   ) {
-
     const date =
       new Date(times[i]);
-
-
     if (
       Number.isNaN(
         date.getTime()
@@ -1820,8 +1603,6 @@ function renderHourlyWeather(
     ) {
       continue;
     }
-
-
     const localDate =
       date.toLocaleDateString(
         "en-CA",
@@ -1829,26 +1610,19 @@ function renderHourlyWeather(
           timeZone: "Asia/Tokyo"
         }
       );
-
-
     if (
       localDate !== today
     ) {
       continue;
     }
-
-
     if (
       date.getTime() <
       now - 60 * 60 * 1000
     ) {
       continue;
     }
-
-
     const card =
       document.createElement("div");
-
     card.className =
       "hour-card" +
       (
@@ -1858,8 +1632,6 @@ function renderHourlyWeather(
           ? " current"
           : ""
       );
-
-
     const temp =
       temperatures &&
       Number.isFinite(
@@ -1869,8 +1641,6 @@ function renderHourlyWeather(
             temperatures[i]
           ) + "°"
         : "--";
-
-
     const rain =
       rainProbabilities &&
       Number.isFinite(
@@ -1878,26 +1648,19 @@ function renderHourlyWeather(
       )
         ? rainProbabilities[i] + "%"
         : "--";
-
-
     card.innerHTML = `
-
       <div class="hour-time">
         ${formatTime(times[i])}
       </div>
-
       <div class="hour-icon">
         ${weatherIcon(codes[i])}
       </div>
-
       <div class="hour-temp">
         ${temp}
       </div>
-
       <div class="hour-rain">
         ☔ ${rain}
       </div>
-
       ${
         Math.abs(
           date.getTime() - now
@@ -1905,55 +1668,36 @@ function renderHourlyWeather(
           ? `<div class="hour-label">現在</div>`
           : ""
       }
-
     `;
-
-
     container.appendChild(card);
-
   }
-
 }
-
-
 /* =========================
-   HOURLY WIND DISPLAY
+   TOMORROW WEATHER
 ========================= */
-
-function renderHourlyWind(
+function renderTomorrowWeather(
   times,
-  speeds,
-  directions,
-  spot
+  codes,
+  temperatures,
+  rainProbabilities
 ) {
-
   const container =
     document.getElementById(
-      "windHourly"
+      "tomorrowWeatherHourly"
     );
-
   container.innerHTML = "";
-
-
   if (!Array.isArray(times)) {
     return;
   }
-
-
-  const now =
-    Date.now();
-
-
+  const tomorrow =
+    tomorrowKey();
   for (
     let i = 0;
     i < times.length;
     i++
   ) {
-
     const date =
       new Date(times[i]);
-
-
     if (
       Number.isNaN(
         date.getTime()
@@ -1961,42 +1705,113 @@ function renderHourlyWind(
     ) {
       continue;
     }
-
-
+    const localDate =
+      date.toLocaleDateString(
+        "en-CA",
+        {
+          timeZone: "Asia/Tokyo"
+        }
+      );
+    if (
+      localDate !== tomorrow
+    ) {
+      continue;
+    }
+    const card =
+      document.createElement("div");
+    card.className =
+      "hour-card";
+    const temp =
+      temperatures &&
+      Number.isFinite(
+        temperatures[i]
+      )
+        ? Math.round(
+            temperatures[i]
+          ) + "°"
+        : "--";
+    const rain =
+      rainProbabilities &&
+      Number.isFinite(
+        rainProbabilities[i]
+      )
+        ? rainProbabilities[i] + "%"
+        : "--";
+    card.innerHTML = `
+      <div class="hour-time">
+        ${formatTime(times[i])}
+      </div>
+      <div class="hour-icon">
+        ${weatherIcon(codes[i])}
+      </div>
+      <div class="hour-temp">
+        ${temp}
+      </div>
+      <div class="hour-rain">
+        ☔ ${rain}
+      </div>
+    `;
+    container.appendChild(card);
+  }
+}
+/* =========================
+   HOURLY WIND DISPLAY
+========================= */
+function renderHourlyWind(
+  times,
+  speeds,
+  directions,
+  spot
+) {
+  const container =
+    document.getElementById(
+      "windHourly"
+    );
+  container.innerHTML = "";
+  if (!Array.isArray(times)) {
+    return;
+  }
+  const now =
+    Date.now();
+  for (
+    let i = 0;
+    i < times.length;
+    i++
+  ) {
+    const date =
+      new Date(times[i]);
+    if (
+      Number.isNaN(
+        date.getTime()
+      )
+    ) {
+      continue;
+    }
     if (
       date.getTime() <
       now - 15 * 60 * 1000
     ) {
       continue;
     }
-
-
     const speed =
       Number.isFinite(
         speeds[i]
       )
         ? speeds[i]
         : null;
-
-
     const direction =
       Number.isFinite(
         directions[i]
       )
         ? directions[i]
         : null;
-
-
     const result =
       getWindCondition(
         direction,
         spot
       );
-
-
     const card =
       document.createElement("div");
-
     card.className =
       "wind-hour-card" +
       (
@@ -2006,64 +1821,141 @@ function renderHourlyWind(
           ? " current"
           : ""
       );
-
-
     const arrow =
       direction !== null
         ? getWindArrow(direction)
         : "•";
-
-
     card.innerHTML = `
-
       <div class="wind-hour-time">
         ${formatTime(times[i])}
       </div>
-
       <div class="wind-hour-arrow">
         ${arrow}
       </div>
-
       <div class="wind-hour-dir">
         ${direction !== null
           ? getDirection(direction)
           : "--"}
       </div>
-
       <div class="wind-hour-speed">
         ${speed !== null
           ? speed.toFixed(1) + " m/s"
           : "--"}
       </div>
-
       <div
         class="wind-hour-condition ${result.className}"
       >
         ${result.label}
       </div>
-
     `;
-
-
     container.appendChild(card);
-
   }
-
 }
-
-
+/* =========================
+   TOMORROW HOURLY WIND
+========================= */
+function renderTomorrowWind(
+  times,
+  speeds,
+  directions,
+  spot
+) {
+  const container =
+    document.getElementById(
+      "tomorrowWindHourly"
+    );
+  container.innerHTML = "";
+  if (!Array.isArray(times)) {
+    return;
+  }
+  const tomorrow =
+    tomorrowKey();
+  for (
+    let i = 0;
+    i < times.length;
+    i++
+  ) {
+    const date =
+      new Date(times[i]);
+    if (
+      Number.isNaN(
+        date.getTime()
+      )
+    ) {
+      continue;
+    }
+    const localDate =
+      date.toLocaleDateString(
+        "en-CA",
+        {
+          timeZone: "Asia/Tokyo"
+        }
+      );
+    if (
+      localDate !== tomorrow
+    ) {
+      continue;
+    }
+    const speed =
+      Number.isFinite(
+        speeds[i]
+      )
+        ? speeds[i]
+        : null;
+    const direction =
+      Number.isFinite(
+        directions[i]
+      )
+        ? directions[i]
+        : null;
+    const result =
+      getWindCondition(
+        direction,
+        spot
+      );
+    const card =
+      document.createElement("div");
+    card.className =
+      "wind-hour-card";
+    const arrow =
+      direction !== null
+        ? getWindArrow(direction)
+        : "•";
+    card.innerHTML = `
+      <div class="wind-hour-time">
+        ${formatTime(times[i])}
+      </div>
+      <div class="wind-hour-arrow">
+        ${arrow}
+      </div>
+      <div class="wind-hour-dir">
+        ${direction !== null
+          ? getDirection(direction)
+          : "--"}
+      </div>
+      <div class="wind-hour-speed">
+        ${speed !== null
+          ? speed.toFixed(1) + " m/s"
+          : "--"}
+      </div>
+      <div
+        class="wind-hour-condition ${result.className}"
+      >
+        ${result.label}
+      </div>
+    `;
+    container.appendChild(card);
+  }
+}
 /* =========================
    WIND ARROW
 ========================= */
-
 function getWindArrow(
   degrees
 ) {
-
   if (!Number.isFinite(degrees)) {
     return "•";
   }
-
   const arrows = [
     "↓",
     "↙",
@@ -2074,71 +1966,336 @@ function getWindArrow(
     "→",
     "↘"
   ];
-
   return arrows[
     Math.round(
       degrees / 45
     ) % 8
   ];
-
 }
-
-
 /* =========================
    BEST TIME
 ========================= */
-
 function getBestTime(
   height,
   period,
   windSpeed
 ) {
-
   if (
     Number.isFinite(windSpeed) &&
     windSpeed <= 5 &&
     Number.isFinite(height) &&
     height >= .6
   ) {
-
     return [
       "07:00〜10:00",
       "波と風のバランスが良い時間帯として判定。"
     ];
-
   }
-
   if (
     Number.isFinite(height) &&
     height >= 1.0
   ) {
-
     return [
       "06:00〜09:00",
       "サイズがあるため、風が弱い時間帯を優先。"
     ];
-
   }
-
   return [
     "07:00〜10:00",
     "現在はプロトタイプの時間帯判定です。"
   ];
-
 }
-
-
+/* =========================
+   TOMORROW REPRESENTATIVE
+========================= */
+function findTomorrowRepresentativeIndex(
+  times
+) {
+  if (!Array.isArray(times)) {
+    return -1;
+  }
+  const tomorrow =
+    tomorrowKey();
+  /*
+    明日の09:00に最も近い
+    データを代表値として使用
+  */
+  const target =
+    new Date(
+      tomorrow + "T09:00:00+09:00"
+    ).getTime();
+  let bestIndex = -1;
+  let bestDiff = Infinity;
+  times.forEach(
+    (time,index) => {
+      const date =
+        new Date(time);
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return;
+      }
+      const localDate =
+        date.toLocaleDateString(
+          "en-CA",
+          {
+            timeZone: "Asia/Tokyo"
+          }
+        );
+      if (
+        localDate !== tomorrow
+      ) {
+        return;
+      }
+      const diff =
+        Math.abs(
+          date.getTime() - target
+        );
+      if (
+        diff < bestDiff
+      ) {
+        bestDiff = diff;
+        bestIndex = index;
+      }
+    }
+  );
+  return bestIndex;
+}
+/* =========================
+   TOMORROW CONDITION TEXT
+========================= */
+function getTomorrowConditionText(
+  height,
+  period,
+  windSpeed,
+  windCondition
+) {
+  if (
+    !Number.isFinite(height)
+  ) {
+    return "予想データなし";
+  }
+  if (
+    height < .35
+  ) {
+    return "小波予想";
+  }
+  if (
+    height < .70
+  ) {
+    if (
+      windCondition === "オフショア" ||
+      windCondition === "サイドオフ"
+    ) {
+      return "小〜中サイズ・期待";
+    }
+    return "小〜中サイズ";
+  }
+  if (
+    height < 1.20
+  ) {
+    if (
+      windCondition === "オフショア" ||
+      windCondition === "サイドオフ"
+    ) {
+      return "良コンディション予想";
+    }
+    return "十分なサイズ";
+  }
+  if (
+    height < 1.70
+  ) {
+    return "サイズアップ予想";
+  }
+  return "大きめの波予想";
+}
+/* =========================
+   TOMORROW DATA DISPLAY
+========================= */
+function renderTomorrowData(
+  marine,
+  weather,
+  spot
+) {
+  if (
+    !marine ||
+    !weather ||
+    !marine.hourly ||
+    !weather.hourly
+  ) {
+    return;
+  }
+  const times =
+    marine.hourly.time;
+  const index =
+    findTomorrowRepresentativeIndex(
+      times
+    );
+  if (
+    index < 0
+  ) {
+    return;
+  }
+  const waveHeight =
+    Number.isFinite(
+      marine.hourly.wave_height[index]
+    )
+      ? marine.hourly.wave_height[index]
+      : null;
+  const wavePeriod =
+    Number.isFinite(
+      marine.hourly.wave_period[index]
+    )
+      ? marine.hourly.wave_period[index]
+      : null;
+  const waveDirection =
+    Number.isFinite(
+      marine.hourly.wave_direction[index]
+    )
+      ? marine.hourly.wave_direction[index]
+      : null;
+  const waterTemp =
+    Number.isFinite(
+      marine.hourly.sea_surface_temperature[index]
+    )
+      ? marine.hourly.sea_surface_temperature[index]
+      : null;
+  const windSpeed =
+    Number.isFinite(
+      weather.hourly.wind_speed_10m[index]
+    )
+      ? weather.hourly.wind_speed_10m[index]
+      : null;
+  const windDirection =
+    Number.isFinite(
+      weather.hourly.wind_direction_10m[index]
+    )
+      ? weather.hourly.wind_direction_10m[index]
+      : null;
+  const windResult =
+    getWindCondition(
+      windDirection,
+      spot
+    );
+  /* WAVE */
+  document.getElementById(
+    "tomorrowWaveHeight"
+  ).textContent =
+    Number.isFinite(waveHeight)
+      ? waveHeight.toFixed(2) + " m"
+      : "--";
+  document.getElementById(
+    "tomorrowWavePeriod"
+  ).textContent =
+    Number.isFinite(wavePeriod)
+      ? wavePeriod.toFixed(1) + " 秒"
+      : "--";
+  document.getElementById(
+    "tomorrowWaveDirection"
+  ).textContent =
+    Number.isFinite(waveDirection)
+      ? getDirection(waveDirection)
+      : "--";
+  document.getElementById(
+    "tomorrowWaterTemp"
+  ).textContent =
+    Number.isFinite(waterTemp)
+      ? waterTemp.toFixed(1) + " °C"
+      : "--";
+  /* TIME */
+  document.getElementById(
+    "tomorrowForecastTime"
+  ).textContent =
+    `${formatTime(times[index])}頃の予想`;
+  /* HUMAN WAVE */
+  const human =
+    humanWave(waveHeight);
+  document.getElementById(
+    "tomorrowHumanWave"
+  ).textContent =
+    human[0];
+  document.getElementById(
+    "tomorrowHumanWaveReason"
+  ).textContent =
+    human[1];
+  /* CONDITION */
+  document.getElementById(
+    "tomorrowCondition"
+  ).textContent =
+    getTomorrowConditionText(
+      waveHeight,
+      wavePeriod,
+      windSpeed,
+      windResult.label
+    );
+  /* WIND */
+  document.getElementById(
+    "tomorrowWindDirection"
+  ).textContent =
+    Number.isFinite(windDirection)
+      ? getDirection(windDirection)
+      : "--";
+  document.getElementById(
+    "tomorrowWindSpeed"
+  ).textContent =
+    Number.isFinite(windSpeed)
+      ? windSpeed.toFixed(1) + " m/s"
+      : "--";
+  const conditionElement =
+    document.getElementById(
+      "tomorrowWindCondition"
+    );
+  conditionElement.textContent =
+    windResult.label;
+  conditionElement.className =
+    "wind-condition " +
+    windResult.className;
+  /* SUN */
+  const tomorrowIndex =
+    weather.daily.sunrise.findIndex(
+      time => {
+        const date =
+          new Date(time);
+        return date
+          .toLocaleDateString(
+            "en-CA",
+            {
+              timeZone: "Asia/Tokyo"
+            }
+          ) === tomorrowKey();
+      }
+    );
+  if (
+    tomorrowIndex >= 0
+  ) {
+    document.getElementById(
+      "tomorrowSunrise"
+    ).textContent =
+      formatTime(
+        weather.daily.sunrise[
+          tomorrowIndex
+        ]
+      );
+    document.getElementById(
+      "tomorrowSunset"
+    ).textContent =
+      formatTime(
+        weather.daily.sunset[
+          tomorrowIndex
+        ]
+      );
+  }
+}
 /* =========================
    TIDE EXTREMES
 ========================= */
-
 function findTideExtremes(
   times,
   levels
 ) {
-
   const result = [];
-
   if (
     !times ||
     !levels ||
@@ -2146,24 +2303,17 @@ function findTideExtremes(
   ) {
     return result;
   }
-
-
   for (
     let i = 1;
     i < levels.length - 1;
     i++
   ) {
-
     const current =
       levels[i];
-
     const previous =
       levels[i - 1];
-
     const next =
       levels[i + 1];
-
-
     if (
       !Number.isFinite(current) ||
       !Number.isFinite(previous) ||
@@ -2171,135 +2321,90 @@ function findTideExtremes(
     ) {
       continue;
     }
-
-
     if (
       current > previous &&
       current >= next
     ) {
-
       result.push({
         type: "high",
         index: i,
         time: times[i],
         level: current
       });
-
     }
-
-
     if (
       current < previous &&
       current <= next
     ) {
-
       result.push({
         type: "low",
         index: i,
         time: times[i],
         level: current
       });
-
     }
-
   }
-
-
   return result;
-
 }
-
-
 /* =========================
    INTERPOLATED CURRENT TIDE
 ========================= */
-
 function interpolateTide(
   times,
   levels
 ) {
-
   const now =
     Date.now();
-
-
   for (
     let i = 0;
     i < times.length - 1;
     i++
   ) {
-
     const t1 =
       new Date(times[i]).getTime();
-
     const t2 =
       new Date(times[i + 1]).getTime();
-
-
     if (
       now >= t1 &&
       now <= t2
     ) {
-
       const l1 =
         levels[i];
-
       const l2 =
         levels[i + 1];
-
-
       if (
         Number.isFinite(l1) &&
         Number.isFinite(l2)
       ) {
-
         const ratio =
           (now - t1) /
           (t2 - t1);
-
-
         return (
           l1 +
           (l2 - l1) *
           ratio
         );
-
       }
-
     }
-
   }
-
-
   return null;
-
 }
-
-
 /* =========================
    TIDE GRAPH
 ========================= */
-
 function drawTideGraph(
   allTimes,
   allLevels
 ) {
-
   if (
     !Array.isArray(allTimes) ||
     !Array.isArray(allLevels)
   ) {
     return null;
   }
-
-
   const today =
     todayKey();
-
-
   const validPairs = [];
-
-
   for (
     let i = 0;
     i <
@@ -2309,7 +2414,6 @@ function drawTideGraph(
     );
     i++
   ) {
-
     if (
       !allTimes[i] ||
       !Number.isFinite(
@@ -2318,12 +2422,8 @@ function drawTideGraph(
     ) {
       continue;
     }
-
-
     const date =
       new Date(allTimes[i]);
-
-
     const localDate =
       date.toLocaleDateString(
         "en-CA",
@@ -2331,72 +2431,47 @@ function drawTideGraph(
           timeZone: "Asia/Tokyo"
         }
       );
-
-
     if (
       localDate === today
     ) {
-
       validPairs.push({
         time: allTimes[i],
         level: allLevels[i]
       });
-
     }
-
   }
-
-
   if (
     validPairs.length < 2
   ) {
     return null;
   }
-
-
   const width = 400;
   const height = 205;
   const padding = 8;
-
-
   const validLevels =
     validPairs.map(
       item => item.level
     );
-
-
   let min =
     Math.min(
       ...validLevels
     );
-
   let max =
     Math.max(
       ...validLevels
     );
-
-
   const margin =
     Math.max(
       (max - min) * .12,
       .10
     );
-
-
   min -= margin;
   max += margin;
-
-
   const range =
     max - min || 1;
-
-
   const points = [];
-
-
   validPairs.forEach(
     (item,index) => {
-
       const x =
         padding +
         index /
@@ -2405,8 +2480,6 @@ function drawTideGraph(
           1
         ) *
         (width - padding * 2);
-
-
       const y =
         height -
         padding -
@@ -2415,30 +2488,21 @@ function drawTideGraph(
           range
         ) *
         (height-padding*2);
-
-
       points.push(
         x.toFixed(1) +
         "," +
         y.toFixed(1)
       );
-
     }
   );
-
-
   const pointString =
     points.join(" ");
-
-
   document
     .getElementById("tideLine")
     .setAttribute(
       "points",
       pointString
     );
-
-
   document
     .getElementById("tideArea")
     .setAttribute(
@@ -2446,10 +2510,6 @@ function drawTideGraph(
       pointString +
       ` ${width},${height} 0,${height}`
     );
-
-
-  /* TIME AXIS */
-
   const indexes = [
     0,
     Math.floor(
@@ -2463,32 +2523,20 @@ function drawTideGraph(
     ),
     validPairs.length-1
   ];
-
-
   indexes.forEach(
     (index,i) => {
-
       const element =
         document.getElementById(
           "tideTime"+i
         );
-
-
       if (element) {
-
         element.textContent =
           formatTime(
             validPairs[index].time
           );
-
       }
-
     }
   );
-
-
-  /* SCALE */
-
   const scaleValues = [
     max,
     max - range*.25,
@@ -2496,8 +2544,6 @@ function drawTideGraph(
     max - range*.75,
     min
   ];
-
-
   [
     "scaleTop",
     "scale75",
@@ -2506,52 +2552,34 @@ function drawTideGraph(
     "scaleBottom"
   ].forEach(
     (id,index) => {
-
       document.getElementById(id)
         .textContent =
         Math.round(
           scaleValues[index] * 100
         ) + " cm";
-
     }
   );
-
-
-  /* CURRENT POSITION */
-
   const now =
     Date.now();
-
-
   let currentIndex = 0;
   let closestDiff =
     Infinity;
-
-
   validPairs.forEach(
     (item,index) => {
-
       const diff =
         Math.abs(
           new Date(item.time).getTime()
           -
           now
         );
-
-
       if (
         diff < closestDiff
       ) {
-
         closestDiff = diff;
         currentIndex = index;
-
       }
-
     }
   );
-
-
   const currentX =
     padding +
     currentIndex /
@@ -2560,8 +2588,6 @@ function drawTideGraph(
       1
     ) *
     (width-padding*2);
-
-
   const interpolated =
     interpolateTide(
       validPairs.map(
@@ -2571,16 +2597,12 @@ function drawTideGraph(
         item => item.level
       )
     );
-
-
   const currentLevel =
     Number.isFinite(
       interpolated
     )
       ? interpolated
       : validPairs[currentIndex].level;
-
-
   const currentY =
     height -
     padding -
@@ -2589,52 +2611,36 @@ function drawTideGraph(
       range
     ) *
     (height-padding*2);
-
-
   const nowLine =
     document.getElementById(
       "tideNow"
     );
-
-
   nowLine.setAttribute(
     "x1",
     currentX
   );
-
   nowLine.setAttribute(
     "x2",
     currentX
   );
-
-
   const nowDot =
     document.getElementById(
       "tideNowDot"
     );
-
-
   nowDot.setAttribute(
     "cx",
     currentX
   );
-
   nowDot.setAttribute(
     "cy",
     currentY
   );
-
-
   document.getElementById(
     "currentTide"
   ).textContent =
     Math.round(
       currentLevel * 100
     );
-
-
-  /* HIGH / LOW POINTS */
-
   const extremes =
     findTideExtremes(
       validPairs.map(
@@ -2644,20 +2650,13 @@ function drawTideGraph(
         x => x.level
       )
     );
-
-
   const pointGroup =
     document.getElementById(
       "tideExtremePoints"
     );
-
-
   pointGroup.innerHTML = "";
-
-
   extremes.forEach(
     extreme => {
-
       const x =
         padding +
         extreme.index /
@@ -2666,8 +2665,6 @@ function drawTideGraph(
           1
         ) *
         (width-padding*2);
-
-
       const y =
         height -
         padding -
@@ -2676,346 +2673,387 @@ function drawTideGraph(
           range
         ) *
         (height-padding*2);
-
-
       const circle =
         document.createElementNS(
           "http://www.w3.org/2000/svg",
           "circle"
         );
-
-
       circle.setAttribute(
         "cx",
         x
       );
-
       circle.setAttribute(
         "cy",
         y
       );
-
       circle.setAttribute(
         "r",
         4
       );
-
       circle.setAttribute(
         "class",
         extreme.type === "high"
           ? "tide-point-high"
           : "tide-point-low"
       );
-
-
       const text =
         document.createElementNS(
           "http://www.w3.org/2000/svg",
           "text"
         );
-
-
       text.setAttribute(
         "x",
         x
       );
-
       text.setAttribute(
         "y",
         extreme.type === "high"
           ? y - 8
           : y + 16
       );
-
       text.setAttribute(
         "text-anchor",
         "middle"
       );
-
       text.setAttribute(
         "class",
         "tide-point-label"
       );
-
-
       text.textContent =
         Math.round(
           extreme.level * 100
         ) + "cm";
-
-
       pointGroup.appendChild(
         circle
       );
-
       pointGroup.appendChild(
         text
       );
-
     }
   );
-
-
   return extremes;
-
 }
-
-
 /* =========================
    TIDE TYPE
 ========================= */
-
 function getTideType(
   levels
 ) {
-
   if (
     !levels ||
     !levels.length
   ) {
     return "潮回り判定不可";
   }
-
-
   const valid =
     levels.filter(
       v =>
         Number.isFinite(v)
     );
-
-
   if (!valid.length) {
     return "潮回り判定不可";
   }
-
-
   const range =
     Math.max(...valid)
     -
     Math.min(...valid);
-
-
   if (range >= 1.5) {
     return "大潮";
   }
-
   if (range >= 1.0) {
     return "中潮";
   }
-
   if (range >= .6) {
     return "小潮";
   }
-
   return "長潮・若潮";
-
 }
-
-
 /* =========================
    NEXT HIGH / LOW
 ========================= */
-
 function setNextTide(
   allExtremes
 ) {
-
   const now =
     Date.now();
-
-
   const future =
     allExtremes.filter(
       item =>
         new Date(item.time)
           .getTime() > now
     );
-
-
   const nextHigh =
     future.find(
       item =>
         item.type === "high"
     );
-
-
   const nextLow =
     future.find(
       item =>
         item.type === "low"
     );
-
-
   if (nextHigh) {
-
     document.getElementById(
       "nextHigh"
     ).textContent =
       formatTime(
         nextHigh.time
       );
-
-
     document.getElementById(
       "nextHighHeight"
     ).textContent =
       Math.round(
         nextHigh.level * 100
       ) + " cm";
-
   }
-
-
   if (nextLow) {
-
     document.getElementById(
       "nextLow"
     ).textContent =
       formatTime(
         nextLow.time
       );
-
-
     document.getElementById(
       "nextLowHeight"
     ).textContent =
       Math.round(
         nextLow.level * 100
       ) + " cm";
-
   }
-
 }
-
-
 /* =========================
    MENU
 ========================= */
-
 function toggleSpots() {
-
   const menu =
     document.getElementById(
       "spotMenu"
     );
-
-
   menu.style.display =
     menu.style.display === "block"
       ? "none"
       : "block";
-
 }
-
-
 function selectSpot(
   spot
 ) {
-
   document.getElementById(
     "selectedSpot"
   ).textContent =
     spot;
-
-
   document.getElementById(
     "spotMenu"
   ).style.display =
     "none";
-
-
   loadData(spot);
-
 }
-
-
+/* =========================
+   CONDITION SWIPE
+========================= */
+let conditionPage =
+  0;
+function setConditionPage(
+  page
+) {
+  conditionPage =
+    page === 1
+      ? 1
+      : 0;
+  const track =
+    document.getElementById(
+      "conditionTrack"
+    );
+  track.style.transform =
+    conditionPage === 1
+      ? "translateX(-50%)"
+      : "translateX(0)";
+  document.getElementById(
+    "swipeDotToday"
+  ).classList.toggle(
+    "active",
+    conditionPage === 0
+  );
+  document.getElementById(
+    "swipeDotTomorrow"
+  ).classList.toggle(
+    "active",
+    conditionPage === 1
+  );
+}
+function setupConditionSwipe() {
+  const area =
+    document.getElementById(
+      "conditionSwipe"
+    );
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+  area.addEventListener(
+    "touchstart",
+    event => {
+      if (
+        !event.touches ||
+        !event.touches.length
+      ) {
+        return;
+      }
+      startX =
+        event.touches[0].clientX;
+      startY =
+        event.touches[0].clientY;
+      isDragging = true;
+    },
+    {
+      passive: true
+    }
+  );
+  area.addEventListener(
+    "touchend",
+    event => {
+      if (!isDragging) {
+        return;
+      }
+      isDragging = false;
+      if (
+        !event.changedTouches ||
+        !event.changedTouches.length
+      ) {
+        return;
+      }
+      const endX =
+        event.changedTouches[0].clientX;
+      const endY =
+        event.changedTouches[0].clientY;
+      const deltaX =
+        endX - startX;
+      const deltaY =
+        endY - startY;
+      /*
+        縦スクロールより
+        横移動が明確な場合だけ
+        スワイプ判定
+      */
+      if (
+        Math.abs(deltaX) < 50 ||
+        Math.abs(deltaX) < Math.abs(deltaY)
+      ) {
+        return;
+      }
+      if (
+        deltaX < 0
+      ) {
+        setConditionPage(1);
+      } else {
+        setConditionPage(0);
+      }
+    },
+    {
+      passive: true
+    }
+  );
+  /*
+    PCでも確認できるよう
+    マウスドラッグにも対応
+  */
+  area.addEventListener(
+    "mousedown",
+    event => {
+      startX =
+        event.clientX;
+      startY =
+        event.clientY;
+      isDragging = true;
+    }
+  );
+  area.addEventListener(
+    "mouseup",
+    event => {
+      if (!isDragging) {
+        return;
+      }
+      isDragging = false;
+      const deltaX =
+        event.clientX - startX;
+      const deltaY =
+        event.clientY - startY;
+      if (
+        Math.abs(deltaX) < 50 ||
+        Math.abs(deltaX) < Math.abs(deltaY)
+      ) {
+        return;
+      }
+      if (
+        deltaX < 0
+      ) {
+        setConditionPage(1);
+      } else {
+        setConditionPage(0);
+      }
+    }
+  );
+}
 /* =========================
    MAIN DATA
 ========================= */
-
 async function loadData(
   spot
 ) {
-
   const location =
     spots[spot];
-
-
   if (!location) {
     return;
   }
-
-
   document.getElementById(
     "condition"
   ).textContent =
     "読み込み中...";
-
-
+  document.getElementById(
+    "tomorrowCondition"
+  ).textContent =
+    "読み込み中...";
   try {
-
     const marineUrl =
-
       "https://marine-api.open-meteo.com/v1/marine" +
-
       "?latitude=" +
       location.latitude +
-
       "&longitude=" +
       location.longitude +
-
       "&current=" +
       "wave_height," +
       "wave_direction," +
       "wave_period," +
       "sea_level_height_msl," +
       "sea_surface_temperature" +
-
       "&hourly=" +
       "wave_height," +
       "wave_direction," +
       "wave_period," +
       "sea_level_height_msl," +
       "sea_surface_temperature" +
-
       "&forecast_days=2" +
-
       "&timezone=Asia%2FTokyo";
-
-
     const weatherUrl =
-
       "https://api.open-meteo.com/v1/forecast" +
-
       "?latitude=" +
       location.latitude +
-
       "&longitude=" +
       location.longitude +
-
       "&current=" +
       "wind_speed_10m," +
       "wind_direction_10m," +
       "temperature_2m," +
       "weather_code" +
-
       "&hourly=" +
       "temperature_2m," +
       "weather_code," +
       "precipitation_probability," +
       "wind_speed_10m," +
       "wind_direction_10m" +
-
       "&daily=" +
       "sunrise,sunset" +
-
       "&forecast_days=2" +
-
       "&wind_speed_unit=ms" +
-
       "&timezone=Asia%2FTokyo";
-
-
     const [
       marineResponse,
       weatherResponse
@@ -3024,8 +3062,6 @@ async function loadData(
         fetch(marineUrl),
         fetch(weatherUrl)
       ]);
-
-
     if (
       !marineResponse.ok ||
       !weatherResponse.ok
@@ -3034,146 +3070,96 @@ async function loadData(
         "API request failed"
       );
     }
-
-
     const marine =
       await marineResponse.json();
-
-
     const weather =
       await weatherResponse.json();
-
-
     /* =========================
        WAVE
     ========================= */
-
     const waveHeight =
       marine.current.wave_height;
-
-
     const wavePeriod =
       marine.current.wave_period;
-
-
     const waveDirection =
       marine.current.wave_direction;
-
-
     window.currentWaveHeight =
       waveHeight;
-
-
     window.currentWavePeriod =
       wavePeriod;
-
-
     document.getElementById(
       "waveHeight"
     ).textContent =
       Number.isFinite(waveHeight)
         ? waveHeight.toFixed(2) + " m"
         : "--";
-
-
     document.getElementById(
       "wavePeriod"
     ).textContent =
       Number.isFinite(wavePeriod)
         ? wavePeriod.toFixed(1) + " 秒"
         : "--";
-
-
     document.getElementById(
       "waveDirection"
     ).textContent =
       Number.isFinite(waveDirection)
         ? getDirection(waveDirection)
         : "--";
-
-
     /* =========================
        HUMAN WAVE
     ========================= */
-
     if (
       Number.isFinite(waveHeight)
     ) {
-
       const human =
         humanWave(
           waveHeight
         );
-
-
       document.getElementById(
         "humanWave"
       ).textContent =
         human[0];
-
-
       document.getElementById(
         "humanWaveReason"
       ).textContent =
         human[1];
-
     }
-
-
     /* =========================
        WATER TEMP
     ========================= */
-
     const waterTemp =
       marine.current
         .sea_surface_temperature;
-
-
     document.getElementById(
       "waterTemp"
     ).textContent =
       Number.isFinite(waterTemp)
         ? waterTemp.toFixed(1) + " °C"
         : "--";
-
-
     /* =========================
        WIND CURRENT
     ========================= */
-
     const windSpeed =
       weather.current
         .wind_speed_10m;
-
-
     const windDirection =
       weather.current
         .wind_direction_10m;
-
-
     window.currentWindSpeed =
       windSpeed;
-
-
     const windResult =
       getWindCondition(
         windDirection,
         location
       );
-
-
     window.currentWindCondition =
       windResult.label;
-
-
     document.getElementById(
       "windSpeed"
     ).textContent =
       Number.isFinite(windSpeed)
         ? windSpeed.toFixed(1) + " m/s"
         : "--";
-
-
     document.getElementById(
       "windDirection"
     ).textContent =
@@ -3182,147 +3168,115 @@ async function loadData(
             windDirection
           )
         : "--";
-
-
     const conditionElement =
       document.getElementById(
         "windCondition"
       );
-
-
     conditionElement.textContent =
       windResult.label;
-
-
     conditionElement.className =
       "wind-condition " +
       windResult.className;
-
-
     /* =========================
        SUN
     ========================= */
-
     document.getElementById(
       "sunrise"
     ).textContent =
       formatTime(
         weather.daily.sunrise[0]
       );
-
-
     document.getElementById(
       "sunset"
     ).textContent =
       formatTime(
         weather.daily.sunset[0]
       );
-
-
     /* =========================
        HOURLY WEATHER
     ========================= */
-
     renderHourlyWeather(
       weather.hourly.time,
       weather.hourly.weather_code,
       weather.hourly.temperature_2m,
       weather.hourly.precipitation_probability
     );
-
-
     /* =========================
        HOURLY WIND
     ========================= */
-
     renderHourlyWind(
       weather.hourly.time,
       weather.hourly.wind_speed_10m,
       weather.hourly.wind_direction_10m,
       location
     );
-
-
+    /* =========================
+       TOMORROW
+    ========================= */
+    renderTomorrowData(
+      marine,
+      weather,
+      location
+    );
+    renderTomorrowWeather(
+      weather.hourly.time,
+      weather.hourly.weather_code,
+      weather.hourly.temperature_2m,
+      weather.hourly.precipitation_probability
+    );
+    renderTomorrowWind(
+      weather.hourly.time,
+      weather.hourly.wind_speed_10m,
+      weather.hourly.wind_direction_10m,
+      location
+    );
     /* =========================
        BOARD
     ========================= */
-
     renderBoards();
-
-
     /* =========================
        BEST TIME
     ========================= */
-
     const best =
       getBestTime(
         waveHeight,
         wavePeriod,
         windSpeed
       );
-
-
     document.getElementById(
       "bestTime"
     ).textContent =
       best[0];
-
-
     document.getElementById(
       "bestReason"
     ).textContent =
       best[1];
-
-
     /* =========================
        TIDE
     ========================= */
-
     const tideTimes =
       marine.hourly.time;
-
-
     const tideLevels =
       marine.hourly
         .sea_level_height_msl;
-
-
-    const todayExtremes =
-      drawTideGraph(
-        tideTimes,
-        tideLevels
-      );
-
-
-    /*
-      2日分のデータから
-      次の満潮・干潮を探す
-    */
-
+    drawTideGraph(
+      tideTimes,
+      tideLevels
+    );
     const allExtremes =
       findTideExtremes(
         tideTimes,
         tideLevels
       );
-
-
     if (allExtremes.length) {
-
       setNextTide(
         allExtremes
       );
-
     }
-
-
-    /*
-      今日の潮位レンジから
-      潮回りを簡易判定
-    */
-
+    /* =========================
+       TIDE TYPE
+    ========================= */
     const todayLevels = [];
-
-
     for (
       let i = 0;
       i <
@@ -3332,7 +3286,6 @@ async function loadData(
       );
       i++
     ) {
-
       const localDate =
         new Date(
           tideTimes[i]
@@ -3342,107 +3295,74 @@ async function loadData(
             timeZone: "Asia/Tokyo"
           }
         );
-
-
       if (
         localDate === todayKey() &&
         Number.isFinite(
           tideLevels[i]
         )
       ) {
-
         todayLevels.push(
           tideLevels[i]
         );
-
       }
-
     }
-
-
     document.getElementById(
       "tideType"
     ).textContent =
       getTideType(
         todayLevels
       );
-
-
     /* =========================
        CONDITION
     ========================= */
-
     document.getElementById(
       "condition"
     ).textContent =
       "現在のコンディション";
-
-
     document.getElementById(
       "status"
     ).textContent =
       `${spot}の最新データを表示中`;
-
   }
-
-
   catch(error) {
-
     console.error(error);
-
-
     document.getElementById(
       "condition"
     ).textContent =
       "取得エラー";
-
-
+    document.getElementById(
+      "tomorrowCondition"
+    ).textContent =
+      "取得エラー";
     document.getElementById(
       "status"
     ).textContent =
       "データ取得に失敗しました";
-
   }
-
 }
-
-
 /* =========================
    INITIAL
 ========================= */
-
 renderBoards();
-
+setupConditionSwipe();
 loadData(
   "辻堂"
 );
-
-
 /* =========================
    AUTO UPDATE
 ========================= */
-
 setInterval(
-
   () => {
-
     const spot =
       document.getElementById(
         "selectedSpot"
       ).textContent;
-
-
     loadData(
       spot
     );
-
   },
-
   30 * 60 * 1000
-
 );
-
 </script>
-
 </body>
 </html>
