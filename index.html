@@ -148,6 +148,35 @@ body {
 }
 
 
+/* 天気 */
+
+.weather-row {
+  margin-top: 10px;
+  background: #f0f8f7;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-title {
+  font-size: 11px;
+  color: #648086;
+}
+
+.weather-value {
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 850;
+  color: #17343a;
+}
+
+.weather-icon {
+  font-size: 34px;
+}
+
+
 /* =========================
    WIND
 ========================= */
@@ -282,6 +311,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.board-card:active {
+  transform: scale(.97);
+  background: #e4f2f1;
 }
 
 .board-card:last-child {
@@ -291,6 +328,86 @@ body {
 .board-name {
   font-size: 16px;
   font-weight: 850;
+}
+
+
+/* =========================
+   BOARD POPUP
+========================= */
+
+.board-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(23,52,58,.45);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.board-modal.active {
+  display: flex;
+}
+
+.board-modal-content {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 15px 45px rgba(23,52,58,.20);
+  animation: boardPopup .18s ease-out;
+}
+
+@keyframes boardPopup {
+
+  from {
+    opacity: 0;
+    transform: scale(.94) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+}
+
+.board-modal-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #648086;
+  letter-spacing: .8px;
+}
+
+.board-modal-title {
+  margin-top: 6px;
+  font-size: 27px;
+  font-weight: 900;
+  color: #176b70;
+}
+
+.board-modal-tip {
+  margin-top: 16px;
+  background: #f0f8f7;
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #17343a;
+}
+
+.board-modal-close {
+  width: 100%;
+  margin-top: 15px;
+  border: none;
+  border-radius: 14px;
+  padding: 13px;
+  background: #176b70;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 
@@ -547,13 +664,6 @@ body {
     現在のコンディション
   </div>
 
-  <div
-    class="condition"
-    id="condition"
-  >
-    読み込み中...
-  </div>
-
 
   <!-- WAVE -->
 
@@ -626,6 +736,32 @@ body {
       sunset
       <strong id="sunset">--:--</strong>
     </span>
+
+  </div>
+
+  <div class="weather-row">
+
+    <div>
+
+      <div class="weather-title">
+        現在の天気
+      </div>
+
+      <div
+        class="weather-value"
+        id="weatherText"
+      >
+        --
+      </div>
+
+    </div>
+
+    <div
+      class="weather-icon"
+      id="weatherIcon"
+    >
+      ☀️
+    </div>
 
   </div>
 
@@ -717,6 +853,51 @@ body {
     class="board-list"
     id="boardList"
   ></div>
+
+</div>
+
+
+<!-- =========================
+     BOARD POPUP
+========================= -->
+
+<div
+  class="board-modal"
+  id="boardModal"
+  onclick="closeBoardModal(event)"
+>
+
+  <div
+    class="board-modal-content"
+    onclick="event.stopPropagation()"
+  >
+
+    <div class="board-modal-label">
+      BOARD TIP
+    </div>
+
+    <div
+      class="board-modal-title"
+      id="boardModalTitle"
+    >
+      --
+    </div>
+
+    <div
+      class="board-modal-tip"
+      id="boardModalTip"
+    >
+      --
+    </div>
+
+    <button
+      class="board-modal-close"
+      onclick="closeBoardModal()"
+    >
+      閉じる
+    </button>
+
+  </div>
 
 </div>
 
@@ -979,27 +1160,37 @@ const boards = [
 
   {
     id: "long",
-    name: "ロング"
+    name: "ロング",
+    tip:
+      "波が小さい時は、まずしっかりパドルでスピードを作る。テイクオフ後は急いで動かず、前足でボードを走らせる意識。"
   },
 
   {
     id: "mid",
-    name: "ミッド"
+    name: "ミッド",
+    tip:
+      "小〜中サイズでは早めのテイクオフを意識。波のポケットに入りすぎず、広いラインを使ってスピードをキープ。"
   },
 
   {
     id: "fish",
-    name: "フィッシュ"
+    name: "フィッシュ",
+    tip:
+      "小波では横に走るより、まずスピードを落とさないことが重要。レールを深く入れすぎず、波の力を使って軽くターン。"
   },
 
   {
     id: "allround",
-    name: "オールラウンド"
+    name: "オールラウンド",
+    tip:
+      "テイクオフ後は波のフェイスを見ながらラインを選択。スピードをつけてからターンを入れると安定しやすい。"
   },
 
   {
     id: "performance",
-    name: "パフォーマンス"
+    name: "パフォーマンス",
+    tip:
+      "サイズのある波では、深いボトムターンから縦方向へ。最初から動きすぎず、波のポケットを狙ってラインを組み立てる。"
   }
 
 ];
@@ -1029,6 +1220,11 @@ function renderBoards(selected) {
       </div>
     `;
 
+    card.addEventListener(
+      "click",
+      () => openBoardModal(board)
+    );
+
     list.appendChild(card);
 
   });
@@ -1037,30 +1233,43 @@ function renderBoards(selected) {
 
 
 /* =========================
-   BOARD SELECT
+   BOARD POPUP
 ========================= */
 
-function getRecommendedBoard(height, period) {
+function openBoardModal(board) {
 
-  if (height < 0.35) return "long";
+  document.getElementById(
+    "boardModalTitle"
+  ).textContent =
+    board.name;
 
-  if (height < 0.50) return "mid";
 
-  if (height < 0.75) return "fish";
+  document.getElementById(
+    "boardModalTip"
+  ).textContent =
+    board.tip;
 
-  if (height < 1.20) {
 
-    if (period >= 9) {
-      return "allround";
-    }
+  document.getElementById(
+    "boardModal"
+  ).classList.add("active");
 
-    return "fish";
+}
 
+
+function closeBoardModal(event) {
+
+  if (
+    event &&
+    event.target !==
+    document.getElementById("boardModal")
+  ) {
+    return;
   }
 
-  if (height < 1.70) return "allround";
-
-  return "performance";
+  document.getElementById(
+    "boardModal"
+  ).classList.remove("active");
 
 }
 
@@ -1251,6 +1460,50 @@ function getBestTime(
     "07:00〜10:00",
     "現在はプロトタイプの時間帯判定です。"
   ];
+
+}
+
+
+/* =========================
+   WEATHER
+========================= */
+
+function getWeatherInfo(code) {
+
+  const weatherMap = {
+
+    0:  ["快晴", "☀️"],
+
+    1:  ["晴れ", "🌤️"],
+    2:  ["くもり時々晴れ", "⛅"],
+    3:  ["くもり", "☁️"],
+
+    45: ["霧", "🌫️"],
+    48: ["霧", "🌫️"],
+
+    51: ["弱い霧雨", "🌦️"],
+    53: ["霧雨", "🌦️"],
+    55: ["強い霧雨", "🌧️"],
+
+    61: ["弱い雨", "🌦️"],
+    63: ["雨", "🌧️"],
+    65: ["強い雨", "🌧️"],
+
+    71: ["弱い雪", "🌨️"],
+    73: ["雪", "🌨️"],
+    75: ["強い雪", "❄️"],
+
+    80: ["にわか雨", "🌦️"],
+    81: ["雨", "🌧️"],
+    82: ["強いにわか雨", "⛈️"],
+
+    95: ["雷雨", "⛈️"],
+    96: ["雷雨・ひょう", "⛈️"],
+    99: ["雷雨・ひょう", "⛈️"]
+
+  };
+
+  return weatherMap[code] || ["不明", "🌤️"];
 
 }
 
@@ -1966,9 +2219,9 @@ async function loadData(spot) {
 
 
   document.getElementById(
-    "condition"
+    "status"
   ).textContent =
-    "読み込み中...";
+    "現在のデータを取得しています...";
 
 
   try {
@@ -2014,7 +2267,8 @@ async function loadData(spot) {
 
       "&current=" +
       "wind_speed_10m," +
-      "wind_direction_10m" +
+      "wind_direction_10m," +
+      "weather_code" +
 
       "&daily=" +
       "sunrise,sunset" +
@@ -2218,6 +2472,30 @@ async function loadData(spot) {
 
 
     /* =========================
+       WEATHER
+    ========================= */
+
+    const weatherCode =
+      weather.current.weather_code;
+
+
+    const weatherInfo =
+      getWeatherInfo(weatherCode);
+
+
+    document.getElementById(
+      "weatherText"
+    ).textContent =
+      weatherInfo[0];
+
+
+    document.getElementById(
+      "weatherIcon"
+    ).textContent =
+      weatherInfo[1];
+
+
+    /* =========================
        BOARD
     ========================= */
 
@@ -2290,14 +2568,8 @@ async function loadData(spot) {
 
 
     /* =========================
-       CONDITION
+       STATUS
     ========================= */
-
-    document.getElementById(
-      "condition"
-    ).textContent =
-      "現在のコンディション";
-
 
     document.getElementById(
       "status"
@@ -2310,12 +2582,6 @@ async function loadData(spot) {
   catch(error) {
 
     console.error(error);
-
-
-    document.getElementById(
-      "condition"
-    ).textContent =
-      "取得エラー";
 
 
     document.getElementById(
