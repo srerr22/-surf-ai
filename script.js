@@ -7,9 +7,7 @@ const spots = {
   "辻堂": {
     latitude: 35.318333,
     longitude: 139.453056,
-
     beachDirection: 202,
-
     offshoreFrom: 22.5,
     offshoreRange: 30
   },
@@ -17,9 +15,7 @@ const spots = {
   "鵠沼": {
     latitude: 35.314861,
     longitude: 139.470889,
-
     beachDirection: 195,
-
     offshoreFrom: 22.5,
     offshoreRange: 30
   },
@@ -27,9 +23,7 @@ const spots = {
   "由比ヶ浜": {
     latitude: 35.309444,
     longitude: 139.537778,
-
     beachDirection: 157,
-
     offshoreFrom: 22.5,
     offshoreRange: 30
   },
@@ -37,9 +31,7 @@ const spots = {
   "鴨川": {
     latitude: 35.120797,
     longitude: 140.132091,
-
     beachDirection: 157,
-
     offshoreFrom: 337.5,
     offshoreRange: 30
   },
@@ -47,9 +39,7 @@ const spots = {
   "平砂浦": {
     latitude: 34.943784,
     longitude: 139.810939,
-
     beachDirection: 202,
-
     offshoreFrom: 45,
     offshoreRange: 30
   }
@@ -62,32 +52,11 @@ const spots = {
 ========================= */
 
 const boards = [
-
-  {
-    id: "long",
-    name: "ロング"
-  },
-
-  {
-    id: "mid",
-    name: "ミッド"
-  },
-
-  {
-    id: "fish",
-    name: "フィッシュ"
-  },
-
-  {
-    id: "allround",
-    name: "オールラウンド"
-  },
-
-  {
-    id: "performance",
-    name: "パフォーマンス"
-  }
-
+  { id: "long", name: "ロング" },
+  { id: "mid", name: "ミッド" },
+  { id: "fish", name: "フィッシュ" },
+  { id: "allround", name: "オールラウンド" },
+  { id: "performance", name: "パフォーマンス" }
 ];
 
 
@@ -97,15 +66,13 @@ const boards = [
 
 function renderBoards() {
 
-  const list =
-    document.getElementById("boardList");
+  const list = document.getElementById("boardList");
 
   list.innerHTML = "";
 
   boards.forEach(board => {
 
-    const card =
-      document.createElement("button");
+    const card = document.createElement("button");
 
     card.className = "board-card";
 
@@ -115,9 +82,7 @@ function renderBoards() {
       </div>
     `;
 
-    card.onclick = () => {
-      openBoardModal(board.id);
-    };
+    card.onclick = () => openBoardModal(board.id);
 
     list.appendChild(card);
 
@@ -148,16 +113,13 @@ function getBoardAdvice(
       ? `${period.toFixed(1)}秒`
       : "--";
 
-
   const base =
     `現在の波は約${waveText}・周期${periodText}。`;
-
 
   const windText =
     windCondition
       ? `風は${windCondition}。`
       : "";
-
 
   const advice = {
 
@@ -178,7 +140,6 @@ function getBoardAdvice(
 
   };
 
-
   return advice[boardId] || "";
 }
 
@@ -190,12 +151,9 @@ function getBoardAdvice(
 function openBoardModal(boardId) {
 
   const board =
-    boards.find(
-      item => item.id === boardId
-    );
+    boards.find(item => item.id === boardId);
 
   if (!board) return;
-
 
   const height =
     window.currentWaveHeight;
@@ -209,16 +167,10 @@ function openBoardModal(boardId) {
   const windCondition =
     window.currentWindCondition;
 
-
-  document.getElementById(
-    "modalBoardName"
-  ).textContent =
+  document.getElementById("modalBoardName").textContent =
     board.name;
 
-
-  document.getElementById(
-    "modalCondition"
-  ).textContent =
+  document.getElementById("modalCondition").textContent =
     `現在の波 ${Number.isFinite(height) ? height.toFixed(2) + " m" : "--"}`
     +
     ` / 周期 ${Number.isFinite(period) ? period.toFixed(1) + " 秒" : "--"}`
@@ -227,10 +179,7 @@ function openBoardModal(boardId) {
     +
     ` / ${windCondition || "--"}`;
 
-
-  document.getElementById(
-    "modalAdvice"
-  ).textContent =
+  document.getElementById("modalAdvice").textContent =
     getBoardAdvice(
       board.id,
       height,
@@ -239,11 +188,7 @@ function openBoardModal(boardId) {
       windCondition
     );
 
-
-  document.getElementById(
-    "boardModal"
-  ).classList.add("show");
-
+  document.getElementById("boardModal").classList.add("show");
 }
 
 
@@ -251,16 +196,12 @@ function closeBoardModal(event) {
 
   if (
     event &&
-    event.target !==
-    document.getElementById("boardModal")
+    event.target !== document.getElementById("boardModal")
   ) {
     return;
   }
 
-  document.getElementById(
-    "boardModal"
-  ).classList.remove("show");
-
+  document.getElementById("boardModal").classList.remove("show");
 }
 
 
@@ -268,10 +209,7 @@ function closeBoardModal(event) {
    BOARD RECOMMENDATION
 ========================= */
 
-function getRecommendedBoard(
-  height,
-  period
-) {
+function getRecommendedBoard(height, period) {
 
   if (height < 0.35) return "long";
 
@@ -280,19 +218,16 @@ function getRecommendedBoard(
   if (height < 0.75) return "fish";
 
   if (height < 1.20) {
-
     if (period >= 9) {
       return "allround";
     }
 
     return "fish";
-
   }
 
   if (height < 1.70) return "allround";
 
   return "performance";
-
 }
 
 
@@ -328,7 +263,6 @@ function getDirection(degrees) {
   return directions[
     Math.round(degrees / 22.5) % 16
   ];
-
 }
 
 
@@ -336,17 +270,16 @@ function getDirection(degrees) {
    WIND CONDITION
 ========================= */
 
-function angleDifference(a,b) {
+function angleDifference(a, b) {
 
   let diff =
-    Math.abs(a-b) % 360;
+    Math.abs(a - b) % 360;
 
   if (diff > 180) {
     diff = 360 - diff;
   }
 
   return diff;
-
 }
 
 
@@ -362,59 +295,40 @@ function getWindCondition(
     };
   }
 
-
   const diff =
     angleDifference(
       windDirection,
       spot.offshoreFrom
     );
 
-
   const offshoreRange =
     spot.offshoreRange || 30;
 
-
-  if (
-    diff <= offshoreRange
-  ) {
-
+  if (diff <= offshoreRange) {
     return {
       label: "オフショア",
       className: "wind-offshore"
     };
-
   }
 
-
-  if (
-    diff <= 75
-  ) {
-
+  if (diff <= 75) {
     return {
       label: "サイドオフ",
       className: "wind-sideoff"
     };
-
   }
 
-
-  if (
-    diff <= 120
-  ) {
-
+  if (diff <= 120) {
     return {
       label: "サイドオン",
       className: "wind-sideon"
     };
-
   }
-
 
   return {
     label: "オンショア",
     className: "wind-onshore"
   };
-
 }
 
 
@@ -424,60 +338,35 @@ function getWindCondition(
 
 function humanWave(height) {
 
-  if (height < .25) {
-    return [
-      "スネ〜ヒザ",
-      "かなり小さめの波"
-    ];
+  if (height < 0.25) {
+    return ["スネ〜ヒザ", "かなり小さめの波"];
   }
 
-  if (height < .45) {
-    return [
-      "ヒザ〜モモ",
-      "小波コンディション"
-    ];
+  if (height < 0.45) {
+    return ["ヒザ〜モモ", "小波コンディション"];
   }
 
-  if (height < .70) {
-    return [
-      "モモ〜腰",
-      "小〜中サイズ"
-    ];
+  if (height < 0.70) {
+    return ["モモ〜腰", "小〜中サイズ"];
   }
 
   if (height < 1.00) {
-    return [
-      "腰〜腹",
-      "十分なサイズ"
-    ];
+    return ["腰〜腹", "十分なサイズ"];
   }
 
   if (height < 1.30) {
-    return [
-      "腹〜胸",
-      "しっかりしたサイズ"
-    ];
+    return ["腹〜胸", "しっかりしたサイズ"];
   }
 
   if (height < 1.70) {
-    return [
-      "胸〜肩",
-      "サイズのある波"
-    ];
+    return ["胸〜肩", "サイズのある波"];
   }
 
   if (height < 2.20) {
-    return [
-      "頭前後",
-      "かなりサイズあり"
-    ];
+    return ["頭前後", "かなりサイズあり"];
   }
 
-  return [
-    "頭オーバー",
-    "大きなコンディション"
-  ];
-
+  return ["頭オーバー", "大きなコンディション"];
 }
 
 
@@ -493,10 +382,7 @@ function weatherIcon(code) {
 
   if (code === 0) return "☀️";
 
-  if (
-    code === 1 ||
-    code === 2
-  ) {
+  if (code === 1 || code === 2) {
     return "🌤️";
   }
 
@@ -504,49 +390,31 @@ function weatherIcon(code) {
     return "☁️";
   }
 
-  if (
-    code === 45 ||
-    code === 48
-  ) {
+  if (code === 45 || code === 48) {
     return "🌫️";
   }
 
-  if (
-    code >= 51 &&
-    code <= 57
-  ) {
+  if (code >= 51 && code <= 57) {
     return "🌦️";
   }
 
-  if (
-    code >= 61 &&
-    code <= 67
-  ) {
+  if (code >= 61 && code <= 67) {
     return "🌧️";
   }
 
-  if (
-    code >= 71 &&
-    code <= 77
-  ) {
+  if (code >= 71 && code <= 77) {
     return "❄️";
   }
 
-  if (
-    code >= 80 &&
-    code <= 82
-  ) {
+  if (code >= 80 && code <= 82) {
     return "🌧️";
   }
 
-  if (
-    code >= 95
-  ) {
+  if (code >= 95) {
     return "⛈️";
   }
 
   return "🌤️";
-
 }
 
 
@@ -558,14 +426,9 @@ function formatTime(time) {
 
   if (!time) return "--";
 
-  const date =
-    new Date(time);
+  const date = new Date(time);
 
-  if (
-    Number.isNaN(
-      date.getTime()
-    )
-  ) {
+  if (Number.isNaN(date.getTime())) {
     return "--";
   }
 
@@ -578,7 +441,6 @@ function formatTime(time) {
       timeZone: "Asia/Tokyo"
     }
   );
-
 }
 
 
@@ -588,19 +450,17 @@ function formatTime(time) {
 
 function todayKey() {
 
-  return new Date()
-    .toLocaleDateString(
-      "en-CA",
-      {
-        timeZone: "Asia/Tokyo"
-      }
-    );
-
+  return new Date().toLocaleDateString(
+    "en-CA",
+    {
+      timeZone: "Asia/Tokyo"
+    }
+  );
 }
 
 
 /* =========================
-   HOURLY WEATHER DISPLAY
+   HOURLY WEATHER
 ========================= */
 
 function renderHourlyWeather(
@@ -611,44 +471,24 @@ function renderHourlyWeather(
 ) {
 
   const container =
-    document.getElementById(
-      "weatherHourly"
-    );
+    document.getElementById("weatherHourly");
 
   container.innerHTML = "";
-
 
   if (!Array.isArray(times)) {
     return;
   }
 
+  const today = todayKey();
+  const now = Date.now();
 
-  const today =
-    todayKey();
+  for (let i = 0; i < times.length; i++) {
 
+    const date = new Date(times[i]);
 
-  const now =
-    Date.now();
-
-
-  for (
-    let i = 0;
-    i < times.length;
-    i++
-  ) {
-
-    const date =
-      new Date(times[i]);
-
-
-    if (
-      Number.isNaN(
-        date.getTime()
-      )
-    ) {
+    if (Number.isNaN(date.getTime())) {
       continue;
     }
-
 
     const localDate =
       date.toLocaleDateString(
@@ -658,21 +498,13 @@ function renderHourlyWeather(
         }
       );
 
-
-    if (
-      localDate !== today
-    ) {
+    if (localDate !== today) {
       continue;
     }
 
-
-    if (
-      date.getTime() <
-      now - 60 * 60 * 1000
-    ) {
+    if (date.getTime() < now - 60 * 60 * 1000) {
       continue;
     }
-
 
     const card =
       document.createElement("div");
@@ -680,33 +512,22 @@ function renderHourlyWeather(
     card.className =
       "hour-card" +
       (
-        Math.abs(
-          date.getTime() - now
-        ) < 60 * 60 * 1000
+        Math.abs(date.getTime() - now) < 60 * 60 * 1000
           ? " current"
           : ""
       );
 
-
     const temp =
       temperatures &&
-      Number.isFinite(
-        temperatures[i]
-      )
-        ? Math.round(
-            temperatures[i]
-          ) + "°"
+      Number.isFinite(temperatures[i])
+        ? Math.round(temperatures[i]) + "°"
         : "--";
-
 
     const rain =
       rainProbabilities &&
-      Number.isFinite(
-        rainProbabilities[i]
-      )
+      Number.isFinite(rainProbabilities[i])
         ? rainProbabilities[i] + "%"
         : "--";
-
 
     card.innerHTML = `
 
@@ -727,25 +548,21 @@ function renderHourlyWeather(
       </div>
 
       ${
-        Math.abs(
-          date.getTime() - now
-        ) < 60 * 60 * 1000
+        Math.abs(date.getTime() - now) < 60 * 60 * 1000
           ? `<div class="hour-label">現在</div>`
           : ""
       }
 
     `;
 
-
     container.appendChild(card);
-
   }
-
 }
 
 
 /* =========================
-   HOURLY WIND DISPLAY
+   HOURLY WIND
+   ★ 1時間ごと表示
 ========================= */
 
 function renderHourlyWind(
@@ -756,64 +573,55 @@ function renderHourlyWind(
 ) {
 
   const container =
-    document.getElementById(
-      "windHourly"
-    );
+    document.getElementById("windHourly");
 
   container.innerHTML = "";
-
 
   if (!Array.isArray(times)) {
     return;
   }
 
+  const today = todayKey();
+  const now = Date.now();
 
-  const now =
-    Date.now();
+  for (let i = 0; i < times.length; i++) {
 
+    const date = new Date(times[i]);
 
-  for (
-    let i = 0;
-    i < times.length;
-    i++
-  ) {
-
-    const date =
-      new Date(times[i]);
-
-
-    if (
-      Number.isNaN(
-        date.getTime()
-      )
-    ) {
+    if (Number.isNaN(date.getTime())) {
       continue;
     }
 
+    const localDate =
+      date.toLocaleDateString(
+        "en-CA",
+        {
+          timeZone: "Asia/Tokyo"
+        }
+      );
 
-    if (
-      date.getTime() <
-      now - 15 * 60 * 1000
-    ) {
+    if (localDate !== today) {
       continue;
     }
 
+    /*
+      現在時刻より前の時間を除外。
+      1時間ごとの予報を表示。
+    */
+
+    if (date.getTime() < now - 15 * 60 * 1000) {
+      continue;
+    }
 
     const speed =
-      Number.isFinite(
-        speeds[i]
-      )
+      Number.isFinite(speeds[i])
         ? speeds[i]
         : null;
 
-
     const direction =
-      Number.isFinite(
-        directions[i]
-      )
+      Number.isFinite(directions[i])
         ? directions[i]
         : null;
-
 
     const result =
       getWindCondition(
@@ -821,26 +629,21 @@ function renderHourlyWind(
         spot
       );
 
-
     const card =
       document.createElement("div");
 
     card.className =
       "wind-hour-card" +
       (
-        Math.abs(
-          date.getTime() - now
-        ) < 60 * 60 * 1000
+        Math.abs(date.getTime() - now) < 60 * 60 * 1000
           ? " current"
           : ""
       );
-
 
     const arrow =
       direction !== null
         ? getWindArrow(direction)
         : "•";
-
 
     card.innerHTML = `
 
@@ -872,11 +675,8 @@ function renderHourlyWind(
 
     `;
 
-
     container.appendChild(card);
-
   }
-
 }
 
 
@@ -884,9 +684,7 @@ function renderHourlyWind(
    WIND ARROW
 ========================= */
 
-function getWindArrow(
-  degrees
-) {
+function getWindArrow(degrees) {
 
   if (!Number.isFinite(degrees)) {
     return "•";
@@ -904,11 +702,8 @@ function getWindArrow(
   ];
 
   return arrows[
-    Math.round(
-      degrees / 45
-    ) % 8
+    Math.round(degrees / 45) % 8
   ];
-
 }
 
 
@@ -926,14 +721,13 @@ function getBestTime(
     Number.isFinite(windSpeed) &&
     windSpeed <= 5 &&
     Number.isFinite(height) &&
-    height >= .6
+    height >= 0.6
   ) {
 
     return [
       "07:00〜10:00",
       "波と風のバランスが良い時間帯として判定。"
     ];
-
   }
 
   if (
@@ -945,14 +739,12 @@ function getBestTime(
       "06:00〜09:00",
       "サイズがあるため、風が弱い時間帯を優先。"
     ];
-
   }
 
   return [
     "07:00〜10:00",
     "現在はプロトタイプの時間帯判定です。"
   ];
-
 }
 
 
@@ -967,30 +759,15 @@ function findTideExtremes(
 
   const result = [];
 
-  if (
-    !times ||
-    !levels ||
-    times.length < 3
-  ) {
+  if (!times || !levels || times.length < 3) {
     return result;
   }
 
+  for (let i = 1; i < levels.length - 1; i++) {
 
-  for (
-    let i = 1;
-    i < levels.length - 1;
-    i++
-  ) {
-
-    const current =
-      levels[i];
-
-    const previous =
-      levels[i - 1];
-
-    const next =
-      levels[i + 1];
-
+    const current = levels[i];
+    const previous = levels[i - 1];
+    const next = levels[i + 1];
 
     if (
       !Number.isFinite(current) ||
@@ -999,7 +776,6 @@ function findTideExtremes(
     ) {
       continue;
     }
-
 
     if (
       current > previous &&
@@ -1012,9 +788,7 @@ function findTideExtremes(
         time: times[i],
         level: current
       });
-
     }
-
 
     if (
       current < previous &&
@@ -1027,14 +801,10 @@ function findTideExtremes(
         time: times[i],
         level: current
       });
-
     }
-
   }
 
-
   return result;
-
 }
 
 
@@ -1047,15 +817,9 @@ function interpolateTide(
   levels
 ) {
 
-  const now =
-    Date.now();
+  const now = Date.now();
 
-
-  for (
-    let i = 0;
-    i < times.length - 1;
-    i++
-  ) {
+  for (let i = 0; i < times.length - 1; i++) {
 
     const t1 =
       new Date(times[i]).getTime();
@@ -1063,18 +827,10 @@ function interpolateTide(
     const t2 =
       new Date(times[i + 1]).getTime();
 
+    if (now >= t1 && now <= t2) {
 
-    if (
-      now >= t1 &&
-      now <= t2
-    ) {
-
-      const l1 =
-        levels[i];
-
-      const l2 =
-        levels[i + 1];
-
+      const l1 = levels[i];
+      const l2 = levels[i + 1];
 
       if (
         Number.isFinite(l1) &&
@@ -1085,22 +841,12 @@ function interpolateTide(
           (now - t1) /
           (t2 - t1);
 
-
-        return (
-          l1 +
-          (l2 - l1) *
-          ratio
-        );
-
+        return l1 + (l2 - l1) * ratio;
       }
-
     }
-
   }
 
-
   return null;
-
 }
 
 
@@ -1120,37 +866,23 @@ function drawTideGraph(
     return null;
   }
 
-
-  const today =
-    todayKey();
-
-
+  const today = todayKey();
   const validPairs = [];
-
 
   for (
     let i = 0;
-    i <
-    Math.min(
-      allTimes.length,
-      allLevels.length
-    );
+    i < Math.min(allTimes.length, allLevels.length);
     i++
   ) {
 
     if (
       !allTimes[i] ||
-      !Number.isFinite(
-        allLevels[i]
-      )
+      !Number.isFinite(allLevels[i])
     ) {
       continue;
     }
 
-
-    const date =
-      new Date(allTimes[i]);
-
+    const date = new Date(allTimes[i]);
 
     const localDate =
       date.toLocaleDateString(
@@ -1160,112 +892,70 @@ function drawTideGraph(
         }
       );
 
-
-    if (
-      localDate === today
-    ) {
+    if (localDate === today) {
 
       validPairs.push({
         time: allTimes[i],
         level: allLevels[i]
       });
-
     }
-
   }
 
-
-  if (
-    validPairs.length < 2
-  ) {
+  if (validPairs.length < 2) {
     return null;
   }
-
 
   const width = 400;
   const height = 205;
   const padding = 8;
 
-
   const validLevels =
-    validPairs.map(
-      item => item.level
-    );
+    validPairs.map(item => item.level);
 
-
-  let min =
-    Math.min(
-      ...validLevels
-    );
-
-  let max =
-    Math.max(
-      ...validLevels
-    );
-
+  let min = Math.min(...validLevels);
+  let max = Math.max(...validLevels);
 
   const margin =
     Math.max(
-      (max - min) * .12,
-      .10
+      (max - min) * 0.12,
+      0.10
     );
-
 
   min -= margin;
   max += margin;
 
-
-  const range =
-    max - min || 1;
-
-
+  const range = max - min || 1;
   const points = [];
 
+  validPairs.forEach((item, index) => {
 
-  validPairs.forEach(
-    (item,index) => {
+    const x =
+      padding +
+      index /
+      Math.max(validPairs.length - 1, 1) *
+      (width - padding * 2);
 
-      const x =
-        padding +
-        index /
-        Math.max(
-          validPairs.length - 1,
-          1
-        ) *
-        (width - padding * 2);
+    const y =
+      height -
+      padding -
+      (
+        (item.level - min) /
+        range
+      ) *
+      (height - padding * 2);
 
+    points.push(
+      x.toFixed(1) +
+      "," +
+      y.toFixed(1)
+    );
+  });
 
-      const y =
-        height -
-        padding -
-        (
-          (item.level - min) /
-          range
-        ) *
-        (height-padding*2);
-
-
-      points.push(
-        x.toFixed(1) +
-        "," +
-        y.toFixed(1)
-      );
-
-    }
-  );
-
-
-  const pointString =
-    points.join(" ");
-
+  const pointString = points.join(" ");
 
   document
     .getElementById("tideLine")
-    .setAttribute(
-      "points",
-      pointString
-    );
-
+    .setAttribute("points", pointString);
 
   document
     .getElementById("tideArea")
@@ -1280,51 +970,33 @@ function drawTideGraph(
 
   const indexes = [
     0,
-    Math.floor(
-      (validPairs.length-1)*.25
-    ),
-    Math.floor(
-      (validPairs.length-1)*.5
-    ),
-    Math.floor(
-      (validPairs.length-1)*.75
-    ),
-    validPairs.length-1
+    Math.floor((validPairs.length - 1) * 0.25),
+    Math.floor((validPairs.length - 1) * 0.5),
+    Math.floor((validPairs.length - 1) * 0.75),
+    validPairs.length - 1
   ];
 
+  indexes.forEach((index, i) => {
 
-  indexes.forEach(
-    (index,i) => {
+    const element =
+      document.getElementById("tideTime" + i);
 
-      const element =
-        document.getElementById(
-          "tideTime"+i
-        );
-
-
-      if (element) {
-
-        element.textContent =
-          formatTime(
-            validPairs[index].time
-          );
-
-      }
-
+    if (element) {
+      element.textContent =
+        formatTime(validPairs[index].time);
     }
-  );
+  });
 
 
   /* SCALE */
 
   const scaleValues = [
     max,
-    max - range*.25,
-    max - range*.50,
-    max - range*.75,
+    max - range * 0.25,
+    max - range * 0.50,
+    max - range * 0.75,
     min
   ];
-
 
   [
     "scaleTop",
@@ -1332,260 +1004,150 @@ function drawTideGraph(
     "scale50",
     "scale25",
     "scaleBottom"
-  ].forEach(
-    (id,index) => {
+  ].forEach((id, index) => {
 
-      document.getElementById(id)
-        .textContent =
-        Math.round(
-          scaleValues[index] * 100
-        ) + " cm";
+    document.getElementById(id).textContent =
+      Math.round(scaleValues[index] * 100) + " cm";
 
-    }
-  );
+  });
 
 
   /* CURRENT POSITION */
 
-  const now =
-    Date.now();
-
+  const now = Date.now();
 
   let currentIndex = 0;
-  let closestDiff =
-    Infinity;
+  let closestDiff = Infinity;
 
+  validPairs.forEach((item, index) => {
 
-  validPairs.forEach(
-    (item,index) => {
+    const diff =
+      Math.abs(
+        new Date(item.time).getTime() - now
+      );
 
-      const diff =
-        Math.abs(
-          new Date(item.time).getTime()
-          -
-          now
-        );
-
-
-      if (
-        diff < closestDiff
-      ) {
-
-        closestDiff = diff;
-        currentIndex = index;
-
-      }
-
+    if (diff < closestDiff) {
+      closestDiff = diff;
+      currentIndex = index;
     }
-  );
-
+  });
 
   const currentX =
     padding +
     currentIndex /
-    Math.max(
-      validPairs.length - 1,
-      1
-    ) *
-    (width-padding*2);
-
+    Math.max(validPairs.length - 1, 1) *
+    (width - padding * 2);
 
   const interpolated =
     interpolateTide(
-      validPairs.map(
-        item => item.time
-      ),
-      validPairs.map(
-        item => item.level
-      )
+      validPairs.map(item => item.time),
+      validPairs.map(item => item.level)
     );
 
-
   const currentLevel =
-    Number.isFinite(
-      interpolated
-    )
+    Number.isFinite(interpolated)
       ? interpolated
       : validPairs[currentIndex].level;
-
 
   const currentY =
     height -
     padding -
     (
-      (currentLevel-min) /
+      (currentLevel - min) /
       range
     ) *
-    (height-padding*2);
-
+    (height - padding * 2);
 
   const nowLine =
-    document.getElementById(
-      "tideNow"
-    );
+    document.getElementById("tideNow");
 
-
-  nowLine.setAttribute(
-    "x1",
-    currentX
-  );
-
-  nowLine.setAttribute(
-    "x2",
-    currentX
-  );
-
+  nowLine.setAttribute("x1", currentX);
+  nowLine.setAttribute("x2", currentX);
 
   const nowDot =
-    document.getElementById(
-      "tideNowDot"
-    );
+    document.getElementById("tideNowDot");
+
+  nowDot.setAttribute("cx", currentX);
+  nowDot.setAttribute("cy", currentY);
+
+  document.getElementById("currentTide").textContent =
+    Math.round(currentLevel * 100);
 
 
-  nowDot.setAttribute(
-    "cx",
-    currentX
-  );
-
-  nowDot.setAttribute(
-    "cy",
-    currentY
-  );
-
-
-  document.getElementById(
-    "currentTide"
-  ).textContent =
-    Math.round(
-      currentLevel * 100
-    );
-
-
-  /* HIGH / LOW POINTS */
+  /* HIGH / LOW */
 
   const extremes =
     findTideExtremes(
-      validPairs.map(
-        x => x.time
-      ),
-      validPairs.map(
-        x => x.level
-      )
+      validPairs.map(x => x.time),
+      validPairs.map(x => x.level)
     );
-
 
   const pointGroup =
-    document.getElementById(
-      "tideExtremePoints"
-    );
-
+    document.getElementById("tideExtremePoints");
 
   pointGroup.innerHTML = "";
 
+  extremes.forEach(extreme => {
 
-  extremes.forEach(
-    extreme => {
+    const x =
+      padding +
+      extreme.index /
+      Math.max(validPairs.length - 1, 1) *
+      (width - padding * 2);
 
-      const x =
-        padding +
-        extreme.index /
-        Math.max(
-          validPairs.length - 1,
-          1
-        ) *
-        (width-padding*2);
+    const y =
+      height -
+      padding -
+      (
+        (extreme.level - min) /
+        range
+      ) *
+      (height - padding * 2);
 
-
-      const y =
-        height -
-        padding -
-        (
-          (extreme.level-min) /
-          range
-        ) *
-        (height-padding*2);
-
-
-      const circle =
-        document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "circle"
-        );
-
-
-      circle.setAttribute(
-        "cx",
-        x
+    const circle =
+      document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
       );
 
-      circle.setAttribute(
-        "cy",
-        y
+    circle.setAttribute("cx", x);
+    circle.setAttribute("cy", y);
+    circle.setAttribute("r", 4);
+
+    circle.setAttribute(
+      "class",
+      extreme.type === "high"
+        ? "tide-point-high"
+        : "tide-point-low"
+    );
+
+    const text =
+      document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
       );
 
-      circle.setAttribute(
-        "r",
-        4
-      );
+    text.setAttribute("x", x);
 
-      circle.setAttribute(
-        "class",
-        extreme.type === "high"
-          ? "tide-point-high"
-          : "tide-point-low"
-      );
+    text.setAttribute(
+      "y",
+      extreme.type === "high"
+        ? y - 8
+        : y + 16
+    );
 
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("class", "tide-point-label");
 
-      const text =
-        document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "text"
-        );
+    text.textContent =
+      Math.round(extreme.level * 100) + "cm";
 
+    pointGroup.appendChild(circle);
+    pointGroup.appendChild(text);
 
-      text.setAttribute(
-        "x",
-        x
-      );
-
-      text.setAttribute(
-        "y",
-        extreme.type === "high"
-          ? y - 8
-          : y + 16
-      );
-
-      text.setAttribute(
-        "text-anchor",
-        "middle"
-      );
-
-      text.setAttribute(
-        "class",
-        "tide-point-label"
-      );
-
-
-      text.textContent =
-        Math.round(
-          extreme.level * 100
-        ) + "cm";
-
-
-      pointGroup.appendChild(
-        circle
-      );
-
-      pointGroup.appendChild(
-        text
-      );
-
-    }
-  );
-
+  });
 
   return extremes;
-
 }
 
 
@@ -1593,50 +1155,30 @@ function drawTideGraph(
    TIDE TYPE
 ========================= */
 
-function getTideType(
-  levels
-) {
+function getTideType(levels) {
 
-  if (
-    !levels ||
-    !levels.length
-  ) {
+  if (!levels || !levels.length) {
     return "潮回り判定不可";
   }
 
-
   const valid =
     levels.filter(
-      v =>
-        Number.isFinite(v)
+      v => Number.isFinite(v)
     );
-
 
   if (!valid.length) {
     return "潮回り判定不可";
   }
 
-
   const range =
-    Math.max(...valid)
-    -
+    Math.max(...valid) -
     Math.min(...valid);
 
-
-  if (range >= 1.5) {
-    return "大潮";
-  }
-
-  if (range >= 1.0) {
-    return "中潮";
-  }
-
-  if (range >= .6) {
-    return "小潮";
-  }
+  if (range >= 1.5) return "大潮";
+  if (range >= 1.0) return "中潮";
+  if (range >= 0.6) return "小潮";
 
   return "長潮・若潮";
-
 }
 
 
@@ -1644,75 +1186,43 @@ function getTideType(
    NEXT HIGH / LOW
 ========================= */
 
-function setNextTide(
-  allExtremes
-) {
+function setNextTide(allExtremes) {
 
-  const now =
-    Date.now();
-
+  const now = Date.now();
 
   const future =
     allExtremes.filter(
       item =>
-        new Date(item.time)
-          .getTime() > now
+        new Date(item.time).getTime() > now
     );
-
 
   const nextHigh =
     future.find(
-      item =>
-        item.type === "high"
+      item => item.type === "high"
     );
-
 
   const nextLow =
     future.find(
-      item =>
-        item.type === "low"
+      item => item.type === "low"
     );
-
 
   if (nextHigh) {
 
-    document.getElementById(
-      "nextHigh"
-    ).textContent =
-      formatTime(
-        nextHigh.time
-      );
+    document.getElementById("nextHigh").textContent =
+      formatTime(nextHigh.time);
 
-
-    document.getElementById(
-      "nextHighHeight"
-    ).textContent =
-      Math.round(
-        nextHigh.level * 100
-      ) + " cm";
-
+    document.getElementById("nextHighHeight").textContent =
+      Math.round(nextHigh.level * 100) + " cm";
   }
-
 
   if (nextLow) {
 
-    document.getElementById(
-      "nextLow"
-    ).textContent =
-      formatTime(
-        nextLow.time
-      );
+    document.getElementById("nextLow").textContent =
+      formatTime(nextLow.time);
 
-
-    document.getElementById(
-      "nextLowHeight"
-    ).textContent =
-      Math.round(
-        nextLow.level * 100
-      ) + " cm";
-
+    document.getElementById("nextLowHeight").textContent =
+      Math.round(nextLow.level * 100) + " cm";
   }
-
 }
 
 
@@ -1723,37 +1233,24 @@ function setNextTide(
 function toggleSpots() {
 
   const menu =
-    document.getElementById(
-      "spotMenu"
-    );
-
+    document.getElementById("spotMenu");
 
   menu.style.display =
     menu.style.display === "block"
       ? "none"
       : "block";
-
 }
 
 
-function selectSpot(
-  spot
-) {
+function selectSpot(spot) {
 
-  document.getElementById(
-    "selectedSpot"
-  ).textContent =
+  document.getElementById("selectedSpot").textContent =
     spot;
 
-
-  document.getElementById(
-    "spotMenu"
-  ).style.display =
+  document.getElementById("spotMenu").style.display =
     "none";
 
-
   loadData(spot);
-
 }
 
 
@@ -1761,86 +1258,58 @@ function selectSpot(
    MAIN DATA
 ========================= */
 
-async function loadData(
-  spot
-) {
+async function loadData(spot) {
 
-  const location =
-    spots[spot];
-
+  const location = spots[spot];
 
   if (!location) {
     return;
   }
 
-
-  document.getElementById(
-    "condition"
-  ).textContent =
+  document.getElementById("condition").textContent =
     "読み込み中...";
-
 
   try {
 
     const marineUrl =
-
       "https://marine-api.open-meteo.com/v1/marine" +
-
-      "?latitude=" +
-      location.latitude +
-
-      "&longitude=" +
-      location.longitude +
-
+      "?latitude=" + location.latitude +
+      "&longitude=" + location.longitude +
       "&current=" +
       "wave_height," +
       "wave_direction," +
       "wave_period," +
       "sea_level_height_msl," +
       "sea_surface_temperature" +
-
       "&hourly=" +
       "wave_height," +
       "wave_direction," +
       "wave_period," +
       "sea_level_height_msl," +
       "sea_surface_temperature" +
-
       "&forecast_days=2" +
-
       "&timezone=Asia%2FTokyo";
 
 
     const weatherUrl =
-
       "https://api.open-meteo.com/v1/forecast" +
-
-      "?latitude=" +
-      location.latitude +
-
-      "&longitude=" +
-      location.longitude +
-
+      "?latitude=" + location.latitude +
+      "&longitude=" + location.longitude +
       "&current=" +
       "wind_speed_10m," +
       "wind_direction_10m," +
       "temperature_2m," +
       "weather_code" +
-
       "&hourly=" +
       "temperature_2m," +
       "weather_code," +
       "precipitation_probability," +
       "wind_speed_10m," +
       "wind_direction_10m" +
-
       "&daily=" +
       "sunrise,sunset" +
-
       "&forecast_days=2" +
-
       "&wind_speed_unit=ms" +
-
       "&timezone=Asia%2FTokyo";
 
 
@@ -1858,198 +1327,130 @@ async function loadData(
       !marineResponse.ok ||
       !weatherResponse.ok
     ) {
-      throw new Error(
-        "API request failed"
-      );
+      throw new Error("API request failed");
     }
 
 
     const marine =
       await marineResponse.json();
 
-
     const weather =
       await weatherResponse.json();
 
 
-    /* =========================
-       WAVE
-    ========================= */
+    /* WAVE */
 
     const waveHeight =
       marine.current.wave_height;
 
-
     const wavePeriod =
       marine.current.wave_period;
-
 
     const waveDirection =
       marine.current.wave_direction;
 
-
     window.currentWaveHeight =
       waveHeight;
-
 
     window.currentWavePeriod =
       wavePeriod;
 
 
-    document.getElementById(
-      "waveHeight"
-    ).textContent =
+    document.getElementById("waveHeight").textContent =
       Number.isFinite(waveHeight)
         ? waveHeight.toFixed(2) + " m"
         : "--";
 
-
-    document.getElementById(
-      "wavePeriod"
-    ).textContent =
+    document.getElementById("wavePeriod").textContent =
       Number.isFinite(wavePeriod)
         ? wavePeriod.toFixed(1) + " 秒"
         : "--";
 
-
-    document.getElementById(
-      "waveDirection"
-    ).textContent =
+    document.getElementById("waveDirection").textContent =
       Number.isFinite(waveDirection)
         ? getDirection(waveDirection)
         : "--";
 
 
-    /* =========================
-       HUMAN WAVE
-    ========================= */
+    /* HUMAN WAVE */
 
-    if (
-      Number.isFinite(waveHeight)
-    ) {
+    if (Number.isFinite(waveHeight)) {
 
       const human =
-        humanWave(
-          waveHeight
-        );
+        humanWave(waveHeight);
 
-
-      document.getElementById(
-        "humanWave"
-      ).textContent =
+      document.getElementById("humanWave").textContent =
         human[0];
 
-
-      document.getElementById(
-        "humanWaveReason"
-      ).textContent =
+      document.getElementById("humanWaveReason").textContent =
         human[1];
-
     }
 
 
-    /* =========================
-       WATER TEMP
-    ========================= */
+    /* WATER TEMP */
 
     const waterTemp =
-      marine.current
-        .sea_surface_temperature;
+      marine.current.sea_surface_temperature;
 
-
-    document.getElementById(
-      "waterTemp"
-    ).textContent =
+    document.getElementById("waterTemp").textContent =
       Number.isFinite(waterTemp)
         ? waterTemp.toFixed(1) + " °C"
         : "--";
 
 
-    /* =========================
-       WIND CURRENT
-    ========================= */
+    /* CURRENT WIND */
 
     const windSpeed =
-      weather.current
-        .wind_speed_10m;
+      weather.current.wind_speed_10m;
 
-
-    const windDirection =
-      weather.current
-        .wind_direction_10m;
-
+    const currentWindDirection =
+      weather.current.wind_direction_10m;
 
     window.currentWindSpeed =
       windSpeed;
 
-
     const windResult =
       getWindCondition(
-        windDirection,
+        currentWindDirection,
         location
       );
-
 
     window.currentWindCondition =
       windResult.label;
 
 
-    document.getElementById(
-      "windSpeed"
-    ).textContent =
+    document.getElementById("windSpeed").textContent =
       Number.isFinite(windSpeed)
         ? windSpeed.toFixed(1) + " m/s"
         : "--";
 
-
-    document.getElementById(
-      "windDirection"
-    ).textContent =
-      Number.isFinite(windDirection)
-        ? getDirection(
-            windDirection
-          )
+    document.getElementById("windDirection").textContent =
+      Number.isFinite(currentWindDirection)
+        ? getDirection(currentWindDirection)
         : "--";
 
 
     const conditionElement =
-      document.getElementById(
-        "windCondition"
-      );
-
+      document.getElementById("windCondition");
 
     conditionElement.textContent =
       windResult.label;
-
 
     conditionElement.className =
       "wind-condition " +
       windResult.className;
 
 
-    /* =========================
-       SUN
-    ========================= */
+    /* SUN */
 
-    document.getElementById(
-      "sunrise"
-    ).textContent =
-      formatTime(
-        weather.daily.sunrise[0]
-      );
+    document.getElementById("sunrise").textContent =
+      formatTime(weather.daily.sunrise[0]);
+
+    document.getElementById("sunset").textContent =
+      formatTime(weather.daily.sunset[0]);
 
 
-    document.getElementById(
-      "sunset"
-    ).textContent =
-      formatTime(
-        weather.daily.sunset[0]
-      );
-
-
-    /* =========================
-       HOURLY WEATHER
-    ========================= */
+    /* WEATHER */
 
     renderHourlyWeather(
       weather.hourly.time,
@@ -2059,9 +1460,9 @@ async function loadData(
     );
 
 
-    /* =========================
-       HOURLY WIND
-    ========================= */
+    /* WIND
+       1時間ごと
+    */
 
     renderHourlyWind(
       weather.hourly.time,
@@ -2071,16 +1472,12 @@ async function loadData(
     );
 
 
-    /* =========================
-       BOARD
-    ========================= */
+    /* BOARD */
 
     renderBoards();
 
 
-    /* =========================
-       BEST TIME
-    ========================= */
+    /* BEST TIME */
 
     const best =
       getBestTime(
@@ -2089,38 +1486,25 @@ async function loadData(
         windSpeed
       );
 
-
-    document.getElementById(
-      "bestTime"
-    ).textContent =
+    document.getElementById("bestTime").textContent =
       best[0];
 
-
-    document.getElementById(
-      "bestReason"
-    ).textContent =
+    document.getElementById("bestReason").textContent =
       best[1];
 
 
-    /* =========================
-       TIDE
-    ========================= */
+    /* TIDE */
 
     const tideTimes =
       marine.hourly.time;
 
-
     const tideLevels =
-      marine.hourly
-        .sea_level_height_msl;
+      marine.hourly.sea_level_height_msl;
 
-
-    const todayExtremes =
-      drawTideGraph(
-        tideTimes,
-        tideLevels
-      );
-
+    drawTideGraph(
+      tideTimes,
+      tideLevels
+    );
 
     const allExtremes =
       findTideExtremes(
@@ -2128,23 +1512,18 @@ async function loadData(
         tideLevels
       );
 
-
     if (allExtremes.length) {
-
-      setNextTide(
-        allExtremes
-      );
-
+      setNextTide(allExtremes);
     }
 
 
-    const todayLevels = [];
+    /* TIDE TYPE */
 
+    const todayLevels = [];
 
     for (
       let i = 0;
-      i <
-      Math.min(
+      i < Math.min(
         tideTimes.length,
         tideLevels.length
       );
@@ -2152,76 +1531,46 @@ async function loadData(
     ) {
 
       const localDate =
-        new Date(
-          tideTimes[i]
-        ).toLocaleDateString(
-          "en-CA",
-          {
-            timeZone: "Asia/Tokyo"
-          }
-        );
-
+        new Date(tideTimes[i])
+          .toLocaleDateString(
+            "en-CA",
+            {
+              timeZone: "Asia/Tokyo"
+            }
+          );
 
       if (
         localDate === todayKey() &&
-        Number.isFinite(
-          tideLevels[i]
-        )
+        Number.isFinite(tideLevels[i])
       ) {
-
-        todayLevels.push(
-          tideLevels[i]
-        );
-
+        todayLevels.push(tideLevels[i]);
       }
-
     }
 
-
-    document.getElementById(
-      "tideType"
-    ).textContent =
-      getTideType(
-        todayLevels
-      );
+    document.getElementById("tideType").textContent =
+      getTideType(todayLevels);
 
 
-    /* =========================
-       CONDITION
-    ========================= */
+    /* CONDITION */
 
-    document.getElementById(
-      "condition"
-    ).textContent =
+    document.getElementById("condition").textContent =
       "現在のコンディション";
 
-
-    document.getElementById(
-      "status"
-    ).textContent =
+    document.getElementById("status").textContent =
       `${spot}の最新データを表示中`;
 
   }
 
-
-  catch(error) {
+  catch (error) {
 
     console.error(error);
 
-
-    document.getElementById(
-      "condition"
-    ).textContent =
+    document.getElementById("condition").textContent =
       "取得エラー";
 
-
-    document.getElementById(
-      "status"
-    ).textContent =
+    document.getElementById("status").textContent =
       "データ取得に失敗しました";
-
   }
-
 }
 
 
@@ -2231,31 +1580,18 @@ async function loadData(
 
 renderBoards();
 
-loadData(
-  "辻堂"
-);
+loadData("辻堂");
 
 
 /* =========================
    AUTO UPDATE
 ========================= */
 
-setInterval(
+setInterval(() => {
 
-  () => {
+  const spot =
+    document.getElementById("selectedSpot").textContent;
 
-    const spot =
-      document.getElementById(
-        "selectedSpot"
-      ).textContent;
+  loadData(spot);
 
-
-    loadData(
-      spot
-    );
-
-  },
-
-  30 * 60 * 1000
-
-);
+}, 30 * 60 * 1000);
