@@ -140,22 +140,27 @@ body {
   color: #648086;
 }
 .week-list {
-  margin-top: 8px;
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  overflow-x: auto;
+  padding: 4px 1px 8px;
+  margin-top: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
-.week-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.week-list::-webkit-scrollbar {
+  display: none;
+}
+.week-card {
+  flex: 0 0 96px;
   background: #f0f8f7;
-  border-radius: 15px;
-  padding: 13px 15px;
+  border-radius: 17px;
+  padding: 14px 10px;
+  text-align: center;
 }
-.week-day {
-  width: 54px;
-  flex-shrink: 0;
+.week-card.today {
+  background: #e1f3f2;
+  box-shadow: inset 0 0 0 1px #b9dfdc;
 }
 .week-day-name {
   font-size: 13px;
@@ -167,34 +172,56 @@ body {
   color: #648086;
   margin-top: 1px;
 }
-.week-wave {
-  flex: 1;
+.week-gauge-track {
+  margin: 12px auto 0;
+  width: 20px;
+  height: 80px;
+  border-radius: 10px;
+  background: #dcebea;
+  position: relative;
+  overflow: hidden;
+}
+.week-gauge-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+  background: #176b70;
+  transition: height .3s ease;
+}
+.week-gauge-fill.gauge-small {
+  background: #7fb8ba;
+}
+.week-gauge-fill.gauge-mid {
+  background: #2f9490;
+}
+.week-gauge-fill.gauge-big {
+  background: #176b70;
 }
 .week-wave-value {
-  font-size: 16px;
+  margin-top: 9px;
+  font-size: 15px;
   font-weight: 900;
   color: #176b70;
 }
 .week-wave-human {
-  font-size: 11px;
+  margin-top: 2px;
+  font-size: 10px;
   color: #648086;
-  margin-top: 1px;
-}
-.week-wind {
-  text-align: right;
-  flex-shrink: 0;
 }
 .week-wind-badge {
   display: inline-block;
+  margin-top: 9px;
   border-radius: 9px;
-  padding: 5px 9px;
-  font-size: 10px;
+  padding: 5px 8px;
+  font-size: 9px;
   font-weight: 850;
 }
 .week-wind-speed {
+  margin-top: 5px;
   font-size: 10px;
   color: #648086;
-  margin-top: 4px;
 }
 .condition-swipe-wrap {
   position: relative;
@@ -1815,21 +1842,25 @@ function renderWeekForecast(marine, weather, spot) {
   container.innerHTML = "";
   if (!marine || !weather || !marine.hourly || !weather.hourly) return;
   const times = marine.hourly.time;
+  /* ゲージのスケール上限。この高さ以上は満タン表示にする */
+  const GAUGE_MAX_HEIGHT = 2.0;
   for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
     const dateKey = addDaysKey(todayKey(), dayOffset);
     const index = findRepresentativeIndexForDate(times, dateKey, 9);
     const date = new Date(dateKey + "T00:00:00+09:00");
     const dayName = dayOffset === 0 ? "今日" : dayOffset === 1 ? "明日" : WEEKDAY_NAMES[date.getDay()];
     const dateLabel = `${date.getMonth() + 1}/${date.getDate()}`;
-    const row = document.createElement("div");
-    row.className = "week-row";
+    const card = document.createElement("div");
+    card.className = "week-card" + (dayOffset === 0 ? " today" : "");
     if (index < 0) {
-      row.innerHTML = `
-        <div class="week-day"><div class="week-day-name">${dayName}</div><div class="week-day-date">${dateLabel}</div></div>
-        <div class="week-wave"><div class="week-wave-value">--</div><div class="week-wave-human">データなし</div></div>
-        <div class="week-wind"><span class="week-wind-badge">--</span></div>
+      card.innerHTML = `
+        <div class="week-day-name">${dayName}</div>
+        <div class="week-day-date">${dateLabel}</div>
+        <div class="week-gauge-track"><div class="week-gauge-fill" style="height:0%;"></div></div>
+        <div class="week-wave-value">--</div>
+        <div class="week-wave-human">データなし</div>
       `;
-      container.appendChild(row);
+      container.appendChild(card);
       continue;
     }
     const waveHeight = Number.isFinite(marine.hourly.wave_height[index]) ? marine.hourly.wave_height[index] : null;
@@ -1837,18 +1868,20 @@ function renderWeekForecast(marine, weather, spot) {
     const windDirection = Number.isFinite(weather.hourly.wind_direction_10m[index]) ? weather.hourly.wind_direction_10m[index] : null;
     const windResult = getWindCondition(windDirection, spot);
     const human = humanWave(waveHeight);
-    row.innerHTML = `
-      <div class="week-day"><div class="week-day-name">${dayName}</div><div class="week-day-date">${dateLabel}</div></div>
-      <div class="week-wave">
-        <div class="week-wave-value">${Number.isFinite(waveHeight) ? waveHeight.toFixed(2) + " m" : "--"}</div>
-        <div class="week-wave-human">${human[0]}</div>
+    const gaugePercent = Number.isFinite(waveHeight) ? Math.max(4, Math.min(100, (waveHeight / GAUGE_MAX_HEIGHT) * 100)) : 0;
+    const gaugeClass = !Number.isFinite(waveHeight) ? "" : waveHeight < 0.5 ? "gauge-small" : waveHeight < 1.0 ? "gauge-mid" : "gauge-big";
+    card.innerHTML = `
+      <div class="week-day-name">${dayName}</div>
+      <div class="week-day-date">${dateLabel}</div>
+      <div class="week-gauge-track">
+        <div class="week-gauge-fill ${gaugeClass}" style="height:${gaugePercent}%;"></div>
       </div>
-      <div class="week-wind">
-        <span class="week-wind-badge ${windResult.className}">${windResult.label}</span>
-        <div class="week-wind-speed">${Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--"}</div>
-      </div>
+      <div class="week-wave-value">${Number.isFinite(waveHeight) ? waveHeight.toFixed(2) + " m" : "--"}</div>
+      <div class="week-wave-human">${human[0]}</div>
+      <span class="week-wind-badge ${windResult.className}">${windResult.label}</span>
+      <div class="week-wind-speed">${Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--"}</div>
     `;
-    container.appendChild(row);
+    container.appendChild(card);
   }
 }
 function toggleSpots() {
