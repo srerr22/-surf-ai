@@ -139,64 +139,62 @@ body {
   font-size: 12px;
   color: #648086;
 }
-.log-form {
-  display: flex;
-  gap: 8px;
-}
-.log-input {
-  flex: 1;
-  border: 1px solid #dcebea;
-  border-radius: 12px;
-  padding: 11px 12px;
-  font-size: 14px;
-  color: #17343a;
-  background: #f7fbfb;
-}
-.log-add-button {
-  border: none;
-  background: #176b70;
-  color: #ffffff;
-  border-radius: 12px;
-  padding: 0 16px;
-  font-weight: 850;
-  font-size: 13px;
-}
-.log-list {
-  margin-top: 12px;
+.week-list {
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-.log-item {
-  background: #f0f8f7;
-  border-radius: 13px;
-  padding: 11px 13px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 10px;
 }
-.log-item-text {
+.week-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f0f8f7;
+  border-radius: 15px;
+  padding: 13px 15px;
+}
+.week-day {
+  width: 54px;
+  flex-shrink: 0;
+}
+.week-day-name {
   font-size: 13px;
+  font-weight: 850;
   color: #17343a;
 }
-.log-item-meta {
+.week-day-date {
+  font-size: 10px;
+  color: #648086;
+  margin-top: 1px;
+}
+.week-wave {
+  flex: 1;
+}
+.week-wave-value {
+  font-size: 16px;
+  font-weight: 900;
+  color: #176b70;
+}
+.week-wave-human {
   font-size: 11px;
   color: #648086;
-  margin-top: 2px;
+  margin-top: 1px;
 }
-.log-item-delete {
-  border: none;
-  background: none;
-  color: #a93c3c;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 4px 6px;
+.week-wind {
+  text-align: right;
+  flex-shrink: 0;
 }
-.log-empty {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #8a9b9e;
+.week-wind-badge {
+  display: inline-block;
+  border-radius: 9px;
+  padding: 5px 9px;
+  font-size: 10px;
+  font-weight: 850;
+}
+.week-wind-speed {
+  font-size: 10px;
+  color: #648086;
+  margin-top: 4px;
 }
 .condition-swipe-wrap {
   position: relative;
@@ -1162,14 +1160,9 @@ body {
 </div>
 <div class="card">
   <div class="label">
-    セッションログ
+    週間予報(7日間)
   </div>
-  <div class="log-form">
-    <input class="log-input" id="logMemo" type="text" placeholder="メモ(任意)例: 楽しかった!">
-    <button class="log-add-button" onclick="addSessionLog()">記録する</button>
-  </div>
-  <div class="log-list" id="logList"></div>
-  <div class="log-empty" id="logEmpty">まだ記録がありません。</div>
+  <div class="week-list" id="weekList"></div>
 </div>
 <div class="bottom">
   Re'SURF
@@ -1796,78 +1789,67 @@ function computeSurfIndex(waveHeight, windSpeed, windLabel, tideLevels) {
   return { total, label, reason };
 }
 /* =========================
-   セッションログ
+   週間予報(7日間)
 ========================= */
-const LOG_KEY = "resurf_session_log";
-function getSessionLogs() {
-  try {
-    const raw = localStorage.getItem(LOG_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch (e) {
-    return [];
-  }
-}
-function saveSessionLogs(logs) {
-  try {
-    localStorage.setItem(LOG_KEY, JSON.stringify(logs));
-  } catch (e) {
-    /* localStorageが使えない環境では何もしない */
-  }
-}
-function addSessionLog() {
-  const memoInput = document.getElementById("logMemo");
-  const memo = memoInput.value.trim();
-  const spot = document.getElementById("selectedSpot").textContent;
-  const entry = {
-    spot: spot,
-    memo: memo,
-    waveHeight: window.currentWaveHeight,
-    at: new Date().toISOString()
-  };
-  const logs = getSessionLogs();
-  logs.unshift(entry);
-  saveSessionLogs(logs.slice(0, 30));
-  memoInput.value = "";
-  renderSessionLog();
-}
-function deleteSessionLog(index) {
-  const logs = getSessionLogs();
-  logs.splice(index, 1);
-  saveSessionLogs(logs);
-  renderSessionLog();
-}
-function renderSessionLog() {
-  const logs = getSessionLogs();
-  const list = document.getElementById("logList");
-  const empty = document.getElementById("logEmpty");
-  list.innerHTML = "";
-  if (!logs.length) {
-    empty.style.display = "block";
-    return;
-  }
-  empty.style.display = "none";
-  logs.forEach((entry, index) => {
-    const date = new Date(entry.at);
-    const dateText = Number.isNaN(date.getTime())
-      ? ""
-      : date.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
-    const waveText = Number.isFinite(entry.waveHeight) ? `波高${entry.waveHeight.toFixed(2)}m` : "";
-    const item = document.createElement("div");
-    item.className = "log-item";
-    item.innerHTML = `
-      <div>
-        <div class="log-item-text">${entry.spot}${entry.memo ? " ・ " + escapeHtml(entry.memo) : ""}</div>
-        <div class="log-item-meta">${dateText}${waveText ? " ・ " + waveText : ""}</div>
-      </div>
-      <button class="log-item-delete" onclick="deleteSessionLog(${index})">削除</button>
-    `;
-    list.appendChild(item);
+const WEEKDAY_NAMES = ["日","月","火","水","木","金","土"];
+function findRepresentativeIndexForDate(times, dateKey, targetHour) {
+  if (!Array.isArray(times)) return -1;
+  const target = new Date(dateKey + `T${String(targetHour).padStart(2,"0")}:00:00+09:00`).getTime();
+  let bestIndex = -1;
+  let bestDiff = Infinity;
+  times.forEach((time, index) => {
+    const date = new Date(time);
+    if (Number.isNaN(date.getTime())) return;
+    const localDate = date.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+    if (localDate !== dateKey) return;
+    const diff = Math.abs(date.getTime() - target);
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      bestIndex = index;
+    }
   });
+  return bestIndex;
 }
-function escapeHtml(text) {
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
+function renderWeekForecast(marine, weather, spot) {
+  const container = document.getElementById("weekList");
+  container.innerHTML = "";
+  if (!marine || !weather || !marine.hourly || !weather.hourly) return;
+  const times = marine.hourly.time;
+  for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+    const dateKey = addDaysKey(todayKey(), dayOffset);
+    const index = findRepresentativeIndexForDate(times, dateKey, 9);
+    const date = new Date(dateKey + "T00:00:00+09:00");
+    const dayName = dayOffset === 0 ? "今日" : dayOffset === 1 ? "明日" : WEEKDAY_NAMES[date.getDay()];
+    const dateLabel = `${date.getMonth() + 1}/${date.getDate()}`;
+    const row = document.createElement("div");
+    row.className = "week-row";
+    if (index < 0) {
+      row.innerHTML = `
+        <div class="week-day"><div class="week-day-name">${dayName}</div><div class="week-day-date">${dateLabel}</div></div>
+        <div class="week-wave"><div class="week-wave-value">--</div><div class="week-wave-human">データなし</div></div>
+        <div class="week-wind"><span class="week-wind-badge">--</span></div>
+      `;
+      container.appendChild(row);
+      continue;
+    }
+    const waveHeight = Number.isFinite(marine.hourly.wave_height[index]) ? marine.hourly.wave_height[index] : null;
+    const windSpeed = Number.isFinite(weather.hourly.wind_speed_10m[index]) ? weather.hourly.wind_speed_10m[index] : null;
+    const windDirection = Number.isFinite(weather.hourly.wind_direction_10m[index]) ? weather.hourly.wind_direction_10m[index] : null;
+    const windResult = getWindCondition(windDirection, spot);
+    const human = humanWave(waveHeight);
+    row.innerHTML = `
+      <div class="week-day"><div class="week-day-name">${dayName}</div><div class="week-day-date">${dateLabel}</div></div>
+      <div class="week-wave">
+        <div class="week-wave-value">${Number.isFinite(waveHeight) ? waveHeight.toFixed(2) + " m" : "--"}</div>
+        <div class="week-wave-human">${human[0]}</div>
+      </div>
+      <div class="week-wind">
+        <span class="week-wind-badge ${windResult.className}">${windResult.label}</span>
+        <div class="week-wind-speed">${Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--"}</div>
+      </div>
+    `;
+    container.appendChild(row);
+  }
 }
 function toggleSpots() {
   const menu = document.getElementById("spotMenu");
@@ -1936,14 +1918,14 @@ async function loadData(spot) {
       "&longitude=" + location.longitude +
       "&current=wave_height,wave_direction,wave_period,sea_level_height_msl,sea_surface_temperature" +
       "&hourly=wave_height,wave_direction,wave_period,sea_level_height_msl,sea_surface_temperature" +
-      "&forecast_days=2&models=best_match&timezone=Asia%2FTokyo";
+      "&forecast_days=7&models=best_match&timezone=Asia%2FTokyo";
     const weatherUrl =
       "https://api.open-meteo.com/v1/forecast" +
       "?latitude=" + location.latitude +
       "&longitude=" + location.longitude +
       "&current=wind_speed_10m,wind_direction_10m,temperature_2m,weather_code" +
       "&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m,wind_direction_10m" +
-      "&daily=sunrise,sunset&forecast_days=2&wind_speed_unit=ms&timezone=Asia%2FTokyo";
+      "&daily=sunrise,sunset&forecast_days=7&wind_speed_unit=ms&timezone=Asia%2FTokyo";
     const [marineResponse, weatherResponse] = await Promise.all([fetch(marineUrl), fetch(weatherUrl)]);
     if (!marineResponse.ok) {
       const errorText = await marineResponse.text();
@@ -1990,6 +1972,7 @@ async function loadData(spot) {
     renderTomorrowData(marine, weather, location);
     renderTomorrowWeather(weather.hourly.time, weather.hourly.weather_code, weather.hourly.temperature_2m, weather.hourly.precipitation_probability);
     renderTomorrowWind(weather.hourly.time, weather.hourly.wind_speed_10m, weather.hourly.wind_direction_10m, location);
+    renderWeekForecast(marine, weather, location);
     /* 修正点: getRecommendedBoardの戻り値を実際にrenderBoardsへ渡し、
        おすすめのボードをカード上でハイライト表示するように接続 */
     const recommendedBoardId = getRecommendedBoard(waveHeight, wavePeriod);
@@ -2036,7 +2019,6 @@ async function loadData(spot) {
 renderBoards();
 setupConditionSwipe();
 renderFavoriteStars();
-renderSessionLog();
 const initialSpot = getFavoriteSpot() && spots[getFavoriteSpot()] ? getFavoriteSpot() : "辻堂";
 document.getElementById("selectedSpot").textContent = initialSpot;
 loadData(initialSpot);
