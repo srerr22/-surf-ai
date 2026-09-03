@@ -24,6 +24,19 @@ body {
   padding: 28px 20px 20px;
   border-bottom: 1px solid #dcebea;
 }
+.tomorrow-button {
+  display: block;
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  background: #e1f3f2;
+  color: #176b70;
+  border-radius: 14px;
+  padding: 13px;
+  font-weight: 850;
+  font-size: 14px;
+  text-align: center;
+}
 .logo {
   font-size: 30px;
   font-weight: 900;
@@ -223,51 +236,11 @@ body {
   font-size: 10px;
   color: #648086;
 }
-.condition-swipe-wrap {
-  position: relative;
-  overflow: hidden;
-  margin-top: 16px;
-  border-radius: 20px;
-  touch-action: pan-y;
-}
-.condition-swipe-track {
-  display: flex;
-  width: 200%;
-  transition: transform .28s ease;
-  will-change: transform;
-}
 .condition-page {
-  width: 50%;
-  flex: 0 0 50%;
+  margin-top: 16px;
 }
 .condition-page .card {
   margin-top: 0;
-  box-shadow: none;
-}
-.swipe-indicator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 7px;
-  margin-top: 11px;
-}
-.swipe-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #cbdcdd;
-  transition: all .2s ease;
-}
-.swipe-dot.active {
-  width: 18px;
-  border-radius: 5px;
-  background: #176b70;
-}
-.swipe-hint {
-  text-align: center;
-  margin-top: 7px;
-  color: #8a9b9e;
-  font-size: 10px;
 }
 .condition {
   font-size: 27px;
@@ -590,6 +563,10 @@ body {
   font-weight: 850;
   font-size: 14px;
 }
+.tomorrow-modal {
+  max-height: 85vh;
+  overflow-y: auto;
+}
 .tide-chart {
   position: relative;
   width: 100%;
@@ -751,6 +728,7 @@ body {
 <body>
 <div class="header">
   <div class="logo">Re'SURF</div>
+  <button class="tomorrow-button" onclick="openTomorrowModal()">明日の予想を見る →</button>
 </div>
 <div class="content">
 <div class="label">
@@ -774,11 +752,6 @@ body {
   <div class="spot-item"><span onclick="selectSpot('鴨川')" style="flex:1;">鴨川</span><span class="favorite-star" id="star-鴨川" onclick="toggleFavorite('鴨川', event)">★</span></div>
   <div class="spot-item"><span onclick="selectSpot('平砂浦')" style="flex:1;">平砂浦</span><span class="favorite-star" id="star-平砂浦" onclick="toggleFavorite('平砂浦', event)">★</span></div>
 </div>
-<div class="condition-swipe-wrap" id="conditionSwipe">
-  <div
-    class="condition-swipe-track"
-    id="conditionTrack"
-  >
 <div class="condition-page">
   <div class="card">
     <div class="label">
@@ -899,137 +872,6 @@ body {
       現在のコンディションを取得しています...
     </div>
   </div>
-</div>
-<div class="condition-page">
-  <div class="card">
-    <div class="label">
-      明日の予想
-    </div>
-    <div
-      class="condition"
-      id="tomorrowCondition"
-    >
-      読み込み中...
-    </div>
-    <div
-      class="forecast-time"
-      id="tomorrowForecastTime"
-    >
-      --:--頃の予想
-    </div>
-    <div class="label" style="margin-top:18px;">
-      WAVE
-    </div>
-    <div class="data">
-      <div class="data-box">
-        <div class="data-title">波高</div>
-        <div class="data-value" id="tomorrowWaveHeight">--</div>
-      </div>
-      <div class="data-box">
-        <div class="data-title">波周期</div>
-        <div class="data-value" id="tomorrowWavePeriod">--</div>
-      </div>
-      <div class="data-box">
-        <div class="data-title">波向</div>
-        <div class="data-value" id="tomorrowWaveDirection">--</div>
-      </div>
-      <div class="data-box">
-        <div class="data-title">水温</div>
-        <div class="data-value" id="tomorrowWaterTemp">--</div>
-      </div>
-    </div>
-    <div class="wave-human">
-      <div class="wave-human-title">
-        サーファー目線の波サイズ
-      </div>
-      <div
-        class="wave-human-value"
-        id="tomorrowHumanWave"
-      >
-        --
-      </div>
-      <div
-        class="wave-human-reason"
-        id="tomorrowHumanWaveReason"
-      >
-        --
-      </div>
-    </div>
-    <div class="label" style="margin-top:22px;">
-      SUN
-    </div>
-    <div class="sun-row">
-      <span>
-        sunrise
-        <strong id="tomorrowSunrise">--:--</strong>
-      </span>
-      <span>
-        sunset
-        <strong id="tomorrowSunset">--:--</strong>
-      </span>
-    </div>
-    <div
-      class="label"
-      style="margin-top:16px;"
-    >
-      TOMORROW WEATHER
-    </div>
-    <div
-      class="hourly-scroll"
-      id="tomorrowWeatherHourly"
-    ></div>
-    <div class="label" style="margin-top:22px;">
-      WIND
-    </div>
-    <div class="wind-box">
-      <div class="wind-title">
-        明日の風
-      </div>
-      <div
-        class="wind-main"
-        id="tomorrowWindDirection"
-      >
-        --
-      </div>
-      <div
-        class="wind-detail"
-        id="tomorrowWindSpeed"
-      >
-        --
-      </div>
-      <div
-        class="wind-condition"
-        id="tomorrowWindCondition"
-      >
-        風向を分析中...
-      </div>
-    </div>
-    <div
-      class="label"
-      style="margin-top:16px;"
-    >
-      HOURLY WIND
-    </div>
-    <div
-      class="hourly-scroll"
-      id="tomorrowWindHourly"
-    ></div>
-  </div>
-</div>
-  </div>
-</div>
-<div class="swipe-indicator">
-  <div
-    class="swipe-dot active"
-    id="swipeDotToday"
-  ></div>
-  <div
-    class="swipe-dot"
-    id="swipeDotTomorrow"
-  ></div>
-</div>
-<div class="swipe-hint">
-  ← スワイプで明日の予想 →
 </div>
 <div class="card">
   <div class="label">
@@ -1232,6 +1074,136 @@ body {
 </button>
   </div>
 </div>
+<div
+  class="modal-overlay"
+  id="tomorrowModal"
+  onclick="closeTomorrowModal(event)"
+>
+  <div
+    class="board-modal tomorrow-modal"
+    onclick="event.stopPropagation()"
+  >
+<div class="modal-label">
+  TOMORROW FORECAST
+</div>
+<div
+  class="condition"
+  id="tomorrowCondition"
+  style="margin-top:4px;"
+>
+  読み込み中...
+</div>
+<div
+  class="forecast-time"
+  id="tomorrowForecastTime"
+>
+  --:--頃の予想
+</div>
+<div class="label" style="margin-top:18px;">
+  WAVE
+</div>
+<div class="data">
+  <div class="data-box">
+    <div class="data-title">波高</div>
+    <div class="data-value" id="tomorrowWaveHeight">--</div>
+  </div>
+  <div class="data-box">
+    <div class="data-title">波周期</div>
+    <div class="data-value" id="tomorrowWavePeriod">--</div>
+  </div>
+  <div class="data-box">
+    <div class="data-title">波向</div>
+    <div class="data-value" id="tomorrowWaveDirection">--</div>
+  </div>
+  <div class="data-box">
+    <div class="data-title">水温</div>
+    <div class="data-value" id="tomorrowWaterTemp">--</div>
+  </div>
+</div>
+<div class="wave-human">
+  <div class="wave-human-title">
+    サーファー目線の波サイズ
+  </div>
+  <div
+    class="wave-human-value"
+    id="tomorrowHumanWave"
+  >
+    --
+  </div>
+  <div
+    class="wave-human-reason"
+    id="tomorrowHumanWaveReason"
+  >
+    --
+  </div>
+</div>
+<div class="label" style="margin-top:22px;">
+  SUN
+</div>
+<div class="sun-row">
+  <span>
+    sunrise
+    <strong id="tomorrowSunrise">--:--</strong>
+  </span>
+  <span>
+    sunset
+    <strong id="tomorrowSunset">--:--</strong>
+  </span>
+</div>
+<div
+  class="label"
+  style="margin-top:16px;"
+>
+  TOMORROW WEATHER
+</div>
+<div
+  class="hourly-scroll"
+  id="tomorrowWeatherHourly"
+></div>
+<div class="label" style="margin-top:22px;">
+  WIND
+</div>
+<div class="wind-box">
+  <div class="wind-title">
+    明日の風
+  </div>
+  <div
+    class="wind-main"
+    id="tomorrowWindDirection"
+  >
+    --
+  </div>
+  <div
+    class="wind-detail"
+    id="tomorrowWindSpeed"
+  >
+    --
+  </div>
+  <div
+    class="wind-condition"
+    id="tomorrowWindCondition"
+  >
+    風向を分析中...
+  </div>
+</div>
+<div
+  class="label"
+  style="margin-top:16px;"
+>
+  HOURLY WIND
+</div>
+<div
+  class="hourly-scroll"
+  id="tomorrowWindHourly"
+></div>
+<button
+  class="modal-close"
+  onclick="closeTomorrowModal()"
+>
+  閉じる
+</button>
+  </div>
+</div>
 <script>
 const spots = {
   "辻堂": {
@@ -1292,19 +1264,73 @@ function renderBoards(recommendedId) {
     list.appendChild(card);
   });
 }
+/* =========================
+   コンディション別アドバイス
+   波のサイズ(小/中/大)×ボードごとに
+   アドバイス本文そのものを変える
+========================= */
+function getWaveSizeCategory(height) {
+  if (!Number.isFinite(height)) return "unknown";
+  if (height < 0.5) return "small";
+  if (height < 1.2) return "mid";
+  return "big";
+}
+const boardAdviceTable = {
+  long: {
+    small: "小波でもロングの浮力を活かせば余裕をもってテイクオフできる。波が来る前から少し早めにパドルを始めて、板のスピードだけで波に乗る意識。ノーズライドなど遊びを取り入れるのにも向いているサイズ。",
+    mid: "テイクオフの早さと安定感を活かして、まずは波のいいピークを選ぶ。厚めのセクションでは無理にアクションを狙わず、早めに立ってスピードを維持するのがポイント。",
+    big: "サイズがある分、テイクオフのタイミングがシビアになる。波が立ち上がる少し手前から潔くパドルに入り、無理せず波の肩側から入るライン取りを優先。ロングは取り回しに時間がかかるので、他のサーファーとの間隔にも注意。"
+  },
+  mid: {
+    small: "小波では板のスピードが出にくいので、早めのパドルとしっかりしたテイクオフを意識。波のパワーが弱い分、ボトムでしっかり加速してからターンに入る。",
+    mid: "波をよく見て少し前からテイクオフし、板のスピードを落とさずラインを長く使う。厚いセクションでは焦ってターンを入れず、板を走らせることを優先。",
+    big: "サイズが出るとミッドレングスは取り回しが少し重く感じやすい。テイクオフの位置取りを慎重に行い、無理に大きなターンを狙わず、まずは安定してラインをキープすることを優先。"
+  },
+  fish: {
+    small: "フィッシュの得意なサイズ。板のスピードに乗って早めに横へ動き、小さいセクションでもスピードを殺さないラインを意識するとつながりやすい。",
+    mid: "フィッシュのスピードを活かして、テイクオフ後は早めに横へ。厚い波ではレールを入れすぎず、板を走らせながら波のポケットへ戻るイメージ。",
+    big: "サイズが大きいとフィッシュは少し不安定になりやすいので、テイクオフを慎重に。無理なアクションよりも、パワーゾーンをキープして走らせることを優先した方が安全。"
+  },
+  allround: {
+    small: "小波でも十分に楽しめるが、板のスピードを維持するために早めのテイクオフを心がける。物足りなければ、積極的にセクションを探して動きを入れる。",
+    mid: "波のフェイスに合わせてテイクオフ位置を調整。まずはスピードを作ってから、波の力があるセクションでターンを入れる。",
+    big: "オールラウンドの安定感を活かしつつ、サイズに応じてテイクオフのタイミングを早めに。パワーのあるセクションでは無理せず、まずは板を走らせて状況を見極める。"
+  },
+  performance: {
+    small: "小波だとスピードが出にくいので、無理に縦への動きを狙わず、横方向のスピードを重視したライン取りが安定する。",
+    mid: "波にパワーがあるなら、テイクオフ後すぐにラインを決めてポケットへ。小さめなら無理に縦へ行かず、スピードを失わないライン取りを優先。",
+    big: "サイズが出るとパフォーマンスボードの本領を発揮しやすいが、テイクオフのタイミングを外すとリスクも大きい。無理をせず、確実に波をとらえてからアクションを組み立てる。"
+  }
+};
+function getWindAdviceSentence(windLabel, windSpeed) {
+  if (windLabel === "オフショア") {
+    return "オフショアで波のフェイスがきれいなので、いつもより積極的にアクションを狙いやすいコンディション。";
+  }
+  if (windLabel === "サイドオフ") {
+    return "サイドオフでまずまず面はキープされているので、通常通りのライン取りで問題なさそう。";
+  }
+  if (windLabel === "サイドオン") {
+    return "サイドオンで多少面が荒れやすいので、テイクオフのタイミングをいつもより慎重に。";
+  }
+  if (windLabel === "オンショア") {
+    const strong = Number.isFinite(windSpeed) && windSpeed >= 7;
+    return strong
+      ? "オンショアが強めで面が崩れやすいので、無理なアクションは避けて安全第一で。"
+      : "オンショアで面が少し荒れやすいので、スピードを落とさないラインを意識。";
+  }
+  return "";
+}
 function getBoardAdvice(boardId, height, period, windSpeed, windCondition) {
   const waveText = Number.isFinite(height) ? `${height.toFixed(2)}m` : "--";
   const periodText = Number.isFinite(period) ? `${period.toFixed(1)}秒` : "--";
   const base = `現在の波は約${waveText}・周期${periodText}。`;
-  const windText = windCondition ? `風は${windCondition}。` : "";
-  const advice = {
-    long: `${base}${windText} テイクオフの早さと安定感を活かして、まずは波のいいピークを選ぶ。小波なら無理にアクションを狙わず、早めに立ってスピードを維持するのがポイント。`,
-    mid: `${base}${windText} 波をよく見て少し前からテイクオフし、板のスピードを落とさずラインを長く使う。厚いセクションでは焦ってターンを入れず、板を走らせることを優先。`,
-    fish: `${base}${windText} フィッシュのスピードを活かして、テイクオフ後は早めに横へ。厚い波ではレールを入れすぎず、板を走らせながら波のポケットへ戻るイメージ。`,
-    allround: `${base}${windText} 波のフェイスに合わせてテイクオフ位置を調整。まずはスピードを作ってから、波の力があるセクションでターンを入れる。`,
-    performance: `${base}${windText} 波にパワーがあるなら、テイクオフ後すぐにラインを決めてポケットへ。小さめなら無理に縦へ行かず、スピードを失わないライン取りを優先。`
-  };
-  return advice[boardId] || "";
+  const sizeCategory = getWaveSizeCategory(height);
+  const boardTable = boardAdviceTable[boardId];
+  const bodyText = boardTable
+    ? (boardTable[sizeCategory] || boardTable.mid)
+    : "";
+  const windSentence = getWindAdviceSentence(windCondition, windSpeed);
+  return `${base}${bodyText}${windSentence ? " " + windSentence : ""}`;
 }
 function openBoardModal(boardId) {
   const board = boards.find(item => item.id === boardId);
@@ -1328,6 +1354,15 @@ function closeBoardModal(event) {
     return;
   }
   document.getElementById("boardModal").classList.remove("show");
+}
+function openTomorrowModal() {
+  document.getElementById("tomorrowModal").classList.add("show");
+}
+function closeTomorrowModal(event) {
+  if (event && event.target !== document.getElementById("tomorrowModal")) {
+    return;
+  }
+  document.getElementById("tomorrowModal").classList.remove("show");
 }
 function getRecommendedBoard(height, period) {
   if (!Number.isFinite(height)) return null;
@@ -1893,52 +1928,6 @@ function selectSpot(spot) {
   document.getElementById("spotMenu").style.display = "none";
   loadData(spot);
 }
-let conditionPage = 0;
-function setConditionPage(page) {
-  conditionPage = page === 1 ? 1 : 0;
-  const track = document.getElementById("conditionTrack");
-  track.style.transform = conditionPage === 1 ? "translateX(-50%)" : "translateX(0)";
-  document.getElementById("swipeDotToday").classList.toggle("active", conditionPage === 0);
-  document.getElementById("swipeDotTomorrow").classList.toggle("active", conditionPage === 1);
-}
-function setupConditionSwipe() {
-  const area = document.getElementById("conditionSwipe");
-  let startX = 0;
-  let startY = 0;
-  let isDragging = false;
-  area.addEventListener("touchstart", event => {
-    if (!event.touches || !event.touches.length) return;
-    startX = event.touches[0].clientX;
-    startY = event.touches[0].clientY;
-    isDragging = true;
-  }, { passive: true });
-  area.addEventListener("touchend", event => {
-    if (!isDragging) return;
-    isDragging = false;
-    if (!event.changedTouches || !event.changedTouches.length) return;
-    const endX = event.changedTouches[0].clientX;
-    const endY = event.changedTouches[0].clientY;
-    const deltaX = endX - startX;
-    const deltaY = endY - startY;
-    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) return;
-    if (deltaX < 0) setConditionPage(1);
-    else setConditionPage(0);
-  }, { passive: true });
-  area.addEventListener("mousedown", event => {
-    startX = event.clientX;
-    startY = event.clientY;
-    isDragging = true;
-  });
-  area.addEventListener("mouseup", event => {
-    if (!isDragging) return;
-    isDragging = false;
-    const deltaX = event.clientX - startX;
-    const deltaY = event.clientY - startY;
-    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) return;
-    if (deltaX < 0) setConditionPage(1);
-    else setConditionPage(0);
-  });
-}
 async function loadData(spot) {
   const location = spots[spot];
   if (!location) return;
@@ -2050,7 +2039,6 @@ async function loadData(spot) {
   }
 }
 renderBoards();
-setupConditionSwipe();
 renderFavoriteStars();
 const initialSpot = getFavoriteSpot() && spots[getFavoriteSpot()] ? getFavoriteSpot() : "辻堂";
 document.getElementById("selectedSpot").textContent = initialSpot;
