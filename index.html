@@ -1,3 +1,6 @@
+
+改良版　最新
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -47,9 +50,6 @@ body {
   margin-top: 16px;
   box-shadow: 0 4px 16px rgba(23,52,58,.055);
 }
-/* =========================
-   SPOT
-========================= */
 .spot-button {
   width: 100%;
   border: none;
@@ -63,6 +63,8 @@ body {
   box-shadow: 0 4px 16px rgba(23,52,58,.06);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 .spot-menu {
   display: none;
@@ -75,10 +77,130 @@ body {
 .spot-item {
   padding: 16px 18px;
   border-bottom: 1px solid #e1eceb;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-/* =========================
-   CONDITION SWIPE
-========================= */
+.favorite-star {
+  font-size: 18px;
+  color: #cbdcdd;
+  padding: 4px 6px;
+}
+.favorite-star.active {
+  color: #f0b429;
+}
+.surf-index-value {
+  font-size: 44px;
+  font-weight: 900;
+  color: #176b70;
+  margin-top: 4px;
+}
+.surf-index-label {
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.surf-index-bar-track {
+  margin-top: 12px;
+  height: 8px;
+  border-radius: 4px;
+  background: #e1eceb;
+  overflow: hidden;
+}
+.surf-index-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: #176b70;
+  transition: width .3s ease;
+}
+.surf-index-reason {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #648086;
+  line-height: 1.5;
+}
+.wetsuit-box {
+  margin-top: 14px;
+  background: #f0f8f7;
+  border-radius: 15px;
+  padding: 15px;
+}
+.wetsuit-title {
+  font-size: 11px;
+  color: #648086;
+  font-weight: 800;
+}
+.wetsuit-value {
+  margin-top: 5px;
+  font-size: 19px;
+  font-weight: 900;
+  color: #176b70;
+}
+.wetsuit-note {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #648086;
+}
+.log-form {
+  display: flex;
+  gap: 8px;
+}
+.log-input {
+  flex: 1;
+  border: 1px solid #dcebea;
+  border-radius: 12px;
+  padding: 11px 12px;
+  font-size: 14px;
+  color: #17343a;
+  background: #f7fbfb;
+}
+.log-add-button {
+  border: none;
+  background: #176b70;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-weight: 850;
+  font-size: 13px;
+}
+.log-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.log-item {
+  background: #f0f8f7;
+  border-radius: 13px;
+  padding: 11px 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.log-item-text {
+  font-size: 13px;
+  color: #17343a;
+}
+.log-item-meta {
+  font-size: 11px;
+  color: #648086;
+  margin-top: 2px;
+}
+.log-item-delete {
+  border: none;
+  background: none;
+  color: #a93c3c;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 6px;
+}
+.log-empty {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #8a9b9e;
+}
 .condition-swipe-wrap {
   position: relative;
   overflow: hidden;
@@ -100,7 +222,6 @@ body {
   margin-top: 0;
   box-shadow: none;
 }
-/* SWIPE INDICATOR */
 .swipe-indicator {
   display: flex;
   justify-content: center;
@@ -126,9 +247,6 @@ body {
   color: #8a9b9e;
   font-size: 10px;
 }
-/* =========================
-   CURRENT CONDITION
-========================= */
 .condition {
   font-size: 27px;
   font-weight: 900;
@@ -183,9 +301,6 @@ body {
   font-size: 12px;
   color: #648086;
 }
-/* =========================
-   SUN
-========================= */
 .sun-row {
   margin-top: 14px;
   padding: 14px 2px 2px;
@@ -199,9 +314,6 @@ body {
   color: #17343a;
   font-size: 13px;
 }
-/* =========================
-   HOURLY WEATHER
-========================= */
 .hourly-scroll {
   display: flex;
   gap: 9px;
@@ -250,9 +362,6 @@ body {
   color: #176b70;
   font-weight: 800;
 }
-/* =========================
-   WIND
-========================= */
 .wind-box {
   margin-top: 14px;
   background: #f0f8f7;
@@ -296,9 +405,6 @@ body {
   background: #f8dddd;
   color: #a93c3c;
 }
-/* =========================
-   HOURLY WIND
-========================= */
 .wind-hour-card {
   flex: 0 0 105px;
   background: #f0f8f7;
@@ -336,9 +442,6 @@ body {
   font-size: 9px;
   font-weight: 850;
 }
-/* =========================
-   BEST TIME
-========================= */
 .best-time {
   font-size: 30px;
   font-weight: 900;
@@ -351,9 +454,6 @@ body {
   font-size: 13px;
   line-height: 1.5;
 }
-/* =========================
-   BOARD SELECT
-========================= */
 .board-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -367,11 +467,13 @@ body {
   text-align: center;
   min-height: 82px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: #17343a;
   transition: transform .12s ease;
+  position: relative;
 }
 .board-card:active {
   transform: scale(.97);
@@ -379,13 +481,23 @@ body {
 .board-card:last-child {
   grid-column: 1 / -1;
 }
+.board-card.recommended {
+  background: #e1f3f2;
+  box-shadow: inset 0 0 0 2px #176b70;
+}
 .board-name {
   font-size: 16px;
   font-weight: 850;
 }
-/* =========================
-   BOARD POPUP
-========================= */
+.board-badge {
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #176b70;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
 .modal-overlay {
   display: none;
   position: fixed;
@@ -456,9 +568,6 @@ body {
   font-weight: 850;
   font-size: 14px;
 }
-/* =========================
-   TIDE
-========================= */
 .tide-chart {
   position: relative;
   width: 100%;
@@ -539,9 +648,6 @@ body {
   color: #648086;
   font-size: 10px;
 }
-/* =========================
-   CURRENT TIDE
-========================= */
 .tide-current {
   margin-top: 12px;
   background: #e6f7f9;
@@ -625,40 +731,32 @@ body {
   <div class="logo">Re'SURF</div>
 </div>
 <div class="content">
-<!-- =========================
-     SURF POINT
-========================= -->
 <div class="label">
   サーフポイント
 </div>
 
 <button
-class=“spot-button”
-onclick=“toggleSpots()”
-
-辻堂
-⌄
+  class="spot-button"
+  onclick="toggleSpots()"
+>
+  <span id="selectedSpot">辻堂</span>
+  <span>⌄</span>
+</button>
 <div
   class="spot-menu"
   id="spotMenu"
 >
-  <div class="spot-item" onclick="selectSpot('辻堂')">辻堂</div>
-  <div class="spot-item" onclick="selectSpot('鵠沼')">鵠沼</div>
-  <div class="spot-item" onclick="selectSpot('由比ヶ浜')">由比ヶ浜</div>
-  <div class="spot-item" onclick="selectSpot('鴨川')">鴨川</div>
-  <div class="spot-item" onclick="selectSpot('平砂浦')">平砂浦</div>
+  <div class="spot-item"><span onclick="selectSpot('辻堂')" style="flex:1;">辻堂</span><span class="favorite-star" id="star-辻堂" onclick="toggleFavorite('辻堂', event)">★</span></div>
+  <div class="spot-item"><span onclick="selectSpot('鵠沼')" style="flex:1;">鵠沼</span><span class="favorite-star" id="star-鵠沼" onclick="toggleFavorite('鵠沼', event)">★</span></div>
+  <div class="spot-item"><span onclick="selectSpot('由比ヶ浜')" style="flex:1;">由比ヶ浜</span><span class="favorite-star" id="star-由比ヶ浜" onclick="toggleFavorite('由比ヶ浜', event)">★</span></div>
+  <div class="spot-item"><span onclick="selectSpot('鴨川')" style="flex:1;">鴨川</span><span class="favorite-star" id="star-鴨川" onclick="toggleFavorite('鴨川', event)">★</span></div>
+  <div class="spot-item"><span onclick="selectSpot('平砂浦')" style="flex:1;">平砂浦</span><span class="favorite-star" id="star-平砂浦" onclick="toggleFavorite('平砂浦', event)">★</span></div>
 </div>
-<!-- =========================
-     CONDITION SWIPE
-========================= -->
 <div class="condition-swipe-wrap" id="conditionSwipe">
   <div
     class="condition-swipe-track"
     id="conditionTrack"
   >
-<!-- =========================
-     TODAY / CURRENT
-========================= -->
 <div class="condition-page">
   <div class="card">
     <div class="label">
@@ -707,6 +805,11 @@ onclick=“toggleSpots()”
       >
         --
       </div>
+    </div>
+    <div class="wetsuit-box">
+      <div class="wetsuit-title">ウェットスーツの目安</div>
+      <div class="wetsuit-value" id="wetsuitValue">--</div>
+      <div class="wetsuit-note" id="wetsuitNote">--</div>
     </div>
     <div class="label" style="margin-top:22px;">
       SUN
@@ -775,9 +878,6 @@ onclick=“toggleSpots()”
     </div>
   </div>
 </div>
-<!-- =========================
-     TOMORROW
-========================= -->
 <div class="condition-page">
   <div class="card">
     <div class="label">
@@ -909,9 +1009,17 @@ onclick=“toggleSpots()”
 <div class="swipe-hint">
   ← スワイプで明日の予想 →
 </div>
-<!-- =========================
-     BEST TIME
-========================= -->
+<div class="card">
+  <div class="label">
+    サーフィン総合指数
+  </div>
+  <div class="surf-index-value" id="surfIndexValue">--</div>
+  <div class="surf-index-label" id="surfIndexLabel">--</div>
+  <div class="surf-index-bar-track">
+    <div class="surf-index-bar-fill" id="surfIndexBar" style="width:0%;"></div>
+  </div>
+  <div class="surf-index-reason" id="surfIndexReason">--</div>
+</div>
 <div class="card">
   <div class="label">
     今日のベストサーフィンタイム
@@ -929,9 +1037,6 @@ onclick=“toggleSpots()”
     --
   </div>
 </div>
-<!-- =========================
-     BOARD SELECT
-========================= -->
 <div class="card">
   <div class="label">
     ボードセレクト
@@ -941,9 +1046,6 @@ onclick=“toggleSpots()”
     id="boardList"
   ></div>
 </div>
-<!-- =========================
-     TIDE
-========================= -->
 <div class="card">
   <div class="label">
     今日のタイド
@@ -1061,12 +1163,20 @@ onclick=“toggleSpots()”
   </div>
 </div>
 </div>
+<div class="card">
+  <div class="label">
+    セッションログ
+  </div>
+  <div class="log-form">
+    <input class="log-input" id="logMemo" type="text" placeholder="メモ(任意)例: 楽しかった!">
+    <button class="log-add-button" onclick="addSessionLog()">記録する</button>
+  </div>
+  <div class="log-list" id="logList"></div>
+  <div class="log-empty" id="logEmpty">まだ記録がありません。</div>
+</div>
 <div class="bottom">
   Re'SURF
 </div>
-<!-- =========================
-     BOARD MODAL
-========================= -->
 <div
   class="modal-overlay"
   id="boardModal"
@@ -1106,9 +1216,6 @@ onclick=“toggleSpots()”
   </div>
 </div>
 <script>
-/* =========================
-   SPOT DATA
-========================= */
 const spots = {
   "辻堂": {
     latitude: 35.318333,
@@ -1146,2223 +1253,800 @@ const spots = {
     offshoreRange: 30
   }
 };
-/* =========================
-   BOARD TYPES
-========================= */
 const boards = [
-  {
-    id: "long",
-    name: "ロング"
-  },
-  {
-    id: "mid",
-    name: "ミッド"
-  },
-  {
-    id: "fish",
-    name: "フィッシュ"
-  },
-  {
-    id: "allround",
-    name: "オールラウンド"
-  },
-  {
-    id: "performance",
-    name: "パフォーマンス"
-  }
+  { id: "long", name: "ロング" },
+  { id: "mid", name: "ミッド" },
+  { id: "fish", name: "フィッシュ" },
+  { id: "allround", name: "オールラウンド" },
+  { id: "performance", name: "パフォーマンス" }
 ];
-/* =========================
-   BOARD DISPLAY
-========================= */
-function renderBoards() {
-  const list =
-    document.getElementById("boardList");
+function renderBoards(recommendedId) {
+  const list = document.getElementById("boardList");
   list.innerHTML = "";
   boards.forEach(board => {
-    const card =
-      document.createElement("button");
-    card.className = "board-card";
+    const card = document.createElement("button");
+    const isRecommended = board.id === recommendedId;
+    card.className = "board-card" + (isRecommended ? " recommended" : "");
     card.innerHTML = `
-      <div class="board-name">
-        ${board.name}
-      </div>
+      <div class="board-name">${board.name}</div>
+      ${isRecommended ? '<div class="board-badge">おすすめ</div>' : ""}
     `;
-    card.onclick = () => {
-      openBoardModal(board.id);
-    };
+    card.onclick = () => { openBoardModal(board.id); };
     list.appendChild(card);
   });
 }
-/* =========================
-   BOARD ADVICE
-========================= */
-function getBoardAdvice(
-  boardId,
-  height,
-  period,
-  windSpeed,
-  windCondition
-) {
-  const waveText =
-    Number.isFinite(height)
-      ? `${height.toFixed(2)}m`
-      : "--";
-  const periodText =
-    Number.isFinite(period)
-      ? `${period.toFixed(1)}秒`
-      : "--";
-  const base =
-    `現在の波は約${waveText}・周期${periodText}。`;
-  const windText =
-    windCondition
-      ? `風は${windCondition}。`
-      : "";
+function getBoardAdvice(boardId, height, period, windSpeed, windCondition) {
+  const waveText = Number.isFinite(height) ? `${height.toFixed(2)}m` : "--";
+  const periodText = Number.isFinite(period) ? `${period.toFixed(1)}秒` : "--";
+  const base = `現在の波は約${waveText}・周期${periodText}。`;
+  const windText = windCondition ? `風は${windCondition}。` : "";
   const advice = {
-    long:
-      `${base}${windText} テイクオフの早さと安定感を活かして、まずは波のいいピークを選ぶ。小波なら無理にアクションを狙わず、早めに立ってスピードを維持するのがポイント。`,
-    mid:
-      `${base}${windText} 波をよく見て少し前からテイクオフし、板のスピードを落とさずラインを長く使う。厚いセクションでは焦ってターンを入れず、板を走らせることを優先。`,
-    fish:
-      `${base}${windText} フィッシュのスピードを活かして、テイクオフ後は早めに横へ。厚い波ではレールを入れすぎず、板を走らせながら波のポケットへ戻るイメージ。`,
-    allround:
-      `${base}${windText} 波のフェイスに合わせてテイクオフ位置を調整。まずはスピードを作ってから、波の力があるセクションでターンを入れる。`,
-    performance:
-      `${base}${windText} 波にパワーがあるなら、テイクオフ後すぐにラインを決めてポケットへ。小さめなら無理に縦へ行かず、スピードを失わないライン取りを優先。`
+    long: `${base}${windText} テイクオフの早さと安定感を活かして、まずは波のいいピークを選ぶ。小波なら無理にアクションを狙わず、早めに立ってスピードを維持するのがポイント。`,
+    mid: `${base}${windText} 波をよく見て少し前からテイクオフし、板のスピードを落とさずラインを長く使う。厚いセクションでは焦ってターンを入れず、板を走らせることを優先。`,
+    fish: `${base}${windText} フィッシュのスピードを活かして、テイクオフ後は早めに横へ。厚い波ではレールを入れすぎず、板を走らせながら波のポケットへ戻るイメージ。`,
+    allround: `${base}${windText} 波のフェイスに合わせてテイクオフ位置を調整。まずはスピードを作ってから、波の力があるセクションでターンを入れる。`,
+    performance: `${base}${windText} 波にパワーがあるなら、テイクオフ後すぐにラインを決めてポケットへ。小さめなら無理に縦へ行かず、スピードを失わないライン取りを優先。`
   };
   return advice[boardId] || "";
 }
-/* =========================
-   BOARD MODAL
-========================= */
 function openBoardModal(boardId) {
-  const board =
-    boards.find(
-      item => item.id === boardId
-    );
+  const board = boards.find(item => item.id === boardId);
   if (!board) return;
-  const height =
-    window.currentWaveHeight;
-  const period =
-    window.currentWavePeriod;
-  const windSpeed =
-    window.currentWindSpeed;
-  const windCondition =
-    window.currentWindCondition;
-  document.getElementById(
-    "modalBoardName"
-  ).textContent =
-    board.name;
-  document.getElementById(
-    "modalCondition"
-  ).textContent =
+  const height = window.currentWaveHeight;
+  const period = window.currentWavePeriod;
+  const windSpeed = window.currentWindSpeed;
+  const windCondition = window.currentWindCondition;
+  document.getElementById("modalBoardName").textContent = board.name;
+  document.getElementById("modalCondition").textContent =
     `現在の波 ${Number.isFinite(height) ? height.toFixed(2) + " m" : "--"}`
-    +
-    ` / 周期 ${Number.isFinite(period) ? period.toFixed(1) + " 秒" : "--"}`
-    +
-    ` / 風 ${Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--"}`
-    +
-    ` / ${windCondition || "--"}`;
-  document.getElementById(
-    "modalAdvice"
-  ).textContent =
-    getBoardAdvice(
-      board.id,
-      height,
-      period,
-      windSpeed,
-      windCondition
-    );
-  document.getElementById(
-    "boardModal"
-  ).classList.add("show");
+    + ` / 周期 ${Number.isFinite(period) ? period.toFixed(1) + " 秒" : "--"}`
+    + ` / 風 ${Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--"}`
+    + ` / ${windCondition || "--"}`;
+  document.getElementById("modalAdvice").textContent =
+    getBoardAdvice(board.id, height, period, windSpeed, windCondition);
+  document.getElementById("boardModal").classList.add("show");
 }
 function closeBoardModal(event) {
-  if (
-    event &&
-    event.target !==
-    document.getElementById("boardModal")
-  ) {
+  if (event && event.target !== document.getElementById("boardModal")) {
     return;
   }
-  document.getElementById(
-    "boardModal"
-  ).classList.remove("show");
+  document.getElementById("boardModal").classList.remove("show");
 }
-/* =========================
-   BOARD RECOMMENDATION
-========================= */
-function getRecommendedBoard(
-  height,
-  period
-) {
+function getRecommendedBoard(height, period) {
+  if (!Number.isFinite(height)) return null;
   if (height < 0.35) return "long";
   if (height < 0.50) return "mid";
   if (height < 0.75) return "fish";
   if (height < 1.20) {
-    if (period >= 9) {
-      return "allround";
-    }
+    if (Number.isFinite(period) && period >= 9) return "allround";
     return "fish";
   }
   if (height < 1.70) return "allround";
   return "performance";
 }
-/* =========================
-   DIRECTION
-========================= */
 function getDirection(degrees) {
-  if (!Number.isFinite(degrees)) {
-    return "--";
-  }
-  const directions = [
-    "北",
-    "北北東",
-    "北東",
-    "東北東",
-    "東",
-    "東南東",
-    "南東",
-    "南南東",
-    "南",
-    "南南西",
-    "南西",
-    "西南西",
-    "西",
-    "西北西",
-    "北西",
-    "北北西"
-  ];
-  return directions[
-    Math.round(degrees / 22.5) % 16
-  ];
+  if (!Number.isFinite(degrees)) return "--";
+  const directions = ["北","北北東","北東","東北東","東","東南東","南東","南南東","南","南南西","南西","西南西","西","西北西","北西","北北西"];
+  return directions[Math.round(degrees / 22.5) % 16];
 }
-/* =========================
-   WIND CONDITION
-========================= */
 function angleDifference(a,b) {
-  let diff =
-    Math.abs(a-b) % 360;
-  if (diff > 180) {
-    diff = 360 - diff;
-  }
+  let diff = Math.abs(a-b) % 360;
+  if (diff > 180) diff = 360 - diff;
   return diff;
 }
-function getWindCondition(
-  windDirection,
-  spot
-) {
+function getWindCondition(windDirection, spot) {
   if (!Number.isFinite(windDirection)) {
-    return {
-      label: "--",
-      className: ""
-    };
+    return { label: "--", className: "" };
   }
-  const diff =
-    angleDifference(
-      windDirection,
-      spot.offshoreFrom
-    );
-  const offshoreRange =
-    spot.offshoreRange || 30;
-  if (
-    diff <= offshoreRange
-  ) {
-    return {
-      label: "オフショア",
-      className: "wind-offshore"
-    };
-  }
-  if (
-    diff <= 75
-  ) {
-    return {
-      label: "サイドオフ",
-      className: "wind-sideoff"
-    };
-  }
-  if (
-    diff <= 120
-  ) {
-    return {
-      label: "サイドオン",
-      className: "wind-sideon"
-    };
-  }
-  return {
-    label: "オンショア",
-    className: "wind-onshore"
-  };
+  const diff = angleDifference(windDirection, spot.offshoreFrom);
+  const offshoreRange = spot.offshoreRange || 30;
+  if (diff <= offshoreRange) return { label: "オフショア", className: "wind-offshore" };
+  if (diff <= 75) return { label: "サイドオフ", className: "wind-sideoff" };
+  if (diff <= 120) return { label: "サイドオン", className: "wind-sideon" };
+  return { label: "オンショア", className: "wind-onshore" };
 }
-/* =========================
-   HUMAN WAVE
-========================= */
 function humanWave(height) {
-  if (!Number.isFinite(height)) {
-    return [
-      "--",
-      "--"
-    ];
-  }
-  if (height < .25) {
-    return [
-      "スネ〜ヒザ",
-      "かなり小さめの波"
-    ];
-  }
-  if (height < .45) {
-    return [
-      "ヒザ〜モモ",
-      "小波コンディション"
-    ];
-  }
-  if (height < .70) {
-    return [
-      "モモ〜腰",
-      "小〜中サイズ"
-    ];
-  }
-  if (height < 1.00) {
-    return [
-      "腰〜腹",
-      "十分なサイズ"
-    ];
-  }
-  if (height < 1.30) {
-    return [
-      "腹〜胸",
-      "しっかりしたサイズ"
-    ];
-  }
-  if (height < 1.70) {
-    return [
-      "胸〜肩",
-      "サイズのある波"
-    ];
-  }
-  if (height < 2.20) {
-    return [
-      "頭前後",
-      "かなりサイズあり"
-    ];
-  }
-  return [
-    "頭オーバー",
-    "大きなコンディション"
-  ];
+  if (!Number.isFinite(height)) return ["--","--"];
+  if (height < .25) return ["スネ〜ヒザ","かなり小さめの波"];
+  if (height < .45) return ["ヒザ〜モモ","小波コンディション"];
+  if (height < .70) return ["モモ〜腰","小〜中サイズ"];
+  if (height < 1.00) return ["腰〜腹","十分なサイズ"];
+  if (height < 1.30) return ["腹〜胸","しっかりしたサイズ"];
+  if (height < 1.70) return ["胸〜肩","サイズのある波"];
+  if (height < 2.20) return ["頭前後","かなりサイズあり"];
+  return ["頭オーバー","大きなコンディション"];
 }
-/* =========================
-   WEATHER ICON
-========================= */
 function weatherIcon(code) {
-  if (!Number.isFinite(code)) {
-    return "🌤️";
-  }
+  if (!Number.isFinite(code)) return "🌤️";
   if (code === 0) return "☀️";
-  if (
-    code === 1 ||
-    code === 2
-  ) {
-    return "🌤️";
-  }
-  if (code === 3) {
-    return "☁️";
-  }
-  if (
-    code === 45 ||
-    code === 48
-  ) {
-    return "🌫️";
-  }
-  if (
-    code >= 51 &&
-    code <= 57
-  ) {
-    return "🌦️";
-  }
-  if (
-    code >= 61 &&
-    code <= 67
-  ) {
-    return "🌧️";
-  }
-  if (
-    code >= 71 &&
-    code <= 77
-  ) {
-    return "❄️";
-  }
-  if (
-    code >= 80 &&
-    code <= 82
-  ) {
-    return "🌧️";
-  }
-  if (
-    code >= 95
-  ) {
-    return "⛈️";
-  }
+  if (code === 1 || code === 2) return "🌤️";
+  if (code === 3) return "☁️";
+  if (code === 45 || code === 48) return "🌫️";
+  if (code >= 51 && code <= 57) return "🌦️";
+  if (code >= 61 && code <= 67) return "🌧️";
+  if (code >= 71 && code <= 77) return "❄️";
+  if (code >= 80 && code <= 82) return "🌧️";
+  if (code >= 95) return "⛈️";
   return "🌤️";
 }
-/* =========================
-   TIME FORMAT
-========================= */
 function formatTime(time) {
   if (!time) return "--";
-  const date =
-    new Date(time);
-  if (
-    Number.isNaN(
-      date.getTime()
-    )
-  ) {
-    return "--";
-  }
-  return date.toLocaleTimeString(
-    "ja-JP",
-    {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone: "Asia/Tokyo"
-    }
-  );
+  const date = new Date(time);
+  if (Number.isNaN(date.getTime())) return "--";
+  return date.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Tokyo" });
 }
-/* =========================
-   DATE KEY
-========================= */
 function todayKey() {
-  return new Date()
-    .toLocaleDateString(
-      "en-CA",
-      {
-        timeZone: "Asia/Tokyo"
-      }
-    );
+  return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
 }
-function addDaysKey(
-  dateKey,
-  days
-) {
-  const date =
-    new Date(
-      dateKey + "T12:00:00+09:00"
-    );
-  date.setDate(
-    date.getDate() + days
-  );
-  return date
-    .toLocaleDateString(
-      "en-CA",
-      {
-        timeZone: "Asia/Tokyo"
-      }
-    );
+function addDaysKey(dateKey, days) {
+  const date = new Date(dateKey + "T12:00:00+09:00");
+  date.setDate(date.getDate() + days);
+  return date.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
 }
-/* =========================
-   TOMORROW DATE
-========================= */
 function tomorrowKey() {
-  return addDaysKey(
-    todayKey(),
-    1
-  );
+  return addDaysKey(todayKey(), 1);
 }
-/* =========================
-   HOURLY WEATHER DISPLAY
-========================= */
-function renderHourlyWeather(
-  times,
-  codes,
-  temperatures,
-  rainProbabilities
-) {
-  const container =
-    document.getElementById(
-      "weatherHourly"
-    );
+/* 汎用の「時間帯カード」描画。today/tomorrowの天気・風で共通利用する */
+function renderHourCards(container, dateFilterKey, times, buildCardHtml, options = {}) {
   container.innerHTML = "";
-  if (!Array.isArray(times)) {
-    return;
-  }
-  const today =
-    todayKey();
-  const now =
-    Date.now();
-  for (
-    let i = 0;
-    i < times.length;
-    i++
-  ) {
-    const date =
-      new Date(times[i]);
-    if (
-      Number.isNaN(
-        date.getTime()
-      )
-    ) {
-      continue;
-    }
-    const localDate =
-      date.toLocaleDateString(
-        "en-CA",
-        {
-          timeZone: "Asia/Tokyo"
-        }
-      );
-    if (
-      localDate !== today
-    ) {
-      continue;
-    }
-    if (
-      date.getTime() <
-      now - 60 * 60 * 1000
-    ) {
-      continue;
-    }
-    const card =
-      document.createElement("div");
-    card.className =
-      "hour-card" +
-      (
-        Math.abs(
-          date.getTime() - now
-        ) < 60 * 60 * 1000
-          ? " current"
-          : ""
-      );
-    const temp =
-      temperatures &&
-      Number.isFinite(
-        temperatures[i]
-      )
-        ? Math.round(
-            temperatures[i]
-          ) + "°"
-        : "--";
-    const rain =
-      rainProbabilities &&
-      Number.isFinite(
-        rainProbabilities[i]
-      )
-        ? rainProbabilities[i] + "%"
-        : "--";
-    card.innerHTML = `
-      <div class="hour-time">
-        ${formatTime(times[i])}
-      </div>
-      <div class="hour-icon">
-        ${weatherIcon(codes[i])}
-      </div>
-      <div class="hour-temp">
-        ${temp}
-      </div>
-      <div class="hour-rain">
-        ☔ ${rain}
-      </div>
-      ${
-        Math.abs(
-          date.getTime() - now
-        ) < 60 * 60 * 1000
-          ? `<div class="hour-label">現在</div>`
-          : ""
-      }
-    `;
+  if (!Array.isArray(times)) return;
+  const now = Date.now();
+  const minTime = options.minPastMs ? now - options.minPastMs : -Infinity;
+  for (let i = 0; i < times.length; i++) {
+    const date = new Date(times[i]);
+    if (Number.isNaN(date.getTime())) continue;
+    const localDate = date.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+    if (localDate !== dateFilterKey) continue;
+    if (date.getTime() < minTime) continue;
+    const isCurrent = Math.abs(date.getTime() - now) < 60 * 60 * 1000;
+    const card = document.createElement("div");
+    card.className = options.baseClass + (isCurrent ? " current" : "");
+    card.innerHTML = buildCardHtml(i, isCurrent);
     container.appendChild(card);
   }
 }
-/* =========================
-   TOMORROW WEATHER
-========================= */
-function renderTomorrowWeather(
-  times,
-  codes,
-  temperatures,
-  rainProbabilities
-) {
-  const container =
-    document.getElementById(
-      "tomorrowWeatherHourly"
-    );
-  container.innerHTML = "";
-  if (!Array.isArray(times)) {
-    return;
-  }
-  const tomorrow =
-    tomorrowKey();
-  for (
-    let i = 0;
-    i < times.length;
-    i++
-  ) {
-    const date =
-      new Date(times[i]);
-    if (
-      Number.isNaN(
-        date.getTime()
-      )
-    ) {
-      continue;
-    }
-    const localDate =
-      date.toLocaleDateString(
-        "en-CA",
-        {
-          timeZone: "Asia/Tokyo"
-        }
-      );
-    if (
-      localDate !== tomorrow
-    ) {
-      continue;
-    }
-    const card =
-      document.createElement("div");
-    card.className =
-      "hour-card";
-    const temp =
-      temperatures &&
-      Number.isFinite(
-        temperatures[i]
-      )
-        ? Math.round(
-            temperatures[i]
-          ) + "°"
-        : "--";
-    const rain =
-      rainProbabilities &&
-      Number.isFinite(
-        rainProbabilities[i]
-      )
-        ? rainProbabilities[i] + "%"
-        : "--";
-    card.innerHTML = `
-      <div class="hour-time">
-        ${formatTime(times[i])}
-      </div>
-      <div class="hour-icon">
-        ${weatherIcon(codes[i])}
-      </div>
-      <div class="hour-temp">
-        ${temp}
-      </div>
-      <div class="hour-rain">
-        ☔ ${rain}
-      </div>
+function renderHourlyWeather(times, codes, temperatures, rainProbabilities) {
+  const container = document.getElementById("weatherHourly");
+  renderHourCards(container, todayKey(), times, (i, isCurrent) => {
+    const temp = temperatures && Number.isFinite(temperatures[i]) ? Math.round(temperatures[i]) + "°" : "--";
+    const rain = rainProbabilities && Number.isFinite(rainProbabilities[i]) ? rainProbabilities[i] + "%" : "--";
+    return `
+      <div class="hour-time">${formatTime(times[i])}</div>
+      <div class="hour-icon">${weatherIcon(codes[i])}</div>
+      <div class="hour-temp">${temp}</div>
+      <div class="hour-rain">☔ ${rain}</div>
+      ${isCurrent ? `<div class="hour-label">現在</div>` : ""}
     `;
-    container.appendChild(card);
-  }
+  }, { baseClass: "hour-card", minPastMs: 60 * 60 * 1000 });
 }
-/* =========================
-   HOURLY WIND DISPLAY
-========================= */
-function renderHourlyWind(
-  times,
-  speeds,
-  directions,
-  spot
-) {
-  const container =
-    document.getElementById(
-      "windHourly"
-    );
-  container.innerHTML = "";
-  if (!Array.isArray(times)) {
-    return;
-  }
-  const now =
-    Date.now();
-  for (
-    let i = 0;
-    i < times.length;
-    i++
-  ) {
-    const date =
-      new Date(times[i]);
-    if (
-      Number.isNaN(
-        date.getTime()
-      )
-    ) {
-      continue;
-    }
-    if (
-      date.getTime() <
-      now - 15 * 60 * 1000
-    ) {
-      continue;
-    }
-    const speed =
-      Number.isFinite(
-        speeds[i]
-      )
-        ? speeds[i]
-        : null;
-    const direction =
-      Number.isFinite(
-        directions[i]
-      )
-        ? directions[i]
-        : null;
-    const result =
-      getWindCondition(
-        direction,
-        spot
-      );
-    const card =
-      document.createElement("div");
-    card.className =
-      "wind-hour-card" +
-      (
-        Math.abs(
-          date.getTime() - now
-        ) < 60 * 60 * 1000
-          ? " current"
-          : ""
-      );
-    const arrow =
-      direction !== null
-        ? getWindArrow(direction)
-        : "•";
-    card.innerHTML = `
-      <div class="wind-hour-time">
-        ${formatTime(times[i])}
-      </div>
-      <div class="wind-hour-arrow">
-        ${arrow}
-      </div>
-      <div class="wind-hour-dir">
-        ${direction !== null
-          ? getDirection(direction)
-          : "--"}
-      </div>
-      <div class="wind-hour-speed">
-        ${speed !== null
-          ? speed.toFixed(1) + " m/s"
-          : "--"}
-      </div>
-      <div
-        class="wind-hour-condition ${result.className}"
-      >
-        ${result.label}
-      </div>
+function renderTomorrowWeather(times, codes, temperatures, rainProbabilities) {
+  const container = document.getElementById("tomorrowWeatherHourly");
+  renderHourCards(container, tomorrowKey(), times, (i) => {
+    const temp = temperatures && Number.isFinite(temperatures[i]) ? Math.round(temperatures[i]) + "°" : "--";
+    const rain = rainProbabilities && Number.isFinite(rainProbabilities[i]) ? rainProbabilities[i] + "%" : "--";
+    return `
+      <div class="hour-time">${formatTime(times[i])}</div>
+      <div class="hour-icon">${weatherIcon(codes[i])}</div>
+      <div class="hour-temp">${temp}</div>
+      <div class="hour-rain">☔ ${rain}</div>
     `;
-    container.appendChild(card);
-  }
+  }, { baseClass: "hour-card" });
 }
-/* =========================
-   TOMORROW HOURLY WIND
-========================= */
-function renderTomorrowWind(
-  times,
-  speeds,
-  directions,
-  spot
-) {
-  const container =
-    document.getElementById(
-      "tomorrowWindHourly"
-    );
-  container.innerHTML = "";
-  if (!Array.isArray(times)) {
-    return;
+function getWindArrow(degrees) {
+  if (!Number.isFinite(degrees)) return "•";
+  const arrows = ["↓","↙","←","↖","↑","↗","→","↘"];
+  return arrows[Math.round(degrees / 45) % 8];
+}
+function buildWindCardHtml(times, speeds, directions, spot, i) {
+  const speed = Number.isFinite(speeds[i]) ? speeds[i] : null;
+  const direction = Number.isFinite(directions[i]) ? directions[i] : null;
+  const result = getWindCondition(direction, spot);
+  const arrow = direction !== null ? getWindArrow(direction) : "•";
+  return `
+    <div class="wind-hour-time">${formatTime(times[i])}</div>
+    <div class="wind-hour-arrow">${arrow}</div>
+    <div class="wind-hour-dir">${direction !== null ? getDirection(direction) : "--"}</div>
+    <div class="wind-hour-speed">${speed !== null ? speed.toFixed(1) + " m/s" : "--"}</div>
+    <div class="wind-hour-condition ${result.className}">${result.label}</div>
+  `;
+}
+/* 修正点: 今日のHOURLY WINDに明日以降のデータが混ざっていたバグを、
+   renderHourCardsのdateFilterKeyで「今日の分だけ」に絞るよう修正 */
+function renderHourlyWind(times, speeds, directions, spot) {
+  const container = document.getElementById("windHourly");
+  renderHourCards(container, todayKey(), times, (i) => buildWindCardHtml(times, speeds, directions, spot, i),
+    { baseClass: "wind-hour-card", minPastMs: 15 * 60 * 1000 });
+}
+function renderTomorrowWind(times, speeds, directions, spot) {
+  const container = document.getElementById("tomorrowWindHourly");
+  renderHourCards(container, tomorrowKey(), times, (i) => buildWindCardHtml(times, speeds, directions, spot, i),
+    { baseClass: "wind-hour-card" });
+}
+/* 修正点: 従来は固定文言だけを返す「プロトタイプ判定」だったベストタイムを、
+   実際の当日の波高・風速(時間ごとデータ)を score 化して一番良い時間帯を選ぶよう変更 */
+function getBestTimeFromHourly(marine, weather, spot) {
+  const marineTimes = marine && marine.hourly && marine.hourly.time;
+  const weatherTimes = weather && weather.hourly && weather.hourly.time;
+  if (!Array.isArray(marineTimes) || !Array.isArray(weatherTimes)) {
+    return ["--", "データが不足しています。"];
   }
-  const tomorrow =
-    tomorrowKey();
-  for (
-    let i = 0;
-    i < times.length;
-    i++
-  ) {
-    const date =
-      new Date(times[i]);
-    if (
-      Number.isNaN(
-        date.getTime()
-      )
-    ) {
-      continue;
+  const today = todayKey();
+  const now = Date.now();
+  let bestScore = -Infinity;
+  let bestIndex = -1;
+  for (let i = 0; i < marineTimes.length; i++) {
+    const date = new Date(marineTimes[i]);
+    if (Number.isNaN(date.getTime())) continue;
+    const localDate = date.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+    if (localDate !== today) continue;
+    if (date.getTime() < now) continue;
+    const hour = date.getHours();
+    if (hour < 5 || hour > 18) continue;
+    const height = marine.hourly.wave_height ? marine.hourly.wave_height[i] : null;
+    const period = marine.hourly.wave_period ? marine.hourly.wave_period[i] : null;
+    const windSpeed = weather.hourly.wind_speed_10m ? weather.hourly.wind_speed_10m[i] : null;
+    const windDirection = weather.hourly.wind_direction_10m ? weather.hourly.wind_direction_10m[i] : null;
+    if (!Number.isFinite(height) || !Number.isFinite(windSpeed)) continue;
+    const windResult = getWindCondition(windDirection, spot);
+    let windScore = 0;
+    if (windResult.label === "オフショア") windScore = 3;
+    else if (windResult.label === "サイドオフ") windScore = 2;
+    else if (windResult.label === "サイドオン") windScore = 1;
+    else windScore = 0;
+    const waveScore = Math.min(height, 1.5);
+    const calmScore = Math.max(0, (8 - windSpeed)) * 0.15;
+    const score = waveScore + windScore + calmScore;
+    if (score > bestScore) {
+      bestScore = score;
+      bestIndex = i;
     }
-    const localDate =
-      date.toLocaleDateString(
-        "en-CA",
-        {
-          timeZone: "Asia/Tokyo"
-        }
-      );
-    if (
-      localDate !== tomorrow
-    ) {
-      continue;
-    }
-    const speed =
-      Number.isFinite(
-        speeds[i]
-      )
-        ? speeds[i]
-        : null;
-    const direction =
-      Number.isFinite(
-        directions[i]
-      )
-        ? directions[i]
-        : null;
-    const result =
-      getWindCondition(
-        direction,
-        spot
-      );
-    const card =
-      document.createElement("div");
-    card.className =
-      "wind-hour-card";
-    const arrow =
-      direction !== null
-        ? getWindArrow(direction)
-        : "•";
-    card.innerHTML = `
-      <div class="wind-hour-time">
-        ${formatTime(times[i])}
-      </div>
-      <div class="wind-hour-arrow">
-        ${arrow}
-      </div>
-      <div class="wind-hour-dir">
-        ${direction !== null
-          ? getDirection(direction)
-          : "--"}
-      </div>
-      <div class="wind-hour-speed">
-        ${speed !== null
-          ? speed.toFixed(1) + " m/s"
-          : "--"}
-      </div>
-      <div
-        class="wind-hour-condition ${result.className}"
-      >
-        ${result.label}
-      </div>
-    `;
-    container.appendChild(card);
   }
+  if (bestIndex < 0) {
+    return ["--", "本日の残り時間で有効なデータがありません。"];
+  }
+  const bestTime = formatTime(marineTimes[bestIndex]);
+  const height = marine.hourly.wave_height[bestIndex];
+  const windDirection = weather.hourly.wind_direction_10m[bestIndex];
+  const windResult = getWindCondition(windDirection, spot);
+  const reason = `${bestTime}頃、波高${Number.isFinite(height) ? height.toFixed(2) + "m" : "--"}・風${windResult.label}で、本日の中では波と風のバランスが最も良いと判定。`;
+  return [bestTime, reason];
 }
-/* =========================
-   WIND ARROW
-========================= */
-function getWindArrow(
-  degrees
-) {
-  if (!Number.isFinite(degrees)) {
-    return "•";
-  }
-  const arrows = [
-    "↓",
-    "↙",
-    "←",
-    "↖",
-    "↑",
-    "↗",
-    "→",
-    "↘"
-  ];
-  return arrows[
-    Math.round(
-      degrees / 45
-    ) % 8
-  ];
-}
-/* =========================
-   BEST TIME
-========================= */
-function getBestTime(
-  height,
-  period,
-  windSpeed
-) {
-  if (
-    Number.isFinite(windSpeed) &&
-    windSpeed <= 5 &&
-    Number.isFinite(height) &&
-    height >= .6
-  ) {
-    return [
-      "07:00〜10:00",
-      "波と風のバランスが良い時間帯として判定。"
-    ];
-  }
-  if (
-    Number.isFinite(height) &&
-    height >= 1.0
-  ) {
-    return [
-      "06:00〜09:00",
-      "サイズがあるため、風が弱い時間帯を優先。"
-    ];
-  }
-  return [
-    "07:00〜10:00",
-    "現在はプロトタイプの時間帯判定です。"
-  ];
-}
-/* =========================
-   TOMORROW REPRESENTATIVE
-========================= */
-function findTomorrowRepresentativeIndex(
-  times
-) {
-  if (!Array.isArray(times)) {
-    return -1;
-  }
-  const tomorrow =
-    tomorrowKey();
-  /*
-    明日の09:00に最も近い
-    データを代表値として使用
-  */
-  const target =
-    new Date(
-      tomorrow + "T09:00:00+09:00"
-    ).getTime();
+function findTomorrowRepresentativeIndex(times) {
+  if (!Array.isArray(times)) return -1;
+  const tomorrow = tomorrowKey();
+  const target = new Date(tomorrow + "T09:00:00+09:00").getTime();
   let bestIndex = -1;
   let bestDiff = Infinity;
-  times.forEach(
-    (time,index) => {
-      const date =
-        new Date(time);
-      if (
-        Number.isNaN(
-          date.getTime()
-        )
-      ) {
-        return;
-      }
-      const localDate =
-        date.toLocaleDateString(
-          "en-CA",
-          {
-            timeZone: "Asia/Tokyo"
-          }
-        );
-      if (
-        localDate !== tomorrow
-      ) {
-        return;
-      }
-      const diff =
-        Math.abs(
-          date.getTime() - target
-        );
-      if (
-        diff < bestDiff
-      ) {
-        bestDiff = diff;
-        bestIndex = index;
-      }
+  times.forEach((time,index) => {
+    const date = new Date(time);
+    if (Number.isNaN(date.getTime())) return;
+    const localDate = date.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+    if (localDate !== tomorrow) return;
+    const diff = Math.abs(date.getTime() - target);
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      bestIndex = index;
     }
-  );
+  });
   return bestIndex;
 }
-/* =========================
-   TOMORROW CONDITION TEXT
-========================= */
-function getTomorrowConditionText(
-  height,
-  period,
-  windSpeed,
-  windCondition
-) {
-  if (
-    !Number.isFinite(height)
-  ) {
-    return "予想データなし";
-  }
-  if (
-    height < .35
-  ) {
-    return "小波予想";
-  }
-  if (
-    height < .70
-  ) {
-    if (
-      windCondition === "オフショア" ||
-      windCondition === "サイドオフ"
-    ) {
-      return "小〜中サイズ・期待";
-    }
+function getTomorrowConditionText(height, period, windSpeed, windCondition) {
+  if (!Number.isFinite(height)) return "予想データなし";
+  if (height < .35) return "小波予想";
+  if (height < .70) {
+    if (windCondition === "オフショア" || windCondition === "サイドオフ") return "小〜中サイズ・期待";
     return "小〜中サイズ";
   }
-  if (
-    height < 1.20
-  ) {
-    if (
-      windCondition === "オフショア" ||
-      windCondition === "サイドオフ"
-    ) {
-      return "良コンディション予想";
-    }
+  if (height < 1.20) {
+    if (windCondition === "オフショア" || windCondition === "サイドオフ") return "良コンディション予想";
     return "十分なサイズ";
   }
-  if (
-    height < 1.70
-  ) {
-    return "サイズアップ予想";
-  }
+  if (height < 1.70) return "サイズアップ予想";
   return "大きめの波予想";
 }
-/* =========================
-   TOMORROW DATA DISPLAY
-========================= */
-function renderTomorrowData(
-  marine,
-  weather,
-  spot
-) {
-  if (
-    !marine ||
-    !weather ||
-    !marine.hourly ||
-    !weather.hourly
-  ) {
-    return;
-  }
-  const times =
-    marine.hourly.time;
-  const index =
-    findTomorrowRepresentativeIndex(
-      times
-    );
-  if (
-    index < 0
-  ) {
-    return;
-  }
-  const waveHeight =
-    Number.isFinite(
-      marine.hourly.wave_height[index]
-    )
-      ? marine.hourly.wave_height[index]
-      : null;
-  const wavePeriod =
-    Number.isFinite(
-      marine.hourly.wave_period[index]
-    )
-      ? marine.hourly.wave_period[index]
-      : null;
-  const waveDirection =
-    Number.isFinite(
-      marine.hourly.wave_direction[index]
-    )
-      ? marine.hourly.wave_direction[index]
-      : null;
-  const waterTemp =
-    Number.isFinite(
-      marine.hourly.sea_surface_temperature[index]
-    )
-      ? marine.hourly.sea_surface_temperature[index]
-      : null;
-  const windSpeed =
-    Number.isFinite(
-      weather.hourly.wind_speed_10m[index]
-    )
-      ? weather.hourly.wind_speed_10m[index]
-      : null;
-  const windDirection =
-    Number.isFinite(
-      weather.hourly.wind_direction_10m[index]
-    )
-      ? weather.hourly.wind_direction_10m[index]
-      : null;
-  const windResult =
-    getWindCondition(
-      windDirection,
-      spot
-    );
-  /* WAVE */
-  document.getElementById(
-    "tomorrowWaveHeight"
-  ).textContent =
-    Number.isFinite(waveHeight)
-      ? waveHeight.toFixed(2) + " m"
-      : "--";
-  document.getElementById(
-    "tomorrowWavePeriod"
-  ).textContent =
-    Number.isFinite(wavePeriod)
-      ? wavePeriod.toFixed(1) + " 秒"
-      : "--";
-  document.getElementById(
-    "tomorrowWaveDirection"
-  ).textContent =
-    Number.isFinite(waveDirection)
-      ? getDirection(waveDirection)
-      : "--";
-  document.getElementById(
-    "tomorrowWaterTemp"
-  ).textContent =
-    Number.isFinite(waterTemp)
-      ? waterTemp.toFixed(1) + " °C"
-      : "--";
-  /* TIME */
-  document.getElementById(
-    "tomorrowForecastTime"
-  ).textContent =
-    `${formatTime(times[index])}頃の予想`;
-  /* HUMAN WAVE */
-  const human =
-    humanWave(waveHeight);
-  document.getElementById(
-    "tomorrowHumanWave"
-  ).textContent =
-    human[0];
-  document.getElementById(
-    "tomorrowHumanWaveReason"
-  ).textContent =
-    human[1];
-  /* CONDITION */
-  document.getElementById(
-    "tomorrowCondition"
-  ).textContent =
-    getTomorrowConditionText(
-      waveHeight,
-      wavePeriod,
-      windSpeed,
-      windResult.label
-    );
-  /* WIND */
-  document.getElementById(
-    "tomorrowWindDirection"
-  ).textContent =
-    Number.isFinite(windDirection)
-      ? getDirection(windDirection)
-      : "--";
-  document.getElementById(
-    "tomorrowWindSpeed"
-  ).textContent =
-    Number.isFinite(windSpeed)
-      ? windSpeed.toFixed(1) + " m/s"
-      : "--";
-  const conditionElement =
-    document.getElementById(
-      "tomorrowWindCondition"
-    );
-  conditionElement.textContent =
-    windResult.label;
-  conditionElement.className =
-    "wind-condition " +
-    windResult.className;
-  /* SUN */
-  const tomorrowIndex =
-    weather.daily.sunrise.findIndex(
-      time => {
-        const date =
-          new Date(time);
-        return date
-          .toLocaleDateString(
-            "en-CA",
-            {
-              timeZone: "Asia/Tokyo"
-            }
-          ) === tomorrowKey();
-      }
-    );
-  if (
-    tomorrowIndex >= 0
-  ) {
-    document.getElementById(
-      "tomorrowSunrise"
-    ).textContent =
-      formatTime(
-        weather.daily.sunrise[
-          tomorrowIndex
-        ]
-      );
-    document.getElementById(
-      "tomorrowSunset"
-    ).textContent =
-      formatTime(
-        weather.daily.sunset[
-          tomorrowIndex
-        ]
-      );
+function renderTomorrowData(marine, weather, spot) {
+  if (!marine || !weather || !marine.hourly || !weather.hourly) return;
+  const times = marine.hourly.time;
+  const index = findTomorrowRepresentativeIndex(times);
+  if (index < 0) return;
+  const waveHeight = Number.isFinite(marine.hourly.wave_height[index]) ? marine.hourly.wave_height[index] : null;
+  const wavePeriod = Number.isFinite(marine.hourly.wave_period[index]) ? marine.hourly.wave_period[index] : null;
+  const waveDirection = Number.isFinite(marine.hourly.wave_direction[index]) ? marine.hourly.wave_direction[index] : null;
+  const waterTemp = Number.isFinite(marine.hourly.sea_surface_temperature[index]) ? marine.hourly.sea_surface_temperature[index] : null;
+  const windSpeed = Number.isFinite(weather.hourly.wind_speed_10m[index]) ? weather.hourly.wind_speed_10m[index] : null;
+  const windDirection = Number.isFinite(weather.hourly.wind_direction_10m[index]) ? weather.hourly.wind_direction_10m[index] : null;
+  const windResult = getWindCondition(windDirection, spot);
+  document.getElementById("tomorrowWaveHeight").textContent = Number.isFinite(waveHeight) ? waveHeight.toFixed(2) + " m" : "--";
+  document.getElementById("tomorrowWavePeriod").textContent = Number.isFinite(wavePeriod) ? wavePeriod.toFixed(1) + " 秒" : "--";
+  document.getElementById("tomorrowWaveDirection").textContent = Number.isFinite(waveDirection) ? getDirection(waveDirection) : "--";
+  document.getElementById("tomorrowWaterTemp").textContent = Number.isFinite(waterTemp) ? waterTemp.toFixed(1) + " °C" : "--";
+  document.getElementById("tomorrowForecastTime").textContent = `${formatTime(times[index])}頃の予想`;
+  const human = humanWave(waveHeight);
+  document.getElementById("tomorrowHumanWave").textContent = human[0];
+  document.getElementById("tomorrowHumanWaveReason").textContent = human[1];
+  document.getElementById("tomorrowCondition").textContent = getTomorrowConditionText(waveHeight, wavePeriod, windSpeed, windResult.label);
+  document.getElementById("tomorrowWindDirection").textContent = Number.isFinite(windDirection) ? getDirection(windDirection) : "--";
+  document.getElementById("tomorrowWindSpeed").textContent = Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--";
+  const conditionElement = document.getElementById("tomorrowWindCondition");
+  conditionElement.textContent = windResult.label;
+  conditionElement.className = "wind-condition " + windResult.className;
+  const tomorrowIndex = weather.daily.sunrise.findIndex(time => {
+    const date = new Date(time);
+    return date.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" }) === tomorrowKey();
+  });
+  if (tomorrowIndex >= 0) {
+    document.getElementById("tomorrowSunrise").textContent = formatTime(weather.daily.sunrise[tomorrowIndex]);
+    document.getElementById("tomorrowSunset").textContent = formatTime(weather.daily.sunset[tomorrowIndex]);
   }
 }
-/* =========================
-   TIDE EXTREMES
-========================= */
-function findTideExtremes(
-  times,
-  levels
-) {
+function findTideExtremes(times, levels) {
   const result = [];
-  if (
-    !times ||
-    !levels ||
-    times.length < 3
-  ) {
-    return result;
-  }
-  for (
-    let i = 1;
-    i < levels.length - 1;
-    i++
-  ) {
-    const current =
-      levels[i];
-    const previous =
-      levels[i - 1];
-    const next =
-      levels[i + 1];
-    if (
-      !Number.isFinite(current) ||
-      !Number.isFinite(previous) ||
-      !Number.isFinite(next)
-    ) {
-      continue;
+  if (!times || !levels || times.length < 3) return result;
+  for (let i = 1; i < levels.length - 1; i++) {
+    const current = levels[i];
+    const previous = levels[i - 1];
+    const next = levels[i + 1];
+    if (!Number.isFinite(current) || !Number.isFinite(previous) || !Number.isFinite(next)) continue;
+    if (current > previous && current >= next) {
+      result.push({ type: "high", index: i, time: times[i], level: current });
     }
-    if (
-      current > previous &&
-      current >= next
-    ) {
-      result.push({
-        type: "high",
-        index: i,
-        time: times[i],
-        level: current
-      });
-    }
-    if (
-      current < previous &&
-      current <= next
-    ) {
-      result.push({
-        type: "low",
-        index: i,
-        time: times[i],
-        level: current
-      });
+    if (current < previous && current <= next) {
+      result.push({ type: "low", index: i, time: times[i], level: current });
     }
   }
   return result;
 }
-/* =========================
-   INTERPOLATED CURRENT TIDE
-========================= */
-function interpolateTide(
-  times,
-  levels
-) {
-  const now =
-    Date.now();
-  for (
-    let i = 0;
-    i < times.length - 1;
-    i++
-  ) {
-    const t1 =
-      new Date(times[i]).getTime();
-    const t2 =
-      new Date(times[i + 1]).getTime();
-    if (
-      now >= t1 &&
-      now <= t2
-    ) {
-      const l1 =
-        levels[i];
-      const l2 =
-        levels[i + 1];
-      if (
-        Number.isFinite(l1) &&
-        Number.isFinite(l2)
-      ) {
-        const ratio =
-          (now - t1) /
-          (t2 - t1);
-        return (
-          l1 +
-          (l2 - l1) *
-          ratio
-        );
+function interpolateTide(times, levels) {
+  const now = Date.now();
+  for (let i = 0; i < times.length - 1; i++) {
+    const t1 = new Date(times[i]).getTime();
+    const t2 = new Date(times[i + 1]).getTime();
+    if (now >= t1 && now <= t2) {
+      const l1 = levels[i];
+      const l2 = levels[i + 1];
+      if (Number.isFinite(l1) && Number.isFinite(l2)) {
+        const ratio = (now - t1) / (t2 - t1);
+        return l1 + (l2 - l1) * ratio;
       }
     }
   }
   return null;
 }
-/* =========================
-   TIDE GRAPH
-========================= */
-function drawTideGraph(
-  allTimes,
-  allLevels
-) {
-  if (
-    !Array.isArray(allTimes) ||
-    !Array.isArray(allLevels)
-  ) {
-    return null;
-  }
-  const today =
-    todayKey();
+function drawTideGraph(allTimes, allLevels) {
+  if (!Array.isArray(allTimes) || !Array.isArray(allLevels)) return null;
+  const today = todayKey();
   const validPairs = [];
-  for (
-    let i = 0;
-    i <
-    Math.min(
-      allTimes.length,
-      allLevels.length
-    );
-    i++
-  ) {
-    if (
-      !allTimes[i] ||
-      !Number.isFinite(
-        allLevels[i]
-      )
-    ) {
-      continue;
-    }
-    const date =
-      new Date(allTimes[i]);
-    const localDate =
-      date.toLocaleDateString(
-        "en-CA",
-        {
-          timeZone: "Asia/Tokyo"
-        }
-      );
-    if (
-      localDate === today
-    ) {
-      validPairs.push({
-        time: allTimes[i],
-        level: allLevels[i]
-      });
+  for (let i = 0; i < Math.min(allTimes.length, allLevels.length); i++) {
+    if (!allTimes[i] || !Number.isFinite(allLevels[i])) continue;
+    const date = new Date(allTimes[i]);
+    const localDate = date.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+    if (localDate === today) {
+      validPairs.push({ time: allTimes[i], level: allLevels[i] });
     }
   }
-  if (
-    validPairs.length < 2
-  ) {
-    return null;
-  }
+  if (validPairs.length < 2) return null;
   const width = 400;
   const height = 205;
   const padding = 8;
-  const validLevels =
-    validPairs.map(
-      item => item.level
-    );
-  let min =
-    Math.min(
-      ...validLevels
-    );
-  let max =
-    Math.max(
-      ...validLevels
-    );
-  const margin =
-    Math.max(
-      (max - min) * .12,
-      .10
-    );
+  const validLevels = validPairs.map(item => item.level);
+  let min = Math.min(...validLevels);
+  let max = Math.max(...validLevels);
+  const margin = Math.max((max - min) * .12, .10);
   min -= margin;
   max += margin;
-  const range =
-    max - min || 1;
+  const range = max - min || 1;
   const points = [];
-  validPairs.forEach(
-    (item,index) => {
-      const x =
-        padding +
-        index /
-        Math.max(
-          validPairs.length - 1,
-          1
-        ) *
-        (width - padding * 2);
-      const y =
-        height -
-        padding -
-        (
-          (item.level - min) /
-          range
-        ) *
-        (height-padding*2);
-      points.push(
-        x.toFixed(1) +
-        "," +
-        y.toFixed(1)
-      );
-    }
-  );
-  const pointString =
-    points.join(" ");
-  document
-    .getElementById("tideLine")
-    .setAttribute(
-      "points",
-      pointString
-    );
-  document
-    .getElementById("tideArea")
-    .setAttribute(
-      "points",
-      pointString +
-      ` ${width},${height} 0,${height}`
-    );
-  const indexes = [
-    0,
-    Math.floor(
-      (validPairs.length-1)*.25
-    ),
-    Math.floor(
-      (validPairs.length-1)*.5
-    ),
-    Math.floor(
-      (validPairs.length-1)*.75
-    ),
-    validPairs.length-1
-  ];
-  indexes.forEach(
-    (index,i) => {
-      const element =
-        document.getElementById(
-          "tideTime"+i
-        );
-      if (element) {
-        element.textContent =
-          formatTime(
-            validPairs[index].time
-          );
-      }
-    }
-  );
-  const scaleValues = [
-    max,
-    max - range*.25,
-    max - range*.50,
-    max - range*.75,
-    min
-  ];
-  [
-    "scaleTop",
-    "scale75",
-    "scale50",
-    "scale25",
-    "scaleBottom"
-  ].forEach(
-    (id,index) => {
-      document.getElementById(id)
-        .textContent =
-        Math.round(
-          scaleValues[index] * 100
-        ) + " cm";
-    }
-  );
-  const now =
-    Date.now();
+  validPairs.forEach((item,index) => {
+    const x = padding + index / Math.max(validPairs.length - 1, 1) * (width - padding * 2);
+    const y = height - padding - ((item.level - min) / range) * (height-padding*2);
+    points.push(x.toFixed(1) + "," + y.toFixed(1));
+  });
+  const pointString = points.join(" ");
+  document.getElementById("tideLine").setAttribute("points", pointString);
+  document.getElementById("tideArea").setAttribute("points", pointString + ` ${width},${height} 0,${height}`);
+  const indexes = [0, Math.floor((validPairs.length-1)*.25), Math.floor((validPairs.length-1)*.5), Math.floor((validPairs.length-1)*.75), validPairs.length-1];
+  indexes.forEach((index,i) => {
+    const element = document.getElementById("tideTime"+i);
+    if (element) element.textContent = formatTime(validPairs[index].time);
+  });
+  const scaleValues = [max, max - range*.25, max - range*.50, max - range*.75, min];
+  ["scaleTop","scale75","scale50","scale25","scaleBottom"].forEach((id,index) => {
+    document.getElementById(id).textContent = Math.round(scaleValues[index] * 100) + " cm";
+  });
+  const now = Date.now();
   let currentIndex = 0;
-  let closestDiff =
-    Infinity;
-  validPairs.forEach(
-    (item,index) => {
-      const diff =
-        Math.abs(
-          new Date(item.time).getTime()
-          -
-          now
-        );
-      if (
-        diff < closestDiff
-      ) {
-        closestDiff = diff;
-        currentIndex = index;
-      }
+  let closestDiff = Infinity;
+  validPairs.forEach((item,index) => {
+    const diff = Math.abs(new Date(item.time).getTime() - now);
+    if (diff < closestDiff) {
+      closestDiff = diff;
+      currentIndex = index;
     }
-  );
-  const currentX =
-    padding +
-    currentIndex /
-    Math.max(
-      validPairs.length - 1,
-      1
-    ) *
-    (width-padding*2);
-  const interpolated =
-    interpolateTide(
-      validPairs.map(
-        item => item.time
-      ),
-      validPairs.map(
-        item => item.level
-      )
-    );
-  const currentLevel =
-    Number.isFinite(
-      interpolated
-    )
-      ? interpolated
-      : validPairs[currentIndex].level;
-  const currentY =
-    height -
-    padding -
-    (
-      (currentLevel-min) /
-      range
-    ) *
-    (height-padding*2);
-  const nowLine =
-    document.getElementById(
-      "tideNow"
-    );
-  nowLine.setAttribute(
-    "x1",
-    currentX
-  );
-  nowLine.setAttribute(
-    "x2",
-    currentX
-  );
-  const nowDot =
-    document.getElementById(
-      "tideNowDot"
-    );
-  nowDot.setAttribute(
-    "cx",
-    currentX
-  );
-  nowDot.setAttribute(
-    "cy",
-    currentY
-  );
-  document.getElementById(
-    "currentTide"
-  ).textContent =
-    Math.round(
-      currentLevel * 100
-    );
-  const extremes =
-    findTideExtremes(
-      validPairs.map(
-        x => x.time
-      ),
-      validPairs.map(
-        x => x.level
-      )
-    );
-  const pointGroup =
-    document.getElementById(
-      "tideExtremePoints"
-    );
+  });
+  const currentX = padding + currentIndex / Math.max(validPairs.length - 1, 1) * (width-padding*2);
+  const interpolated = interpolateTide(validPairs.map(item => item.time), validPairs.map(item => item.level));
+  const currentLevel = Number.isFinite(interpolated) ? interpolated : validPairs[currentIndex].level;
+  const currentY = height - padding - ((currentLevel-min) / range) * (height-padding*2);
+  const nowLine = document.getElementById("tideNow");
+  nowLine.setAttribute("x1", currentX);
+  nowLine.setAttribute("x2", currentX);
+  const nowDot = document.getElementById("tideNowDot");
+  nowDot.setAttribute("cx", currentX);
+  nowDot.setAttribute("cy", currentY);
+  document.getElementById("currentTide").textContent = Math.round(currentLevel * 100);
+  const extremes = findTideExtremes(validPairs.map(x => x.time), validPairs.map(x => x.level));
+  const pointGroup = document.getElementById("tideExtremePoints");
   pointGroup.innerHTML = "";
-  extremes.forEach(
-    extreme => {
-      const x =
-        padding +
-        extreme.index /
-        Math.max(
-          validPairs.length - 1,
-          1
-        ) *
-        (width-padding*2);
-      const y =
-        height -
-        padding -
-        (
-          (extreme.level-min) /
-          range
-        ) *
-        (height-padding*2);
-      const circle =
-        document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "circle"
-        );
-      circle.setAttribute(
-        "cx",
-        x
-      );
-      circle.setAttribute(
-        "cy",
-        y
-      );
-      circle.setAttribute(
-        "r",
-        4
-      );
-      circle.setAttribute(
-        "class",
-        extreme.type === "high"
-          ? "tide-point-high"
-          : "tide-point-low"
-      );
-      const text =
-        document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "text"
-        );
-      text.setAttribute(
-        "x",
-        x
-      );
-      text.setAttribute(
-        "y",
-        extreme.type === "high"
-          ? y - 8
-          : y + 16
-      );
-      text.setAttribute(
-        "text-anchor",
-        "middle"
-      );
-      text.setAttribute(
-        "class",
-        "tide-point-label"
-      );
-      text.textContent =
-        Math.round(
-          extreme.level * 100
-        ) + "cm";
-      pointGroup.appendChild(
-        circle
-      );
-      pointGroup.appendChild(
-        text
-      );
-    }
-  );
+  extremes.forEach(extreme => {
+    const x = padding + extreme.index / Math.max(validPairs.length - 1, 1) * (width-padding*2);
+    const y = height - padding - ((extreme.level-min) / range) * (height-padding*2);
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", x);
+    circle.setAttribute("cy", y);
+    circle.setAttribute("r", 4);
+    circle.setAttribute("class", extreme.type === "high" ? "tide-point-high" : "tide-point-low");
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("x", x);
+    text.setAttribute("y", extreme.type === "high" ? y - 8 : y + 16);
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("class", "tide-point-label");
+    text.textContent = Math.round(extreme.level * 100) + "cm";
+    pointGroup.appendChild(circle);
+    pointGroup.appendChild(text);
+  });
   return extremes;
 }
-/* =========================
-   TIDE TYPE
-========================= */
-function getTideType(
-  levels
-) {
-  if (
-    !levels ||
-    !levels.length
-  ) {
-    return "潮回り判定不可";
-  }
-  const valid =
-    levels.filter(
-      v =>
-        Number.isFinite(v)
-    );
-  if (!valid.length) {
-    return "潮回り判定不可";
-  }
-  const range =
-    Math.max(...valid)
-    -
-    Math.min(...valid);
-  if (range >= 1.5) {
-    return "大潮";
-  }
-  if (range >= 1.0) {
-    return "中潮";
-  }
-  if (range >= .6) {
-    return "小潮";
-  }
+function getTideType(levels) {
+  if (!levels || !levels.length) return "潮回り判定不可";
+  const valid = levels.filter(v => Number.isFinite(v));
+  if (!valid.length) return "潮回り判定不可";
+  const range = Math.max(...valid) - Math.min(...valid);
+  if (range >= 1.5) return "大潮";
+  if (range >= 1.0) return "中潮";
+  if (range >= .6) return "小潮";
   return "長潮・若潮";
 }
-/* =========================
-   NEXT HIGH / LOW
-========================= */
-function setNextTide(
-  allExtremes
-) {
-  const now =
-    Date.now();
-  const future =
-    allExtremes.filter(
-      item =>
-        new Date(item.time)
-          .getTime() > now
-    );
-  const nextHigh =
-    future.find(
-      item =>
-        item.type === "high"
-    );
-  const nextLow =
-    future.find(
-      item =>
-        item.type === "low"
-    );
+function setNextTide(allExtremes) {
+  const now = Date.now();
+  const future = allExtremes.filter(item => new Date(item.time).getTime() > now);
+  const nextHigh = future.find(item => item.type === "high");
+  const nextLow = future.find(item => item.type === "low");
   if (nextHigh) {
-    document.getElementById(
-      "nextHigh"
-    ).textContent =
-      formatTime(
-        nextHigh.time
-      );
-    document.getElementById(
-      "nextHighHeight"
-    ).textContent =
-      Math.round(
-        nextHigh.level * 100
-      ) + " cm";
+    document.getElementById("nextHigh").textContent = formatTime(nextHigh.time);
+    document.getElementById("nextHighHeight").textContent = Math.round(nextHigh.level * 100) + " cm";
   }
   if (nextLow) {
-    document.getElementById(
-      "nextLow"
-    ).textContent =
-      formatTime(
-        nextLow.time
-      );
-    document.getElementById(
-      "nextLowHeight"
-    ).textContent =
-      Math.round(
-        nextLow.level * 100
-      ) + " cm";
+    document.getElementById("nextLow").textContent = formatTime(nextLow.time);
+    document.getElementById("nextLowHeight").textContent = Math.round(nextLow.level * 100) + " cm";
   }
 }
 /* =========================
-   MENU
+   お気に入りスポット
 ========================= */
-function toggleSpots() {
-  const menu =
-    document.getElementById(
-      "spotMenu"
-    );
-  menu.style.display =
-    menu.style.display === "block"
-      ? "none"
-      : "block";
+const FAVORITE_KEY = "resurf_favorite_spot";
+function getFavoriteSpot() {
+  try {
+    return localStorage.getItem(FAVORITE_KEY);
+  } catch (e) {
+    return null;
+  }
 }
-function selectSpot(
-  spot
-) {
-  document.getElementById(
-    "selectedSpot"
-  ).textContent =
-    spot;
-  document.getElementById(
-    "spotMenu"
-  ).style.display =
-    "none";
-  loadData(spot);
+function setFavoriteSpot(spot) {
+  try {
+    localStorage.setItem(FAVORITE_KEY, spot);
+  } catch (e) {
+    /* localStorageが使えない環境では何もしない */
+  }
+}
+function toggleFavorite(spot, event) {
+  if (event) event.stopPropagation();
+  const current = getFavoriteSpot();
+  if (current === spot) {
+    try { localStorage.removeItem(FAVORITE_KEY); } catch (e) {}
+  } else {
+    setFavoriteSpot(spot);
+  }
+  renderFavoriteStars();
+}
+function renderFavoriteStars() {
+  const current = getFavoriteSpot();
+  Object.keys(spots).forEach(spot => {
+    const star = document.getElementById("star-" + spot);
+    if (star) star.classList.toggle("active", spot === current);
+  });
 }
 /* =========================
-   CONDITION SWIPE
+   ウェットスーツ提案
 ========================= */
-let conditionPage =
-  0;
-function setConditionPage(
-  page
-) {
-  conditionPage =
-    page === 1
-      ? 1
-      : 0;
-  const track =
-    document.getElementById(
-      "conditionTrack"
-    );
-  track.style.transform =
-    conditionPage === 1
-      ? "translateX(-50%)"
-      : "translateX(0)";
-  document.getElementById(
-    "swipeDotToday"
-  ).classList.toggle(
-    "active",
-    conditionPage === 0
-  );
-  document.getElementById(
-    "swipeDotTomorrow"
-  ).classList.toggle(
-    "active",
-    conditionPage === 1
-  );
+function getWetsuitSuggestion(waterTemp) {
+  if (!Number.isFinite(waterTemp)) {
+    return ["--", "水温データを取得できませんでした。"];
+  }
+  if (waterTemp >= 24) return ["タッパー/短パン", `水温${waterTemp.toFixed(1)}°C。薄手でも十分快適な水温。`];
+  if (waterTemp >= 20) return ["スプリング(2mm)", `水温${waterTemp.toFixed(1)}°C。長めのセッションはタッパーでも可。`];
+  if (waterTemp >= 17) return ["フルスーツ(3mm)", `水温${waterTemp.toFixed(1)}°C。標準的な3mmフルスーツが目安。`];
+  if (waterTemp >= 13) return ["フルスーツ(4/3mm)+ブーツ", `水温${waterTemp.toFixed(1)}°C。厚手+ブーツを推奨。`];
+  return ["セミドライ+フード+ブーツ+グローブ", `水温${waterTemp.toFixed(1)}°C。防寒重視の装備が必要。`];
+}
+/* =========================
+   サーフィン総合指数
+========================= */
+function computeSurfIndex(waveHeight, windSpeed, windLabel, tideLevels) {
+  if (!Number.isFinite(waveHeight) || !Number.isFinite(windSpeed)) {
+    return null;
+  }
+  /* 波: 0.3〜1.2mあたりを高評価域とする単純な山型カーブ */
+  let waveScore;
+  if (waveHeight < 0.15) waveScore = 15;
+  else if (waveHeight <= 1.2) waveScore = 40 + Math.min(waveHeight, 1.0) * 40;
+  else waveScore = Math.max(30, 80 - (waveHeight - 1.2) * 25);
+  waveScore = Math.max(0, Math.min(80, waveScore));
+  /* 風: オフショア>サイドオフ>サイドオン>オンショアの順に加点、強風は減点 */
+  let windLabelScore = 0;
+  if (windLabel === "オフショア") windLabelScore = 20;
+  else if (windLabel === "サイドオフ") windLabelScore = 13;
+  else if (windLabel === "サイドオン") windLabelScore = 6;
+  const windCalm = Math.max(0, 10 - windSpeed) ;
+  const windScore = Math.max(0, Math.min(20, windLabelScore * (windCalm / 10) + windCalm));
+  const total = Math.round(Math.max(0, Math.min(100, waveScore * 0.75 + windScore)));
+  let label;
+  if (total >= 80) label = "絶好調";
+  else if (total >= 60) label = "良好";
+  else if (total >= 40) label = "普通";
+  else if (total >= 20) label = "やや厳しい";
+  else label = "コンディション不良";
+  const reason = `波高と風の状態から算出したスコアです。${windLabel && windLabel !== "--" ? `現在の風は${windLabel}。` : ""}`;
+  return { total, label, reason };
+}
+/* =========================
+   セッションログ
+========================= */
+const LOG_KEY = "resurf_session_log";
+function getSessionLogs() {
+  try {
+    const raw = localStorage.getItem(LOG_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+function saveSessionLogs(logs) {
+  try {
+    localStorage.setItem(LOG_KEY, JSON.stringify(logs));
+  } catch (e) {
+    /* localStorageが使えない環境では何もしない */
+  }
+}
+function addSessionLog() {
+  const memoInput = document.getElementById("logMemo");
+  const memo = memoInput.value.trim();
+  const spot = document.getElementById("selectedSpot").textContent;
+  const entry = {
+    spot: spot,
+    memo: memo,
+    waveHeight: window.currentWaveHeight,
+    at: new Date().toISOString()
+  };
+  const logs = getSessionLogs();
+  logs.unshift(entry);
+  saveSessionLogs(logs.slice(0, 30));
+  memoInput.value = "";
+  renderSessionLog();
+}
+function deleteSessionLog(index) {
+  const logs = getSessionLogs();
+  logs.splice(index, 1);
+  saveSessionLogs(logs);
+  renderSessionLog();
+}
+function renderSessionLog() {
+  const logs = getSessionLogs();
+  const list = document.getElementById("logList");
+  const empty = document.getElementById("logEmpty");
+  list.innerHTML = "";
+  if (!logs.length) {
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+  logs.forEach((entry, index) => {
+    const date = new Date(entry.at);
+    const dateText = Number.isNaN(date.getTime())
+      ? ""
+      : date.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+    const waveText = Number.isFinite(entry.waveHeight) ? `波高${entry.waveHeight.toFixed(2)}m` : "";
+    const item = document.createElement("div");
+    item.className = "log-item";
+    item.innerHTML = `
+      <div>
+        <div class="log-item-text">${entry.spot}${entry.memo ? " ・ " + escapeHtml(entry.memo) : ""}</div>
+        <div class="log-item-meta">${dateText}${waveText ? " ・ " + waveText : ""}</div>
+      </div>
+      <button class="log-item-delete" onclick="deleteSessionLog(${index})">削除</button>
+    `;
+    list.appendChild(item);
+  });
+}
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+function toggleSpots() {
+  const menu = document.getElementById("spotMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+function selectSpot(spot) {
+  document.getElementById("selectedSpot").textContent = spot;
+  document.getElementById("spotMenu").style.display = "none";
+  loadData(spot);
+}
+let conditionPage = 0;
+function setConditionPage(page) {
+  conditionPage = page === 1 ? 1 : 0;
+  const track = document.getElementById("conditionTrack");
+  track.style.transform = conditionPage === 1 ? "translateX(-50%)" : "translateX(0)";
+  document.getElementById("swipeDotToday").classList.toggle("active", conditionPage === 0);
+  document.getElementById("swipeDotTomorrow").classList.toggle("active", conditionPage === 1);
 }
 function setupConditionSwipe() {
-  const area =
-    document.getElementById(
-      "conditionSwipe"
-    );
+  const area = document.getElementById("conditionSwipe");
   let startX = 0;
   let startY = 0;
   let isDragging = false;
-  area.addEventListener(
-    "touchstart",
-    event => {
-      if (
-        !event.touches ||
-        !event.touches.length
-      ) {
-        return;
-      }
-      startX =
-        event.touches[0].clientX;
-      startY =
-        event.touches[0].clientY;
-      isDragging = true;
-    },
-    {
-      passive: true
-    }
-  );
-  area.addEventListener(
-    "touchend",
-    event => {
-      if (!isDragging) {
-        return;
-      }
-      isDragging = false;
-      if (
-        !event.changedTouches ||
-        !event.changedTouches.length
-      ) {
-        return;
-      }
-      const endX =
-        event.changedTouches[0].clientX;
-      const endY =
-        event.changedTouches[0].clientY;
-      const deltaX =
-        endX - startX;
-      const deltaY =
-        endY - startY;
-      /*
-        縦スクロールより
-        横移動が明確な場合だけ
-        スワイプ判定
-      */
-      if (
-        Math.abs(deltaX) < 50 ||
-        Math.abs(deltaX) < Math.abs(deltaY)
-      ) {
-        return;
-      }
-      if (
-        deltaX < 0
-      ) {
-        setConditionPage(1);
-      } else {
-        setConditionPage(0);
-      }
-    },
-    {
-      passive: true
-    }
-  );
-  /*
-    PCでも確認できるよう
-    マウスドラッグにも対応
-  */
-  area.addEventListener(
-    "mousedown",
-    event => {
-      startX =
-        event.clientX;
-      startY =
-        event.clientY;
-      isDragging = true;
-    }
-  );
-  area.addEventListener(
-    "mouseup",
-    event => {
-      if (!isDragging) {
-        return;
-      }
-      isDragging = false;
-      const deltaX =
-        event.clientX - startX;
-      const deltaY =
-        event.clientY - startY;
-      if (
-        Math.abs(deltaX) < 50 ||
-        Math.abs(deltaX) < Math.abs(deltaY)
-      ) {
-        return;
-      }
-      if (
-        deltaX < 0
-      ) {
-        setConditionPage(1);
-      } else {
-        setConditionPage(0);
-      }
-    }
-  );
+  area.addEventListener("touchstart", event => {
+    if (!event.touches || !event.touches.length) return;
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+    isDragging = true;
+  }, { passive: true });
+  area.addEventListener("touchend", event => {
+    if (!isDragging) return;
+    isDragging = false;
+    if (!event.changedTouches || !event.changedTouches.length) return;
+    const endX = event.changedTouches[0].clientX;
+    const endY = event.changedTouches[0].clientY;
+    const deltaX = endX - startX;
+    const deltaY = endY - startY;
+    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (deltaX < 0) setConditionPage(1);
+    else setConditionPage(0);
+  }, { passive: true });
+  area.addEventListener("mousedown", event => {
+    startX = event.clientX;
+    startY = event.clientY;
+    isDragging = true;
+  });
+  area.addEventListener("mouseup", event => {
+    if (!isDragging) return;
+    isDragging = false;
+    const deltaX = event.clientX - startX;
+    const deltaY = event.clientY - startY;
+    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (deltaX < 0) setConditionPage(1);
+    else setConditionPage(0);
+  });
 }
-/* =========================
-   MAIN DATA
-========================= */
-async function loadData(
-  spot
-) {
-  const location =
-    spots[spot];
-  if (!location) {
-    return;
-  }
-  document.getElementById(
-    "condition"
-  ).textContent =
-    "読み込み中...";
-  document.getElementById(
-    "tomorrowCondition"
-  ).textContent =
-    "読み込み中...";
+async function loadData(spot) {
+  const location = spots[spot];
+  if (!location) return;
+  document.getElementById("condition").textContent = "読み込み中...";
+  document.getElementById("tomorrowCondition").textContent = "読み込み中...";
   try {
     const marineUrl =
       "https://marine-api.open-meteo.com/v1/marine" +
-      "?latitude=" +
-      location.latitude +
-      "&longitude=" +
-      location.longitude +
-      "&current=" +
-      "wave_height," +
-      "wave_direction," +
-      "wave_period," +
-      "sea_level_height_msl," +
-      "sea_surface_temperature" +
-      "&hourly=" +
-      "wave_height," +
-      "wave_direction," +
-      "wave_period," +
-      "sea_level_height_msl," +
-      "sea_surface_temperature" +
-      "&forecast_days=2" +
-      "&timezone=Asia%2FTokyo";
+      "?latitude=" + location.latitude +
+      "&longitude=" + location.longitude +
+      "&current=wave_height,wave_direction,wave_period,sea_level_height_msl,sea_surface_temperature" +
+      "&hourly=wave_height,wave_direction,wave_period,sea_level_height_msl,sea_surface_temperature" +
+      "&forecast_days=2&models=best_match&timezone=Asia%2FTokyo";
     const weatherUrl =
       "https://api.open-meteo.com/v1/forecast" +
-      "?latitude=" +
-      location.latitude +
-      "&longitude=" +
-      location.longitude +
-      "&current=" +
-      "wind_speed_10m," +
-      "wind_direction_10m," +
-      "temperature_2m," +
-      "weather_code" +
-      "&hourly=" +
-      "temperature_2m," +
-      "weather_code," +
-      "precipitation_probability," +
-      "wind_speed_10m," +
-      "wind_direction_10m" +
-      "&daily=" +
-      "sunrise,sunset" +
-      "&forecast_days=2" +
-      "&wind_speed_unit=ms" +
-      "&timezone=Asia%2FTokyo";
-    const [
-      marineResponse,
-      weatherResponse
-    ] =
-      await Promise.all([
-        fetch(marineUrl),
-        fetch(weatherUrl)
-      ]);
-    if (
-      !marineResponse.ok ||
-      !weatherResponse.ok
-    ) {
-      throw new Error(
-        "API request failed"
-      );
+      "?latitude=" + location.latitude +
+      "&longitude=" + location.longitude +
+      "&current=wind_speed_10m,wind_direction_10m,temperature_2m,weather_code" +
+      "&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m,wind_direction_10m" +
+      "&daily=sunrise,sunset&forecast_days=2&wind_speed_unit=ms&timezone=Asia%2FTokyo";
+    const [marineResponse, weatherResponse] = await Promise.all([fetch(marineUrl), fetch(weatherUrl)]);
+    if (!marineResponse.ok) {
+      const errorText = await marineResponse.text();
+      throw new Error("marine API " + marineResponse.status + ": " + errorText);
     }
-    const marine =
-      await marineResponse.json();
-    const weather =
-      await weatherResponse.json();
-    /* =========================
-       WAVE
-    ========================= */
-    const waveHeight =
-      marine.current.wave_height;
-    const wavePeriod =
-      marine.current.wave_period;
-    const waveDirection =
-      marine.current.wave_direction;
-    window.currentWaveHeight =
-      waveHeight;
-    window.currentWavePeriod =
-      wavePeriod;
-    document.getElementById(
-      "waveHeight"
-    ).textContent =
-      Number.isFinite(waveHeight)
-        ? waveHeight.toFixed(2) + " m"
-        : "--";
-    document.getElementById(
-      "wavePeriod"
-    ).textContent =
-      Number.isFinite(wavePeriod)
-        ? wavePeriod.toFixed(1) + " 秒"
-        : "--";
-    document.getElementById(
-      "waveDirection"
-    ).textContent =
-      Number.isFinite(waveDirection)
-        ? getDirection(waveDirection)
-        : "--";
-    /* =========================
-       HUMAN WAVE
-    ========================= */
-    if (
-      Number.isFinite(waveHeight)
-    ) {
-      const human =
-        humanWave(
-          waveHeight
-        );
-      document.getElementById(
-        "humanWave"
-      ).textContent =
-        human[0];
-      document.getElementById(
-        "humanWaveReason"
-      ).textContent =
-        human[1];
+    if (!weatherResponse.ok) {
+      const errorText = await weatherResponse.text();
+      throw new Error("weather API " + weatherResponse.status + ": " + errorText);
     }
-    /* =========================
-       WATER TEMP
-    ========================= */
-    const waterTemp =
-      marine.current
-        .sea_surface_temperature;
-    document.getElementById(
-      "waterTemp"
-    ).textContent =
-      Number.isFinite(waterTemp)
-        ? waterTemp.toFixed(1) + " °C"
-        : "--";
-    /* =========================
-       WIND CURRENT
-    ========================= */
-    const windSpeed =
-      weather.current
-        .wind_speed_10m;
-    const windDirection =
-      weather.current
-        .wind_direction_10m;
-    window.currentWindSpeed =
-      windSpeed;
-    const windResult =
-      getWindCondition(
-        windDirection,
-        location
-      );
-    window.currentWindCondition =
-      windResult.label;
-    document.getElementById(
-      "windSpeed"
-    ).textContent =
-      Number.isFinite(windSpeed)
-        ? windSpeed.toFixed(1) + " m/s"
-        : "--";
-    document.getElementById(
-      "windDirection"
-    ).textContent =
-      Number.isFinite(windDirection)
-        ? getDirection(
-            windDirection
-          )
-        : "--";
-    const conditionElement =
-      document.getElementById(
-        "windCondition"
-      );
-    conditionElement.textContent =
-      windResult.label;
-    conditionElement.className =
-      "wind-condition " +
-      windResult.className;
-    /* =========================
-       SUN
-    ========================= */
-    document.getElementById(
-      "sunrise"
-    ).textContent =
-      formatTime(
-        weather.daily.sunrise[0]
-      );
-    document.getElementById(
-      "sunset"
-    ).textContent =
-      formatTime(
-        weather.daily.sunset[0]
-      );
-    /* =========================
-       HOURLY WEATHER
-    ========================= */
-    renderHourlyWeather(
-      weather.hourly.time,
-      weather.hourly.weather_code,
-      weather.hourly.temperature_2m,
-      weather.hourly.precipitation_probability
-    );
-    /* =========================
-       HOURLY WIND
-    ========================= */
-    renderHourlyWind(
-      weather.hourly.time,
-      weather.hourly.wind_speed_10m,
-      weather.hourly.wind_direction_10m,
-      location
-    );
-    /* =========================
-       TOMORROW
-    ========================= */
-    renderTomorrowData(
-      marine,
-      weather,
-      location
-    );
-    renderTomorrowWeather(
-      weather.hourly.time,
-      weather.hourly.weather_code,
-      weather.hourly.temperature_2m,
-      weather.hourly.precipitation_probability
-    );
-    renderTomorrowWind(
-      weather.hourly.time,
-      weather.hourly.wind_speed_10m,
-      weather.hourly.wind_direction_10m,
-      location
-    );
-    /* =========================
-       BOARD
-    ========================= */
-    renderBoards();
-    /* =========================
-       BEST TIME
-    ========================= */
-    const best =
-      getBestTime(
-        waveHeight,
-        wavePeriod,
-        windSpeed
-      );
-    document.getElementById(
-      "bestTime"
-    ).textContent =
-      best[0];
-    document.getElementById(
-      "bestReason"
-    ).textContent =
-      best[1];
-    /* =========================
-       TIDE
-    ========================= */
-    const tideTimes =
-      marine.hourly.time;
-    const tideLevels =
-      marine.hourly
-        .sea_level_height_msl;
-    drawTideGraph(
-      tideTimes,
-      tideLevels
-    );
-    const allExtremes =
-      findTideExtremes(
-        tideTimes,
-        tideLevels
-      );
-    if (allExtremes.length) {
-      setNextTide(
-        allExtremes
-      );
+    const marine = await marineResponse.json();
+    const weather = await weatherResponse.json();
+    const waveHeight = marine.current.wave_height;
+    const wavePeriod = marine.current.wave_period;
+    const waveDirection = marine.current.wave_direction;
+    window.currentWaveHeight = waveHeight;
+    window.currentWavePeriod = wavePeriod;
+    document.getElementById("waveHeight").textContent = Number.isFinite(waveHeight) ? waveHeight.toFixed(2) + " m" : "--";
+    document.getElementById("wavePeriod").textContent = Number.isFinite(wavePeriod) ? wavePeriod.toFixed(1) + " 秒" : "--";
+    document.getElementById("waveDirection").textContent = Number.isFinite(waveDirection) ? getDirection(waveDirection) : "--";
+    if (Number.isFinite(waveHeight)) {
+      const human = humanWave(waveHeight);
+      document.getElementById("humanWave").textContent = human[0];
+      document.getElementById("humanWaveReason").textContent = human[1];
     }
-    /* =========================
-       TIDE TYPE
-    ========================= */
+    const waterTemp = marine.current.sea_surface_temperature;
+    document.getElementById("waterTemp").textContent = Number.isFinite(waterTemp) ? waterTemp.toFixed(1) + " °C" : "--";
+    const wetsuit = getWetsuitSuggestion(waterTemp);
+    document.getElementById("wetsuitValue").textContent = wetsuit[0];
+    document.getElementById("wetsuitNote").textContent = wetsuit[1];
+    const windSpeed = weather.current.wind_speed_10m;
+    const windDirection = weather.current.wind_direction_10m;
+    window.currentWindSpeed = windSpeed;
+    const windResult = getWindCondition(windDirection, location);
+    window.currentWindCondition = windResult.label;
+    document.getElementById("windSpeed").textContent = Number.isFinite(windSpeed) ? windSpeed.toFixed(1) + " m/s" : "--";
+    document.getElementById("windDirection").textContent = Number.isFinite(windDirection) ? getDirection(windDirection) : "--";
+    const conditionElement = document.getElementById("windCondition");
+    conditionElement.textContent = windResult.label;
+    conditionElement.className = "wind-condition " + windResult.className;
+    document.getElementById("sunrise").textContent = formatTime(weather.daily.sunrise[0]);
+    document.getElementById("sunset").textContent = formatTime(weather.daily.sunset[0]);
+    renderHourlyWeather(weather.hourly.time, weather.hourly.weather_code, weather.hourly.temperature_2m, weather.hourly.precipitation_probability);
+    renderHourlyWind(weather.hourly.time, weather.hourly.wind_speed_10m, weather.hourly.wind_direction_10m, location);
+    renderTomorrowData(marine, weather, location);
+    renderTomorrowWeather(weather.hourly.time, weather.hourly.weather_code, weather.hourly.temperature_2m, weather.hourly.precipitation_probability);
+    renderTomorrowWind(weather.hourly.time, weather.hourly.wind_speed_10m, weather.hourly.wind_direction_10m, location);
+    /* 修正点: getRecommendedBoardの戻り値を実際にrenderBoardsへ渡し、
+       おすすめのボードをカード上でハイライト表示するように接続 */
+    const recommendedBoardId = getRecommendedBoard(waveHeight, wavePeriod);
+    renderBoards(recommendedBoardId);
+    /* 修正点: 固定文言だったベストタイムを、時間ごとデータから算出する関数に置き換え */
+    const best = getBestTimeFromHourly(marine, weather, location);
+    document.getElementById("bestTime").textContent = best[0];
+    document.getElementById("bestReason").textContent = best[1];
+    const surfIndex = computeSurfIndex(waveHeight, windSpeed, windResult.label, null);
+    if (surfIndex) {
+      document.getElementById("surfIndexValue").textContent = surfIndex.total;
+      document.getElementById("surfIndexLabel").textContent = surfIndex.label;
+      document.getElementById("surfIndexBar").style.width = surfIndex.total + "%";
+      document.getElementById("surfIndexReason").textContent = surfIndex.reason;
+    } else {
+      document.getElementById("surfIndexValue").textContent = "--";
+      document.getElementById("surfIndexLabel").textContent = "--";
+      document.getElementById("surfIndexBar").style.width = "0%";
+      document.getElementById("surfIndexReason").textContent = "データが不足しています。";
+    }
+    const tideTimes = marine.hourly.time;
+    const tideLevels = marine.hourly.sea_level_height_msl;
+    drawTideGraph(tideTimes, tideLevels);
+    const allExtremes = findTideExtremes(tideTimes, tideLevels);
+    if (allExtremes.length) setNextTide(allExtremes);
     const todayLevels = [];
-    for (
-      let i = 0;
-      i <
-      Math.min(
-        tideTimes.length,
-        tideLevels.length
-      );
-      i++
-    ) {
-      const localDate =
-        new Date(
-          tideTimes[i]
-        ).toLocaleDateString(
-          "en-CA",
-          {
-            timeZone: "Asia/Tokyo"
-          }
-        );
-      if (
-        localDate === todayKey() &&
-        Number.isFinite(
-          tideLevels[i]
-        )
-      ) {
-        todayLevels.push(
-          tideLevels[i]
-        );
+    for (let i = 0; i < Math.min(tideTimes.length, tideLevels.length); i++) {
+      const localDate = new Date(tideTimes[i]).toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+      if (localDate === todayKey() && Number.isFinite(tideLevels[i])) {
+        todayLevels.push(tideLevels[i]);
       }
     }
-    document.getElementById(
-      "tideType"
-    ).textContent =
-      getTideType(
-        todayLevels
-      );
-    /* =========================
-       CONDITION
-    ========================= */
-    document.getElementById(
-      "condition"
-    ).textContent =
-      "現在のコンディション";
-    document.getElementById(
-      "status"
-    ).textContent =
-      `${spot}の最新データを表示中`;
+    document.getElementById("tideType").textContent = getTideType(todayLevels);
+    document.getElementById("condition").textContent = "現在のコンディション";
+    document.getElementById("status").textContent = `${spot}の最新データを表示中`;
   }
   catch(error) {
     console.error(error);
-    document.getElementById(
-      "condition"
-    ).textContent =
-      "取得エラー";
-    document.getElementById(
-      "tomorrowCondition"
-    ).textContent =
-      "取得エラー";
-    document.getElementById(
-      "status"
-    ).textContent =
-      "データ取得に失敗しました";
+    document.getElementById("condition").textContent = "取得エラー";
+    document.getElementById("tomorrowCondition").textContent = "取得エラー";
+    document.getElementById("status").textContent = "データ取得に失敗しました: " + (error && error.message ? error.message : String(error));
   }
 }
-/* =========================
-   INITIAL
-========================= */
 renderBoards();
 setupConditionSwipe();
-loadData(
-  "辻堂"
-);
-/* =========================
-   AUTO UPDATE
-========================= */
-setInterval(
-  () => {
-    const spot =
-      document.getElementById(
-        "selectedSpot"
-      ).textContent;
-    loadData(
-      spot
-    );
-  },
-  30 * 60 * 1000
-);
+renderFavoriteStars();
+renderSessionLog();
+const initialSpot = getFavoriteSpot() && spots[getFavoriteSpot()] ? getFavoriteSpot() : "辻堂";
+document.getElementById("selectedSpot").textContent = initialSpot;
+loadData(initialSpot);
+setInterval(() => {
+  const spot = document.getElementById("selectedSpot").textContent;
+  loadData(spot);
+}, 30 * 60 * 1000);
 </script>
 </body>
 </html>
